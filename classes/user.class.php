@@ -57,12 +57,12 @@
             if(!empty($this->m_sUsername) && !empty($this->m_sPassword)){
                 
                 $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
-                $stmt = $conn->prepare("SELECT * FROM Users WHERE email = :email");
-                $stmt->bindValue(":email", $this->m_sEmail, PDO::PARAM_STR );
-                $stmt->execute();
+                $statement = $conn->prepare("SELECT * FROM Users WHERE email = :email");
+                $statement->bindValue(":email", $this->m_sEmail, PDO::PARAM_STR );
+                $statement->execute();
                 
                 if($stmt->rowCount() > 0){
-                    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $result = $statement->fetch(PDO::FETCH_ASSOC);
                     $password = $this->m_sPassword;
                     $hash = $result['password'];
                     

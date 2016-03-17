@@ -6,6 +6,8 @@
     // INCLUDE CLASSES
     include_once("classes/user.class.php");
 
+    
+    // LOGIN 
     if(!empty($_POST)){
         
         
