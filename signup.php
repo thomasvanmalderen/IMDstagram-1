@@ -1,12 +1,13 @@
 <?php
 
-    // IMDSTAGRAM CODE: REGISTER FORM - Last edited: 17/03/2016
+    // IMDSTAGRAM CODE: REGISTER FORM - Last edited: 19/03/2016
     //######################################################
     
     // INCLUDE CLASSES
     include_once("classes/user.class.php");
+    
 
-
+    
     // ON POST FORM: REGISTER USER
     if( !empty($_POST) ) {
         
@@ -19,6 +20,10 @@
             $user->Email = $_POST["email"];
             $user->Password = $_POST["password"];
             $user->Register();
+            
+            $feedback = "Welcome aboard!";
+        } else {
+            $feedback = "Gelieve alle velden in te vullen.";
         }
     }
 
@@ -42,6 +47,11 @@
     
     <section id="signup">
         <!-- IMDstagram Logo goes here -->
+        <?php if(isset($feedback)): ?>
+        <div class="feedback"><?php echo $feedback; ?></div>
+        <?php else: ?>
+	    <!--<div class="feedback">Gelieve alle velden in te vullen</div>-->
+	    <?php endif; ?>
         <h2>Sign up to see photos and videos from your friends.</h2>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <input type="text" name="fullname" placeholder="Full name" />

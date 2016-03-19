@@ -1,6 +1,6 @@
 <?php
 
-    // IMDSTAGRAM CODE: USER CLASS - Last edited: 17/03/2016
+    // IMDSTAGRAM CODE: USER CLASS - Last edited: 19/03/2016
     //######################################################
 
     class User {
@@ -54,20 +54,20 @@
         // LOGIN FUNCTION
         public function canLogin() {
             
-            if(!empty($this->m_sUsername) && !empty($this->m_sPassword)){
+            if(!empty($this->m_sEmail) && !empty($this->m_sPassword)){
                 
-                $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
-                $statement = $conn->prepare("SELECT * FROM Users WHERE email = :email");
+                $PDO = Db::getInstance();
+                $statement = $PDO->prepare("SELECT * FROM Users WHERE email = :email");
                 $statement->bindValue(":email", $this->m_sEmail, PDO::PARAM_STR );
                 $statement->execute();
                 
-                if($stmt->rowCount() > 0){
+                if($statement->rowCount() > 0){
                     $result = $statement->fetch(PDO::FETCH_ASSOC);
                     $password = $this->m_sPassword;
                     $hash = $result['password'];
                     
                     if(password_verify($password, $hash)) {
-                        $this->createSession($result['user_id']);
+                        //$this->createSession($result['user_id']);
                         return true;
                         
                         } else{

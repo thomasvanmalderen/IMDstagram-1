@@ -5,33 +5,33 @@
 
     // INCLUDE CLASSES
     include_once("classes/user.class.php");
+    include_once("classes/db.class.php");
 
     
     // LOGIN 
     if(!empty($_POST)){
         
+    if($_POST['action'] === "inloggen") {
         
-		if( !empty($_POST["username"]) && !empty($_POST["password"])){
+        if(!empty($_POST["email"]) && !empty($_POST["password"])){
+            $user = new User();
+            $user->Email = $_POST["email"];
+            $user->Password = $_POST["password"];
             
-			$userLogin = new User();
-			$userLogin->Username = $_POST["username"];
-			$userLogin->Password = $_POST["password"];
-            
-            // IF LOGIN SUCCESSFUL
-			if( $userLogin->canLogin()){
-				$_SESSION['loggedin'] = true;
+            if($user->canLogin()){
+                $_SESSION['loggedin'] = true;
+                header('Location: index.php');
                 
-                echo "success";
-				header('Location: index.php');
-                
-            } else {
-                echo "not logged in :T";
-                
-			}
-		}else{
-            echo "empty!";
-		}
-	}
+            }  else {
+                // USER NOT FOUND
+                $feedback = "Could not log you on";
+            }
+        }else{
+            // EMPTY FIELDS
+            $feedback = "Please fill in all the fields";
+        }
+    }
+    }
 
 
 ?><!DOCTYPE html>
@@ -53,12 +53,18 @@
     </nav>-->
    
    <section id="login">
+       <?php if(isset($feedback)): ?>
+        <div class="feedback"><?php echo $feedback; ?></div>
+        <?php else: ?>
+	    <!--<div class="feedback">Gelieve alle velden in te vullen</div>-->
+	    <?php endif; ?>
 		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-		<input type="text" name="username" placeholder="Username" /><br>
+		<input type="text" name="email" placeholder="Email" /><br>
 		<input type="password" name="password" placeholder="Password" /><br>
 		<input type="checkbox" name="rememberme" value="yes" id="rememberme">
 		<label for="rememberme">Remember me</label>
         <br>
+        <input type="hidden" name="action" value="inloggen">
 		<input type="submit" name="btnLogin" value="Log in" />
 		</form>
 		
