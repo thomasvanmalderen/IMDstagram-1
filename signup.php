@@ -23,7 +23,7 @@
             
             $feedback = "Welcome aboard!";
         } else {
-            $feedback = "Gelieve alle velden in te vullen.";
+            $feedback = "Please fill in all the fields";
         }
     }
 
@@ -62,8 +62,14 @@
             <input type="hidden" name="action" value="registreer">
             <input type="submit" name="btnSignup" value="Sign up"/>
         </form>
+
+        <br>
+
+        Already an account <a href="login.php">Click here to log in!</a>
         
         <!--Feedback section-->
+
+        <br>
         
         <h4>By signing up, you agree to our Terms &amp; Privacy Policy.</h4>
 

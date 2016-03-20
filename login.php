@@ -67,6 +67,10 @@
         <input type="hidden" name="action" value="inloggen">
 		<input type="submit" name="btnLogin" value="Log in" />
 		</form>
+
+       <br>
+
+       You don't have a account? <a href="signup.php">Click here to create one</a>
 		
 	</section>
     
