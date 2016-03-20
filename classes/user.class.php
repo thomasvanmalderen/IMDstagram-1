@@ -1,7 +1,10 @@
 <?php
 
-    // IMDSTAGRAM CODE: USER CLASS - Last edited: 19/03/2016
+    // IMDSTAGRAM CODE: USER CLASS - Last edited: 20/03/2016
     //######################################################
+
+
+    session_start();
 
     class User {
         
@@ -97,6 +100,38 @@
                 $password = password_hash($this->m_sPassword, PASSWORD_DEFAULT, $options);
                 
                 // BIND VALUES TO QUERY
+                $statement->bindValue(":username", $this->m_sUsername);
+                $statement->bindValue(":fullname", $this->m_sFullname);
+                $statement->bindValue(":email", $this->m_sEmail);
+                $statement->bindValue(":password", $password);
+                
+                $statement->execute();
+            }
+            else {
+            }
+        }
+        
+        // CHANGE USER INFO FUNCTION
+        public function Update( $p_sPrevName ){
+            
+            if(!empty($this->m_sUsername) && !empty($this->m_sFullname) && !empty($this->m_sEmail) && !empty($this->m_sPassword)){
+                
+                // CONNECTION WITH DATABASE
+                $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
+                
+                //$query = mysql_query("SELECT * FROM Users");
+                //$row = mysql_fetch_array($query);
+                //print_r($row);
+                
+                // PREPARE QUERY
+                $statement = $conn->prepare("UPDATE Users SET username=:username, fullname=:fullname, email=:email, password=:password WHERE username=:prevName");
+                
+                // HASH PASSWORD
+                $options = ['cost' => 12];
+                $password = password_hash($this->m_sPassword, PASSWORD_DEFAULT, $options);
+                
+                // BIND VALUES TO QUERY
+                $statement->bindValue(":prevName", $p_sPrevName);
                 $statement->bindValue(":username", $this->m_sUsername);
                 $statement->bindValue(":fullname", $this->m_sFullname);
                 $statement->bindValue(":email", $this->m_sEmail);

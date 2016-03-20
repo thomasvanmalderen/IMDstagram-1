@@ -1,6 +1,6 @@
 <?php
 
-    // IMDSTAGRAM CODE: LOGIN FORM - Last edited: 17/03/2016
+    // IMDSTAGRAM CODE: LOGIN FORM - Last edited: 19/03/2016
     //######################################################
 
     // INCLUDE CLASSES
@@ -20,6 +20,7 @@
             
             if($user->canLogin()){
                 $_SESSION['loggedin'] = true;
+                $_SESSION['email'] = $_POST["email"];
                 header('Location: index.php');
                 
             }  else {
