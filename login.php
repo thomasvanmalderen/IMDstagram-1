@@ -4,11 +4,13 @@
     // IMDSTAGRAM CODE: LOGIN FORM - Last edited: 20/03/2016
     //######################################################
 
+    // SESSION START
+    session_start();
+
     // INCLUDE CLASSES
     include_once("classes/user.class.php");
     include_once("classes/db.class.php");
 
-    //session_start();
 
     // LOGIN 
     if(!empty($_POST)){
@@ -22,20 +24,20 @@
             
             if($user->canLogin()){
                 
-                $_SESSION['loggedin'] = true;
-                $_SESSION['email'] = $_POST["email"];
-                $_SESSION['loggedin'] = "thomasvm";
-                $_SESSION['email'] = $_POST['email'];
+                // USER FOUND
+                $user->DoLogin();
                 header('Location: index.php');
-                
             }  else {
                 // USER NOT FOUND
                 $feedback = "Could not log you on";
             }
+            
         }else{
             // EMPTY FIELDS
             $feedback = "Please fill in all the fields";
         }
+    } else {
+        header('Location: login.php');
     }
     }
 

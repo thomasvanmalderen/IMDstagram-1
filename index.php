@@ -2,18 +2,20 @@
 
     // IMDSTAGRAM CODE: HOME - Last edited: 20/03/2016
     //######################################################
+    
+    ob_start();
+    // SESSION START
+    session_start();
 
     // INCLUDE CLASSES
     include_once("classes/user.class.php");
-
-    //session_start();
-
-    if ($_SESSION['loggedin'] == "thomasvm") {
-        $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
-    }
-    else
-    {
-        header("Location: login.php");
+    
+    $user = new User();
+    if($user->Authenticate()){
+        echo "ok";
+    } else {
+        echo "nope";
+        header('Location: login.php');
     }
 
 ?><!doctype html>
@@ -25,17 +27,10 @@
 <body>
 
     <a href="profile.php">Change profile settings</a>
-
-
-
     <nav>
-    <?php if(isset($_SESSION['loggedin'])): ?>
-        <a href="logout.php">Logout</a>
-    <?php else: ?>
-        <a href="index.php">Login</a>
-    <?php endif; ?>
+    <a href="logout.php">Log out</a>
     </nav>
-
+    <br>
     <h1>Welcome <?php echo $_SESSION['email']; ?></h1>
 
 

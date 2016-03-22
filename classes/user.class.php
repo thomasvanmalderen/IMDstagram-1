@@ -3,9 +3,6 @@
     // IMDSTAGRAM CODE: USER CLASS - Last edited: 20/03/2016
     //######################################################
 
-
-    session_start();
-
     class User {
         
         // PRIVATE VARIABLES
@@ -53,6 +50,9 @@
             }
         }
         
+        //SESSIONS
+    
+        
         
         // LOGIN FUNCTION
         public function canLogin() {
@@ -82,6 +82,46 @@
                     }
             }
         }
+        
+        //
+        public function DoLogin() {
+            
+            $_SESSION['loggedin'] = "thomasvm";
+            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['password'] = $_POST['password'];
+            
+            return true;
+                  
+        }
+        
+        public function Authenticate(){
+            
+            if (!empty($_SESSION['loggedin'])){
+        
+                if ($_SESSION['loggedin'] == "thomasvm") {
+                    return true;
+                    echo "logged in";
+                } else {
+                    echo "session not correctly set";
+                    return false;
+                    
+                }
+        
+            } else {
+                echo "session empty";
+                
+                
+            }
+        }
+        
+        /*public function getInfo(){
+            $PDO = Db::getInstance();
+            $statement = $PDO->prepare("SELECT * FROM Users WHERE email = :email");
+            $statement->bindValue(":email", $this->m_sEmail, PDO::PARAM_STR );
+            $statement->execute();
+            
+            return $statement;
+        }*/
         
         // SIGNUP FUNCTION
         public function Register() {
