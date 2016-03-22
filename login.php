@@ -1,13 +1,18 @@
 <?php
 
+<<<<<<< HEAD
     // IMDSTAGRAM CODE: LOGIN FORM - Last edited: 19/03/2016
+=======
+    // IMDSTAGRAM CODE: LOGIN FORM - Last edited: 20/03/2016
+>>>>>>> 750edd95073658a6f8f405c9c7eb84d6d25606ce
     //######################################################
 
     // INCLUDE CLASSES
     include_once("classes/user.class.php");
     include_once("classes/db.class.php");
 
-    
+    session_start();
+
     // LOGIN 
     if(!empty($_POST)){
         
@@ -19,8 +24,13 @@
             $user->Password = $_POST["password"];
             
             if($user->canLogin()){
+<<<<<<< HEAD
                 $_SESSION['loggedin'] = true;
                 $_SESSION['email'] = $_POST["email"];
+=======
+                $_SESSION['loggedin'] = "thomasvm";
+                $_SESSION['email'] = $_POST['email'];
+>>>>>>> 750edd95073658a6f8f405c9c7eb84d6d25606ce
                 header('Location: index.php');
                 
             }  else {
@@ -68,6 +78,10 @@
         <input type="hidden" name="action" value="inloggen">
 		<input type="submit" name="btnLogin" value="Log in" />
 		</form>
+
+       <br>
+
+       <h4>You don't have a account? <a href="signup.php">Click here to create one</a></h4>
 		
 	</section>
     
