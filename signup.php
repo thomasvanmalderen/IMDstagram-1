@@ -1,6 +1,6 @@
 <?php
 
-    // IMDSTAGRAM CODE: REGISTER FORM - Last edited: 19/03/2016
+    // IMDSTAGRAM CODE: REGISTER FORM - Last edited: 20/03/2016
     //######################################################
     
     // INCLUDE CLASSES
@@ -65,7 +65,7 @@
 
         <br>
 
-        Already an account <a href="login.php">Click here to log in!</a>
+        <h4>Already an account <a href="login.php">Click here to log in!</a></h4>
         
         <!--Feedback section-->
 

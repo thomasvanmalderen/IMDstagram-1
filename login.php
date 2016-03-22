@@ -1,13 +1,14 @@
 <?php
 
-    // IMDSTAGRAM CODE: LOGIN FORM - Last edited: 17/03/2016
+    // IMDSTAGRAM CODE: LOGIN FORM - Last edited: 20/03/2016
     //######################################################
 
     // INCLUDE CLASSES
     include_once("classes/user.class.php");
     include_once("classes/db.class.php");
 
-    
+    session_start();
+
     // LOGIN 
     if(!empty($_POST)){
         
@@ -19,7 +20,8 @@
             $user->Password = $_POST["password"];
             
             if($user->canLogin()){
-                $_SESSION['loggedin'] = true;
+                $_SESSION['loggedin'] = "thomasvm";
+                $_SESSION['email'] = $_POST['email'];
                 header('Location: index.php');
                 
             }  else {
@@ -70,7 +72,7 @@
 
        <br>
 
-       You don't have a account? <a href="signup.php">Click here to create one</a>
+       <h4>You don't have a account? <a href="signup.php">Click here to create one</a></h4>
 		
 	</section>
     
