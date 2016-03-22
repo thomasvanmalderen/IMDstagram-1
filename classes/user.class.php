@@ -90,7 +90,7 @@
             if(!empty($this->m_sUsername) && !empty($this->m_sFullname) && !empty($this->m_sEmail) && !empty($this->m_sPassword)){
                 
                 // CONNECTION WITH DATABASE
-                $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "");
+                $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
                 
                 // PREPARE QUERY
                 $statement = $conn->prepare("INSERT INTO Users (username, fullname, email, password) VALUES (:username, :fullname, :email, :password)");

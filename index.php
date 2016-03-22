@@ -6,11 +6,10 @@
     // INCLUDE CLASSES
     include_once("classes/user.class.php");
 
-    session_start();
+    //session_start();
 
     if ($_SESSION['loggedin'] == "thomasvm") {
-        $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "");
-
+        $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
     }
     else
     {
@@ -24,10 +23,9 @@
     <title>IMDstagram</title>
 </head>
 <body>
-<<<<<<< HEAD
-    <a href="login.php">Logout</a>
-    <a href="profile.php">Save profile settings</a>
-=======
+
+    <a href="profile.php">Change profile settings</a>
+
 
 
     <nav>
@@ -41,7 +39,5 @@
     <h1>Welcome <?php echo $_SESSION['email']; ?></h1>
 
 
-
->>>>>>> 750edd95073658a6f8f405c9c7eb84d6d25606ce
 </body>
 </html>
