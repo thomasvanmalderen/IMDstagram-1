@@ -43,7 +43,8 @@
     <title>Document</title>
 </head>
 <body>
-    
+
+    <a href="index.php">Back to home</a>
     
     <section id="signup">
         <!-- IMDstagram Logo goes here -->
@@ -52,10 +53,10 @@
         <?php else: ?>
 	    <!--<div class="feedback">Gelieve alle velden in te vullen</div>-->
 	    <?php endif; ?>
-        <h2>Sign up to see photos and videos from your friends.</h2>
+        <h2>Change you settings here</h2>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <input type="text" name="fullname" placeholder="Full name" />
-            <input type="text" name="username" placeholder="username" />
+            <input type="text" name="username" placeholder="Username" />
             <input type="email" name="email" placeholder="Email" />
             <input type="password" name="password" placeholder="Password" />
 

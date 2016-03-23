@@ -100,17 +100,12 @@
         
                 if ($_SESSION['loggedin'] == "thomasvm") {
                     return true;
-                    echo "logged in";
                 } else {
-                    echo "session not correctly set";
-                    return false;
-                    
+                    echo "Session is not set correctly";
                 }
         
             } else {
-                echo "session empty";
-                
-                
+                echo "Session is empty";
             }
         }
         

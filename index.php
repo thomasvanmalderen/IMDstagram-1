@@ -12,9 +12,8 @@
     
     $user = new User();
     if($user->Authenticate()){
-        echo "ok";
+
     } else {
-        echo "nope";
         header('Location: login.php');
     }
 
@@ -26,7 +25,7 @@
 </head>
 <body>
 
-    <a href="profile.php">Change profile settings</a>
+    <a href="changeProfile.php">Change profile settings</a>
     <nav>
     <a href="logout.php">Log out</a>
     </nav>
