@@ -125,7 +125,7 @@
             if(!empty($this->m_sUsername) && !empty($this->m_sFullname) && !empty($this->m_sEmail) && !empty($this->m_sPassword)){
                 
                 // CONNECTION WITH DATABASE
-                $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
+                $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "");
                 
                 // PREPARE QUERY
                 $statement = $conn->prepare("INSERT INTO Users (username, fullname, email, password) VALUES (:username, :fullname, :email, :password)");
@@ -152,7 +152,7 @@
             if(!empty($this->m_sUsername) && !empty($this->m_sFullname) && !empty($this->m_sEmail) && !empty($this->m_sPassword)){
                 
                 // CONNECTION WITH DATABASE
-                $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
+                $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "");
                 
                 //$query = mysql_query("SELECT * FROM Users");
                 //$row = mysql_fetch_array($query);
