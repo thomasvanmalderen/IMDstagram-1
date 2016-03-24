@@ -17,9 +17,9 @@
         
     if($_POST['action'] === "inloggen") {
         
-        if(!empty($_POST["email"]) && !empty($_POST["password"])){
+        if(!empty($_POST["username"]) && !empty($_POST["password"])){
             $user = new User();
-            $user->Email = $_POST["email"];
+            $user->Username = $_POST["username"];
             $user->Password = $_POST["password"];
             
             if($user->canLogin()){
@@ -67,7 +67,7 @@
 	    <!--<div class="feedback">Gelieve alle velden in te vullen</div>-->
 	    <?php endif; ?>
 		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-		<input type="text" name="email" placeholder="Email" /><br>
+		<input type="text" name="username" placeholder="Username" /><br>
 		<input type="password" name="password" placeholder="Password" /><br>
 		<input type="checkbox" name="rememberme" value="yes" id="rememberme">
 		<label for="rememberme">Remember me</label>

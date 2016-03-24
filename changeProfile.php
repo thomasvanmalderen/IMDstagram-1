@@ -11,53 +11,9 @@
 
     // CHANGE INFO FUNCTION
 
-    if(!empty($_POST)) {
-
-        if ($_POST['action'] === "verander") {
-
-            if ($_POST['old_password'] === $_SESSION['password']) {
-
-                if (!empty($_POST["fullname"])) {
-
-                    $feedback = "Fullname has your attention";
-                    $changer = new User();
-                    $changer->Fullname = $_POST["fullname"];
-
-                    // CONNECTION WITH DATABASE
-                    /*$email = $_SESSION['email'];*/
-
-                    $PDO = Db::getInstance();
-
-                    /*$query = $PDO->prepare("SELECT id FROM users WHERE email='$email'");
-                    $query->execute();
-                    $result = $query->fetchAll();
-                    $v_result = var_dump((string)$result);
-                    // PREPARE QUERY
-                    $statement = $PDO->prepare('UPDATE Users SET fullname=:fullname WHERE id=' . $v_result[0]);
-
-                    // BIND VALUES TO QUERY
-                    $statement->bindValue(":fullname", $this->Fullname);
-
-                    $statement->execute();*/
-
-
-
-                } else {
-                    // USER NOT FOUND
-                    $feedback = "You asked for no changes";
-                }
-
-            } else {
-                //WRONG PASSWORD
-                $feedback = "Wrong password";
-            }
-
-        } else {
-            // EMPTY FIELDS
-            $feedback = "You cannot send an empty form";
-        }
-
-    }
+    $changer = new User();
+    $changer->Fullname = $_POST["fullname"];
+    $changer->Update();
 
 
 ?><!DOCTYPE html>

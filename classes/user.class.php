@@ -3,6 +3,8 @@
     // IMDSTAGRAM CODE: USER CLASS - Last edited: 20/03/2016
     //######################################################
 
+    include_once ("db.class.php");
+
     class User {
         
         // PRIVATE VARIABLES
@@ -51,17 +53,60 @@
         }
         
         //SESSIONS
+
+        //CHECK USERNAME AVAILIBILITY
+        public function UsernameAvailable()
+        {
+            $username = $this->m_sUsername;
+            $PDO = Db::getInstance(); //open connection to Dbase
+            $sSql = $PDO->prepare("select * from users where username = '" . $username . "';");
+            $sSql->execute();
+            $rResult = $sSql->num_rows();
+            if ($rResult != 0) {
+                throw new Exception('Oops! Something went wrong!');
+            } else {
+                return false;
+            }
+        }
+
+        // SIGNUP FUNCTION
+        public function Register() {
+
+            // VERIFICATION: IF FILLED IN
+            if(!empty($this->m_sUsername) && !empty($this->m_sFullname) && !empty($this->m_sEmail) && !empty($this->m_sPassword)) {
+                if ($this->UsernameAvailable() == false) {
+                    // CONNECTION WITH DATABASE
+                    $PDO = Db::getInstance();
+
+                    // PREPARE QUERY
+                    $statement = $PDO->prepare("INSERT INTO Users (username, fullname, email, password) VALUES (:username, :fullname, :email, :password)");
+
+                    // HASH PASSWORD
+                    $options = ['cost' => 12];
+                    $password = password_hash($this->m_sPassword, PASSWORD_DEFAULT, $options);
+
+                    // BIND VALUES TO QUERY
+                    $statement->bindValue(":username", $this->m_sUsername);
+                    $statement->bindValue(":fullname", $this->m_sFullname);
+                    $statement->bindValue(":email", $this->m_sEmail);
+                    $statement->bindValue(":password", $password);
+
+                    $statement->execute();
+                } else {
+                }
+            }
+        }
     
         
         
         // LOGIN FUNCTION
         public function canLogin() {
             
-            if(!empty($this->m_sEmail) && !empty($this->m_sPassword)){
+            if(!empty($this->m_sUsername) && !empty($this->m_sPassword)){
                 
                 $PDO = Db::getInstance();
-                $statement = $PDO->prepare("SELECT * FROM Users WHERE email = :email");
-                $statement->bindValue(":email", $this->m_sEmail, PDO::PARAM_STR );
+                $statement = $PDO->prepare("SELECT * FROM Users WHERE username = :username");
+                $statement->bindValue(":username", $this->m_sUsername, PDO::PARAM_STR );
                 $statement->execute();
                 
                 if($statement->rowCount() > 0){
@@ -72,7 +117,7 @@
                     if(password_verify($password, $hash)) {
                         //$this->createSession($result['user_id']);
                         return true;
-                        
+
                         } else{
                         
                             return false;
@@ -83,11 +128,11 @@
             }
         }
         
-        //
+        //IF IT'S POSSIBLE TO LOGIN, LOGIN
         public function DoLogin() {
             
             $_SESSION['loggedin'] = "thomasvm";
-            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['username'] = $_POST['username'];
             $_SESSION['password'] = $_POST['password'];
             
             return true;
@@ -118,36 +163,8 @@
             return $statement;
         }*/
         
-        // SIGNUP FUNCTION
-        public function Register() {
-            
-            // VERIFICATION: IF FILLED IN
-            if(!empty($this->m_sUsername) && !empty($this->m_sFullname) && !empty($this->m_sEmail) && !empty($this->m_sPassword)){
-                
-                // CONNECTION WITH DATABASE
-                $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "");
-                
-                // PREPARE QUERY
-                $statement = $conn->prepare("INSERT INTO Users (username, fullname, email, password) VALUES (:username, :fullname, :email, :password)");
-                
-                // HASH PASSWORD
-                $options = ['cost' => 12];
-                $password = password_hash($this->m_sPassword, PASSWORD_DEFAULT, $options);
-                
-                // BIND VALUES TO QUERY
-                $statement->bindValue(":username", $this->m_sUsername);
-                $statement->bindValue(":fullname", $this->m_sFullname);
-                $statement->bindValue(":email", $this->m_sEmail);
-                $statement->bindValue(":password", $password);
-                
-                $statement->execute();
-            }
-            else {
-            }
-        }
-        
         // CHANGE USER INFO FUNCTION
-        public function Update( $p_sPrevName ){
+        /*public function Update( $p_sPrevName ){
             
             if(!empty($this->m_sUsername) && !empty($this->m_sFullname) && !empty($this->m_sEmail) && !empty($this->m_sPassword)){
                 
@@ -175,6 +192,55 @@
                 $statement->execute();
             }
             else {
+            }
+        }*/
+
+        public function Update() {
+            if(!empty($_POST)) {
+
+                if ($_POST['action'] === "verander") {
+
+                    if ($_POST['old_password'] === $_SESSION['password']) {
+
+                        if (!empty($_POST["fullname"])) {
+
+                            $feedback = "Fullname has your attention";
+
+
+                            // CONNECTION WITH DATABASE
+                            /*$email = $_SESSION['email'];*/
+
+                            $PDO = Db::getInstance();
+
+                            /*$query = $PDO->prepare("SELECT id FROM users WHERE email='$email'");
+                            $query->execute();
+                            $result = $query->fetchAll();
+                            $v_result = var_dump((string)$result);
+                            // PREPARE QUERY
+                            $statement = $PDO->prepare('UPDATE Users SET fullname=:fullname WHERE id=' . $v_result[0]);
+
+                            // BIND VALUES TO QUERY
+                            $statement->bindValue(":fullname", $this->Fullname);
+
+                            $statement->execute();*/
+
+
+
+                        } else {
+                            // USER NOT FOUND
+                            $feedback = "You asked for no changes";
+                        }
+
+                    } else {
+                        //WRONG PASSWORD
+                        $feedback = "Wrong password";
+                    }
+
+                } else {
+                    // EMPTY FIELDS
+                    $feedback = "You cannot send an empty form";
+                }
+
             }
         }
     }
