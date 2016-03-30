@@ -1,4 +1,8 @@
 <?php
+
+    // IMDSTAGRAM CODE: DATABASE CLASS - Last edited: 24/03/2016
+    //######################################################
+
     class Db {
         
         private static $conn;

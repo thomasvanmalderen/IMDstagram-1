@@ -1,0 +1,32 @@
+@media only screen and (min-width: 495px){
+    
+    #login{
+        width: 350px;
+        background-color: white;
+     
+    }
+    
+    #account{
+        width: 350px;
+        background-color: white;
+        
+    }
+    input[type="text"]{
+        background-color: #FAFAFA;
+        width: 90%;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    input[type="password"]{
+        background-color: #FAFAFA;
+        width: 90%;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    
+    input[type="submit"]{
+        width: 90%;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+}

@@ -22,6 +22,7 @@
 <head>
     <meta charset="UTF-8">
     <title>IMDstagram</title>
+    <link rel="favicon" href="favicon.ico">
 </head>
 <body>
 

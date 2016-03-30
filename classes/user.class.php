@@ -109,14 +109,6 @@
             }
         }
         
-        /*public function getInfo(){
-            $PDO = Db::getInstance();
-            $statement = $PDO->prepare("SELECT * FROM Users WHERE email = :email");
-            $statement->bindValue(":email", $this->m_sEmail, PDO::PARAM_STR );
-            $statement->execute();
-            
-            return $statement;
-        }*/
         
         // SIGNUP FUNCTION
         public function Register() {
@@ -140,16 +132,51 @@
                 $statement->bindValue(":email", $this->m_sEmail);
                 $statement->bindValue(":password", $password);
                 
-                $statement->execute();
+                if ($this->UsernameAvailable()) {
+                    //throw new Exception(":( username already taken!");
+                    echo "username already taken";
+                } else {
+                        $statement->execute();
+                }
+                
+                //$statement->execute();
             }
             else {
             }
         }
         
+        // CHECK IF USERNAME IS TAKEN
+        public function UsernameAvailable(){
+            
+            
+            
+            $PDO = Db::getInstance();
+            $Username = $mysqli->real_escape_string($Username);
+            $usernamecheck = $PDO->prepare("select * from users where username = '" . $this->m_sUsername . "'");
+            //$sSql = "select * from users where user_login = '" . mysqli_real_escape_string($link, $this->m_sUserName) . "';";
+            $usernamecheck->execute();
+            //$rResult = mysqli_query($PDO, $usernamecheck);
+            
+            var_dump($usernamecheck);
+            $count = mysqli_num_rows($rResult);
+            var_dump($count);
+            if ($count == 1) {
+                //throw new Exception('error');
+                return true;
+                echo("taken");
+            } else {
+                echo ("good to go");
+            }
+            
+            
+        }
+        
         // CHANGE USER INFO FUNCTION
         public function Update( $p_sPrevName ){
             
-            if(!empty($this->m_sUsername) && !empty($this->m_sFullname) && !empty($this->m_sEmail) && !empty($this->m_sPassword)){
+            
+            
+            /*if(!empty($this->m_sUsername) && !empty($this->m_sFullname) && !empty($this->m_sEmail) && !empty($this->m_sPassword)){
                 
                 // CONNECTION WITH DATABASE
                 $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
@@ -175,7 +202,7 @@
                 $statement->execute();
             }
             else {
-            }
+            }*/
         }
     }
 ?>
