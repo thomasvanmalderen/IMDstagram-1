@@ -17,9 +17,9 @@
         
     if($_POST['action'] === "inloggen") {
         
-        if(!empty($_POST["email"]) && !empty($_POST["password"])){
+        if(!empty($_POST["username"]) && !empty($_POST["password"])){
             $user = new User();
-            $user->Email = $_POST["email"];
+            $user->Username = $_POST["username"];
             $user->Password = $_POST["password"];
             
             if($user->canLogin()){

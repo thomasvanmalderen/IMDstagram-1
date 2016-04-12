@@ -57,11 +57,11 @@
         // LOGIN FUNCTION
         public function canLogin() {
             
-            if(!empty($this->m_sEmail) && !empty($this->m_sPassword)){
+            if(!empty($this->m_sUsername) && !empty($this->m_sPassword)){
                 
                 $PDO = Db::getInstance();
-                $statement = $PDO->prepare("SELECT * FROM Users WHERE email = :email");
-                $statement->bindValue(":email", $this->m_sEmail, PDO::PARAM_STR );
+                $statement = $PDO->prepare("SELECT * FROM Users WHERE username = :username");
+                $statement->bindValue(":username", $this->m_sUsername, PDO::PARAM_STR );
                 $statement->execute();
                 
                 if($statement->rowCount() > 0){
@@ -87,7 +87,7 @@
         public function DoLogin() {
             
             $_SESSION['loggedin'] = "thomasvm";
-            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['username'] = $_POST['username'];
             $_SESSION['password'] = $_POST['password'];
             
             return true;
