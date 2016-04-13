@@ -118,6 +118,7 @@
                 
                 // CONNECTION WITH DATABASE
                 $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
+                //$conn = mysqli_connect("localhost", "root", "root", "imd");
                 
                 // PREPARE QUERY
                 $statement = $conn->prepare("INSERT INTO Users (username, fullname, email, password) VALUES (:username, :fullname, :email, :password)");
@@ -133,13 +134,14 @@
                 $statement->bindValue(":password", $password);
                 
                 if ($this->UsernameAvailable()) {
-                    //throw new Exception(":( username already taken!");
-                    echo "username already taken";
-                } else {
-                        $statement->execute();
+                    
+                    //echo "taken";
+                    $_SESSION['loginfeedback'] = "This username is already taken!";
+                } else { 
+                    $_SESSION['loginfeedback'] = "Welcome aboard!";
+                    $statement->execute();
                 }
                 
-                //$statement->execute();
             }
             else {
             }
@@ -148,24 +150,25 @@
         // CHECK IF USERNAME IS TAKEN
         public function UsernameAvailable(){
             
-            
-            
             $PDO = Db::getInstance();
-            $Username = $mysqli->real_escape_string($Username);
-            $usernamecheck = $PDO->prepare("select * from users where username = '" . $this->m_sUsername . "'");
-            //$sSql = "select * from users where user_login = '" . mysqli_real_escape_string($link, $this->m_sUserName) . "';";
-            $usernamecheck->execute();
-            //$rResult = mysqli_query($PDO, $usernamecheck);
+            //$conn = mysqli_connect("localhost", "root", "root", "imd");
+            //$conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
             
-            var_dump($usernamecheck);
-            $count = mysqli_num_rows($rResult);
-            var_dump($count);
-            if ($count == 1) {
-                //throw new Exception('error');
+            $statement = $PDO->prepare("SELECT username FROM Users WHERE username = :username");
+            $statement->bindValue(":username", $this->m_sUsername);
+            
+            $statement->execute();
+            $count = count($statement->fetchAll());
+            
+            if($count > 0){
+                //echo "username taken";
+                //echo $count;
                 return true;
-                echo("taken");
+                
             } else {
-                echo ("good to go");
+                
+                //echo "Vrij";
+                return false;
             }
             
             

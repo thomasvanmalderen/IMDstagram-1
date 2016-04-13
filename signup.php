@@ -21,10 +21,15 @@
             $user->Email = $_POST["email"];
             $user->Password = $_POST["password"];
             $user->Register();
+            /*if($user->Register()){
+                $feedback = "Welcome aboard!";
+            } else {
+                $feedback = "This username is already taken!";
+            }*/
             
-            $feedback = "Welcome aboard!";
+            
         } else {
-            $feedback = "Please fill in all the fields";
+            $_SESSION['loginfeedback'] = "Please fill in all the fields.";
         }
     }
 
@@ -43,8 +48,8 @@
     
     <section id="login">
         <div id="logo">IMDstagram</div>
-        <?php if(isset($feedback)): ?>
-        <div class="feedback"><?php echo $feedback; ?></div>
+        <?php if(isset($_SESSION['loginfeedback'])): ?>
+        <div class="feedback"><?php echo $_SESSION['loginfeedback']; ?></div>
         <?php else: ?>
 	    <!--<div class="feedback">Gelieve alle velden in te vullen</div>-->
 	    <?php endif; ?>
