@@ -13,19 +13,16 @@
     if( !empty($_POST) ) {
         
         
-        if(!empty($_POST["fullname"]) && !empty($_POST["username"]) && !empty($_POST["email"]) && !empty($_POST['password'])) {
+        if(!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["username"]) && !empty($_POST["email"]) && !empty($_POST['password'])) {
             
             $user = new User();
-            $user->Fullname = $_POST["fullname"];
+            $user->Firstname = $_POST["firstname"];
+            $user->Lastname = $_POST["lastname"];
             $user->Username = $_POST["username"];
             $user->Email = $_POST["email"];
             $user->Password = $_POST["password"];
             $user->Register();
-            /*if($user->Register()){
-                $feedback = "Welcome aboard!";
-            } else {
-                $feedback = "This username is already taken!";
-            }*/
+            
             
             
         } else {
@@ -55,7 +52,8 @@
 	    <?php endif; ?>
         <h2>Sign up to see photos and videos from your friends.</h2>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-            <input type="text" name="fullname" placeholder="Full name" />
+            <input type="text" name="firstname" placeholder="First name" />
+            <input type="text" name="lastname" placeholder="Last name" />
             <input type="text" name="username" placeholder="Username" />
             <input type="text" name="email" placeholder="Email" />
             <input type="password" name="password" placeholder="Password" />

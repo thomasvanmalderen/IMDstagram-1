@@ -7,7 +7,8 @@
         
         // PRIVATE VARIABLES
         private $m_sUsername;
-        private $m_sFullname;
+        private $m_sFirstname;
+        private $m_sLastname;
         private $m_sEmail;
         private $m_sPassword;
         
@@ -19,8 +20,11 @@
                 case "Username":
                     $this->m_sUsername = $p_vValue;
                     break;
-                case "Fullname":
-                    $this->m_sFullname = $p_vValue;
+                case "Firstname":
+                    $this->m_sFirstname = $p_vValue;
+                    break;
+                case "Lastname":
+                    $this->m_sLastname = $p_vValue;
                     break;
                 case "Email":
                     $this->m_sEmail = $p_vValue;
@@ -38,8 +42,11 @@
                 case "Username":
                     return $this->m_sUsername;
                     break;
-                case "Fullname":
-                    return $this->m_sName;
+                case "Firstname":
+                    return $this->m_sFirstname;
+                    break;
+                case "Lastname":
+                    return $this->m_sLastname;
                     break;
                 case "Email":
                     return $this->m_sEmail;
@@ -114,14 +121,14 @@
         public function Register() {
             
             // VERIFICATION: IF FILLED IN
-            if(!empty($this->m_sUsername) && !empty($this->m_sFullname) && !empty($this->m_sEmail) && !empty($this->m_sPassword)){
+            if(!empty($this->m_sUsername) && !empty($this->m_sFirstname) && !empty($this->m_sLastname) && !empty($this->m_sEmail) && !empty($this->m_sPassword)){
                 
                 // CONNECTION WITH DATABASE
                 $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
                 //$conn = mysqli_connect("localhost", "root", "root", "imd");
                 
                 // PREPARE QUERY
-                $statement = $conn->prepare("INSERT INTO Users (username, fullname, email, password) VALUES (:username, :fullname, :email, :password)");
+                $statement = $conn->prepare("INSERT INTO Users (username, firstname, lastname, email, password) VALUES (:username, :firstname, :lastname, :email, :password)");
                 
                 // HASH PASSWORD
                 $options = ['cost' => 12];
@@ -129,7 +136,8 @@
                 
                 // BIND VALUES TO QUERY
                 $statement->bindValue(":username", $this->m_sUsername);
-                $statement->bindValue(":fullname", $this->m_sFullname);
+                $statement->bindValue(":firstname", $this->m_sFirstname);
+                $statement->bindValue(":lastname", $this->m_sLastname);
                 $statement->bindValue(":email", $this->m_sEmail);
                 $statement->bindValue(":password", $password);
                 
