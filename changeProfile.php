@@ -6,6 +6,14 @@
     include_once("classes/user.class.php");
     include_once("classes/db.class.php");
     // CHANGE INFO FUNCTION
+
+    /*$user = new User;
+    $user->getAllInfo();
+
+    echo $_SESSION['fullname'];
+    echo $_SESSION['username'];
+    echo $_SESSION['email'];*/
+
     if(!empty($_POST)) {
         
         if ($_POST['action'] === "verander") {
@@ -13,22 +21,10 @@
             if ($_POST['old_password'] === $_SESSION['password']) {
                 
                 if (!empty($_POST["fullname"])) {
-                    
-                    $feedback = "Fullname has your attention";
                     $changer = new User();
                     $changer->Fullname = $_POST["fullname"];
-                    // CONNECTION WITH DATABASE
-                    $email = $_SESSION['email'];
-                    $PDO = Db::getInstance();
-                    $query = $PDO->prepare("SELECT id FROM users WHERE email='$email'");
-                    $query->execute();
-                    $result = $query->fetch(PDO::FETCH_OBJ);
-                    $v_result = $result->id;
-                    // PREPARE QUERY
-                    $statement = $PDO->prepare('UPDATE Users SET fullname=:fullname WHERE id=' . $v_result);
-                    // BIND VALUES TO QUERY
-                    $statement->bindValue(":fullname", $this->$m_sFullname);
-                    $statement->execute();
+                    $changer->Update();
+                    
                 } else {
                     // USER NOT FOUND
                     $feedback = "You asked for no changes";
@@ -59,16 +55,16 @@
         <?php else: ?>
 	    <!--<div class="feedback">Gelieve alle velden in te vullen</div>-->
 	    <?php endif; ?>
-        <h2>Change you settings here</h2>
+        <h2>Change your settings here</h2>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <label for="fullname">New fullname</label>
-                <input type="text" name="fullname" placeholder="Full name" id="fullname" />
+            <input type="text" name="fullname" placeholder="Full name" id="fullname" value=""/>
             <br>
             <label for="username">New username</label>
-                <input type="text" name="username" placeholder="Username" id="username" />
+                <input type="text" name="username" placeholder="Username" id="username" value=""/>
             <br>
             <label for="email">New email</label>
-                <input type="email" name="email" placeholder="Email" id="email" />
+                <input type="email" name="email" placeholder="Email" id="email" value=""/>
             <br>
             <label for="new_password">New password</label>
                 <input type="password" name="new_password" placeholder="Password" id="new_password" />

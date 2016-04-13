@@ -32,7 +32,7 @@
     <a href="logout.php">Log out</a>
     </nav>
     <br>
-    <h1>Welcome <?php echo $_SESSION['username']; ?>!</h1>
+    <h1>Welcome <?php echo $_SESSION['username_']; ?>!</h1>
 
 
 </body>

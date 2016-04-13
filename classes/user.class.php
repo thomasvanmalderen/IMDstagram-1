@@ -87,7 +87,7 @@
         public function DoLogin() {
             
             $_SESSION['loggedin'] = "thomasvm";
-            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['username_'] = $_POST['username'];
             $_SESSION['password'] = $_POST['password'];
             
             return true;
@@ -208,38 +208,48 @@
             
         }
         
+        public function getAllInfo(){
+            
+            //$conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
+            $PDO = Db::getInstance();
+            
+            $statement1 = $PDO->prepare("SELECT fullname FROM Users WHERE username = :username");
+            $statement1->bindValue(":username", $_SESSION['username_']);
+            $statement1->execute();
+            $_SESSION['fullname'] = $statement1;
+            
+            $statement2 = $PDO->prepare("SELECT username FROM Users WHERE username = :username");
+            $statement2->bindValue(":username", $_SESSION['username_']);
+            $statement2->execute();
+            $_SESSION['username'] = $statement2;
+            
+            $statement3 = $PDO->prepare("SELECT email FROM Users WHERE username = :username");
+            $statement3->bindValue(":username", $_SESSION['username_']);
+            $statement3->execute();
+            $_SESSION['email'] = $statement3;
+        }
+        
         // CHANGE USER INFO FUNCTION
-        public function Update( $p_sPrevName ){
+        public function Update(){
+            
+            $feedback = "Fullname has your attention";
             
             
+            // CONNECTION WITH DATABASE
             
-            /*if(!empty($this->m_sUsername) && !empty($this->m_sFullname) && !empty($this->m_sEmail) && !empty($this->m_sPassword)){
-                
-                // CONNECTION WITH DATABASE
-                $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
-                
-                //$query = mysql_query("SELECT * FROM Users");
-                //$row = mysql_fetch_array($query);
-                //print_r($row);
-                
-                // PREPARE QUERY
-                $statement = $conn->prepare("UPDATE Users SET username=:username, fullname=:fullname, email=:email, password=:password WHERE username=:prevName");
-                
-                // HASH PASSWORD
-                $options = ['cost' => 12];
-                $password = password_hash($this->m_sPassword, PASSWORD_DEFAULT, $options);
-                
-                // BIND VALUES TO QUERY
-                $statement->bindValue(":prevName", $p_sPrevName);
-                $statement->bindValue(":username", $this->m_sUsername);
-                $statement->bindValue(":fullname", $this->m_sFullname);
-                $statement->bindValue(":email", $this->m_sEmail);
-                $statement->bindValue(":password", $password);
-                
-                $statement->execute();
-            }
-            else {
-            }*/
+            $PDO = Db::getInstance();
+            $query = $PDO->prepare("SELECT id FROM Users WHERE username='" . $_SESSION['username_'] . "'");
+            $query->execute();
+            $result = $query->fetch(PDO::FETCH_OBJ);
+            $v_result = $result->id;
+    
+            // PREPARE QUERY
+            $statement = $PDO->prepare('UPDATE Users SET fullname=:fullname WHERE id=' . $v_result);
+            // BIND VALUES TO QUERY
+            $statement->bindValue(":fullname", $_POST['fullname']);
+            $statement->execute();
+            
+            
         }
     }
 ?>
