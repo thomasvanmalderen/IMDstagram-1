@@ -136,10 +136,22 @@
                 if ($this->UsernameAvailable()) {
                     
                     //echo "taken";
-                    $_SESSION['loginfeedback'] = "This username is already taken!";
+                    if ($this->EmailAvailable()){
+                        $_SESSION['loginfeedback'] = "This username and email address are already taken!";
+                    } else {
+                        $_SESSION['loginfeedback'] = "This username is already taken!";
+                    }
+                    
+                    
                 } else { 
-                    $_SESSION['loginfeedback'] = "Welcome aboard!";
-                    $statement->execute();
+                    
+                    if ($this->EmailAvailable()){
+                        $_SESSION['loginfeedback'] = "This email address is already taken!";
+                    } else {
+                        $_SESSION['loginfeedback'] = "Welcome aboard!";
+                        $statement->execute();
+                    }
+                    
                 }
                 
             }
@@ -168,6 +180,28 @@
             } else {
                 
                 //echo "Vrij";
+                return false;
+            }
+            
+            
+        }
+        
+        public function EmailAvailable(){
+            
+            $PDO = Db::getInstance();
+            
+            $statement = $PDO->prepare("SELECT email FROM Users WHERE email = :email");
+            $statement->bindValue(":email", $this->m_sEmail);
+            
+            $statement->execute();
+            $count = count($statement->fetchAll());
+            
+            if($count > 0){
+                
+                return true;
+                
+            } else {
+                
                 return false;
             }
             
