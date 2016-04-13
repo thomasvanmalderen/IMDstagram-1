@@ -10,6 +10,7 @@
         private $m_sFirstname;
         private $m_sLastname;
         private $m_sEmail;
+        private $m_sBio;
         private $m_sPassword;
         
         
@@ -28,6 +29,9 @@
                     break;
                 case "Email":
                     $this->m_sEmail = $p_vValue;
+                    break;
+                case "Bio":
+                    $this->m_sBio = $p_vValue;
                     break;
                 case "Password":
                     $this->m_sPassword = $p_vValue;
@@ -50,6 +54,9 @@
                     break;
                 case "Email":
                     return $this->m_sEmail;
+                    break;
+                case "Bio":
+                    return $this->m_sBio;
                     break;
                 case "Password":
                     return $this->m_sPassword;
@@ -221,41 +228,84 @@
             //$conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
             $PDO = Db::getInstance();
             
-            $statement1 = $PDO->prepare("SELECT fullname FROM Users WHERE username = :username");
+            $statement1 = $PDO->prepare("SELECT first FROM Users WHERE username = :username");
             $statement1->bindValue(":username", $_SESSION['username_']);
             $statement1->execute();
-            $_SESSION['fullname'] = $statement1;
+            $_SESSION['firstname'] = $statement1;
             
-            $statement2 = $PDO->prepare("SELECT username FROM Users WHERE username = :username");
+            $statement2 = $PDO->prepare("SELECT email FROM Users WHERE username = :username");
             $statement2->bindValue(":username", $_SESSION['username_']);
             $statement2->execute();
-            $_SESSION['username'] = $statement2;
+            $_SESSION['lastname'] = $statement2;
             
-            $statement3 = $PDO->prepare("SELECT email FROM Users WHERE username = :username");
+            $statement3 = $PDO->prepare("SELECT username FROM Users WHERE username = :username");
             $statement3->bindValue(":username", $_SESSION['username_']);
             $statement3->execute();
-            $_SESSION['email'] = $statement3;
+            $_SESSION['username'] = $statement3;
+            
+            $statement4 = $PDO->prepare("SELECT email FROM Users WHERE username = :username");
+            $statement4->bindValue(":username", $_SESSION['username_']);
+            $statement4->execute();
+            $_SESSION['email'] = $statement4;
+            
+            $statement5 = $PDO->prepare("SELECT bio FROM Users WHERE username = :username");
+            $statement5->bindValue(":username", $_SESSION['username_']);
+            $statement5->execute();
+            $_SESSION['bio'] = $statement5;
         }
         
         // CHANGE USER INFO FUNCTION
         public function Update(){
-            
-            $feedback = "Fullname has your attention";
-            
-            
-            // CONNECTION WITH DATABASE
             
             $PDO = Db::getInstance();
             $query = $PDO->prepare("SELECT id FROM Users WHERE username='" . $_SESSION['username_'] . "'");
             $query->execute();
             $result = $query->fetch(PDO::FETCH_OBJ);
             $v_result = $result->id;
-    
-            // PREPARE QUERY
-            $statement = $PDO->prepare('UPDATE Users SET fullname=:fullname WHERE id=' . $v_result);
-            // BIND VALUES TO QUERY
-            $statement->bindValue(":fullname", $_POST['fullname']);
-            $statement->execute();
+            
+            if(isset($this->m_sPassword)){
+                
+            } else {
+                $this->m_sPassword = $_SESSION['password'];
+            }
+            
+            $options = ['cost' => 12];
+            $password = password_hash($this->m_sPassword, PASSWORD_DEFAULT, $options);
+            
+            $statement = $PDO->prepare('UPDATE Users SET username=:firstname, firstname=:firstname, lastname=:lastname, email=:email, password=:password, bio=:bio WHERE id=' . $v_result);
+            
+            $statement->bindValue(":username", $this->m_sUsername);
+            $statement->bindValue(":firstname", $this->m_sFirstname);
+            $statement->bindValue(":lastname", $this->m_sLastname);
+            $statement->bindValue(":email", $this->m_sEmail);
+            $statement->bindValue(":bio", $this->m_sBio);
+            $statement->bindValue(":password", $password);
+            
+            
+            if ($this->UsernameAvailable()) {
+                    
+                    //echo "taken";
+                    if ($this->EmailAvailable()){
+                        $_SESSION['loginfeedback'] = "This username and email address are already taken!";
+                    } else {
+                        $_SESSION['loginfeedback'] = "This username is already taken!";
+                    }
+                    
+                    
+                } else { 
+                    
+                    if ($this->EmailAvailable()){
+                        $_SESSION['loginfeedback'] = "This email address is already taken!";
+                    } else {
+                        $_SESSION['loginfeedback'] = "Settings saved!";
+                        $statement->execute();
+                    }
+                    
+                }
+            
+            
+            
+            
             
             
         }

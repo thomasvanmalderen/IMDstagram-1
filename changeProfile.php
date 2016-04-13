@@ -7,10 +7,10 @@
     include_once("classes/db.class.php");
     // CHANGE INFO FUNCTION
 
-    /*$user = new User;
-    $user->getAllInfo();
+    //$user = new User;
+    //$user->getAllInfo();
 
-    echo $_SESSION['fullname'];
+    /*echo $_SESSION['fullname'];
     echo $_SESSION['username'];
     echo $_SESSION['email'];*/
 
@@ -20,9 +20,13 @@
             
             if ($_POST['old_password'] === $_SESSION['password']) {
                 
-                if (!empty($_POST["fullname"])) {
+                if (!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["username"]) && !empty($_POST["email"]) ) {
                     $changer = new User();
-                    $changer->Fullname = $_POST["fullname"];
+                    $changer->Firstname = $_POST["firstname"];
+                    $changer->Lastname = $_POST["lastname"];
+                    $changer->Username = $_POST["username"];
+                    $changer->Email = $_POST["email"];
+                    $changer->Bio = $_POST["bio"];
                     $changer->Update();
                     
                 } else {
@@ -57,8 +61,11 @@
 	    <?php endif; ?>
         <h2>Change your settings here</h2>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-            <label for="fullname">New fullname</label>
-            <input type="text" name="fullname" placeholder="Full name" id="fullname" value=""/>
+            <label for="firstname">New first name</label>
+            <input type="text" name="firstname" placeholder="First name" id="firstname" value="$_SESSION['firstname'];"/>
+            <br>
+            <label for="lastname">New last name</label>
+            <input type="text" name="lastname" placeholder="Last name" id="lastname" value=""/>
             <br>
             <label for="username">New username</label>
                 <input type="text" name="username" placeholder="Username" id="username" value=""/>
@@ -68,6 +75,9 @@
             <br>
             <label for="new_password">New password</label>
                 <input type="password" name="new_password" placeholder="Password" id="new_password" />
+            <br>
+            <label for="bio">Biography</label>
+                <textarea name="bio" id="bio" cols="30" rows="2" placeholder="Tell us something about yourself."></textarea>
             <br>
             <br>
 
