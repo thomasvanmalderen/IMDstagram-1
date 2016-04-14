@@ -234,12 +234,13 @@
             $result = $statement->fetch();
             //return $result;
             
-            //echo $result[3];
+            
+            $_SESSION['id'] = $result[0];
             $_SESSION['firstname'] = $result[2];
             $_SESSION['lastname'] = $result[3];
             $_SESSION['email'] = $result[4];
             $_SESSION['bio'] = $result[7];
-            //var_dump($result[0][0]);
+            
         }
         
         // CHANGE USER INFO FUNCTION

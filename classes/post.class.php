@@ -1,13 +1,25 @@
 <?php
 
 class Post {
+    private $m_sPicture;
     private $m_sDescription;
+    private $m_sTags;
+    private $m_iReports;
     private $m_iUserID;
 
     public function __set($p_sProperty, $p_vValue)
     {
         switch ($p_sProperty) {
+            case "Picture":
+                $this->m_sPicture = $p_vValue;
+                break;
             case "Description":
+                $this->m_sDescription = $p_vValue;
+                break;
+            case "Tags":
+                $this->m_sTags = $p_vValue;
+                break;
+            case "Reports":
                 $this->m_sDescription = $p_vValue;
                 break;
             case "UserID":
