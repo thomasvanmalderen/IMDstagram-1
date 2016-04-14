@@ -20,18 +20,43 @@
             
             if ($_POST['old_password'] === $_SESSION['password']) {
                 
-                if (!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["username"]) && !empty($_POST["email"]) ) {
+                if (!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["username"]) && !empty($_POST["email"])) {
                     $changer = new User();
                     $changer->Firstname = $_POST["firstname"];
                     $changer->Lastname = $_POST["lastname"];
                     $changer->Username = $_POST["username"];
                     $changer->Email = $_POST["email"];
                     $changer->Bio = $_POST["bio"];
+                    
+                    if(empty($_POST['new_password'])){
+                        $changer->Password = $_SESSION['password'];
+                    } else {
+                        $changer->Password = $_POST['new_password'];
+                    }
+                    $_SESSION['username'] = $_POST["username"];
                     $changer->Update();
                     
-                } else {
+                } elseif(!empty($_POST["firstname"]) || !empty($_POST["lastname"]) || !empty($_POST["username"]) || !empty($_POST["email"]))  {
                     // USER NOT FOUND
+                    $changer = new User();
+                    $changer->Firstname = $_POST["firstname"];
+                    $changer->Lastname = $_POST["lastname"];
+                    $changer->Username = $_POST["username"];
+                    $changer->Email = $_POST["email"];
+                    $changer->Bio = $_POST["bio"];
+                    
+                    if(empty($_POST['new_password'])){
+                        $changer->Password = $_SESSION['password'];
+                    } else {
+                        $changer->Password = $_POST['new_password'];
+                    }
+                    $_SESSION['username'] = $_POST["username"];
+                    $changer->Update();
+                    
+                } elseif(empty($_POST["firstname"]) && empty($_POST["lastname"]) && empty($_POST["username"]) && empty($_POST["email"]) && empty($_POST["bio"]) && !empty($_POST["password"])) {
                     $feedback = "You asked for no changes";
+                } else {
+                    
                 }
             } else {
                 //WRONG PASSWORD
@@ -62,7 +87,7 @@
         <h2>Change your settings here</h2>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <label for="firstname">New first name</label>
-            <input type="text" name="firstname" placeholder="First name" id="firstname" value="$_SESSION['firstname'];"/>
+            <input type="text" name="firstname" placeholder="First name" id="firstname" value=""/>
             <br>
             <label for="lastname">New last name</label>
             <input type="text" name="lastname" placeholder="Last name" id="lastname" value=""/>

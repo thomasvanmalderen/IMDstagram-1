@@ -103,6 +103,7 @@
             $_SESSION['loggedin'] = "thomasvm";
             $_SESSION['username_'] = $_POST['username'];
             $_SESSION['password'] = $_POST['password'];
+            $_SESSION['username'] = $_SESSION['username_'];
             
             return true;
                   
@@ -257,22 +258,18 @@
         // CHANGE USER INFO FUNCTION
         public function Update(){
             
+            
+            //$this->getAllInfo(); 
             $PDO = Db::getInstance();
             $query = $PDO->prepare("SELECT id FROM Users WHERE username='" . $_SESSION['username_'] . "'");
             $query->execute();
             $result = $query->fetch(PDO::FETCH_OBJ);
             $v_result = $result->id;
             
-            if(isset($this->m_sPassword)){
-                
-            } else {
-                $this->m_sPassword = $_SESSION['password'];
-            }
-            
             $options = ['cost' => 12];
             $password = password_hash($this->m_sPassword, PASSWORD_DEFAULT, $options);
             
-            $statement = $PDO->prepare('UPDATE Users SET username=:firstname, firstname=:firstname, lastname=:lastname, email=:email, password=:password, bio=:bio WHERE id=' . $v_result);
+            $statement = $PDO->prepare('UPDATE Users SET username=:username, firstname=:firstname, lastname=:lastname, email=:email, password=:password, bio=:bio WHERE id=' . $v_result);
             
             $statement->bindValue(":username", $this->m_sUsername);
             $statement->bindValue(":firstname", $this->m_sFirstname);
