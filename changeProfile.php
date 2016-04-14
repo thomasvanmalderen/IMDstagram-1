@@ -1,23 +1,28 @@
 <?php
-    // IMDSTAGRAM CODE: LOGIN FORM - Last edited: 24/03/2016
+
+    // IMDSTAGRAM CODE: LOGIN FORM - Last edited: 14/04/2016
     //######################################################
+
+    // START SESSION
     session_start();
+
     // INCLUDE CLASSES
     include_once("classes/user.class.php");
     include_once("classes/db.class.php");
-    // CHANGE INFO FUNCTION
 
+    // GET USER INFO
     $user = new User();
     $user->getAllInfo();
     
     
-    if(!empty($_POST)) {
+    if( !empty($_POST) ) {
         
-        if ($_POST['action'] === "verander") {
+        if ( $_POST['action'] === "verander" ) {
             
-            if ($_POST['old_password'] === $_SESSION['password']) {
+            if ( $_POST['old_password'] === $_SESSION['password'] ) {
                 
-                if (!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["username"]) && !empty($_POST["email"])) {
+                if ( !empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["username"]) && !empty($_POST["email"]) ) {
+                    
                     $changer = new User();
                     $changer->Firstname = $_POST["firstname"];
                     $changer->Lastname = $_POST["lastname"];
@@ -30,15 +35,14 @@
                     } else {
                         $changer->Password = $_POST['new_password'];
                     }
-                    
                     
                     $changer->Update();
                     header('Location: index.php');
                     //$_SESSION['username_'] = $_POST["username"];
                     //$_SESSION['username'] = $_POST["username"];
                     
-                } elseif(!empty($_POST["firstname"]) || !empty($_POST["lastname"]) || !empty($_POST["username"]) || !empty($_POST["email"]))  {
-                    // USER NOT FOUND
+                } elseif( !empty($_POST["firstname"]) || !empty($_POST["lastname"]) || !empty($_POST["username"]) || !empty($_POST["email"]) ) {
+                    
                     $changer = new User();
                     $changer->Firstname = $_POST["firstname"];
                     $changer->Lastname = $_POST["lastname"];
@@ -52,12 +56,11 @@
                         $changer->Password = $_POST['new_password'];
                     }
                     
-                    
                     $changer->Update();
                     header('Location: index.php');
                     
                     
-                } elseif(empty($_POST["firstname"]) && empty($_POST["lastname"]) && empty($_POST["username"]) && empty($_POST["email"]) && empty($_POST["bio"]) && !empty($_POST["password"])) {
+                } elseif ( empty($_POST["firstname"]) && empty($_POST["lastname"]) && empty($_POST["username"]) && empty($_POST["email"]) && empty($_POST["bio"]) && !empty($_POST["password"]) ) {
                     $feedback = "You asked for no changes";
                 } else {
                     
@@ -71,6 +74,7 @@
             $feedback = "You cannot send an empty form";
         }
     }
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,7 +90,7 @@
         <?php if(isset($feedback)): ?>
         <div class="feedback"><?php echo $_SESSION['loginfeedback']; ?></div>
         <?php else: ?>
-	    <!--<div class="feedback">Gelieve alle velden in te vullen</div>-->
+	    
 	    <?php endif; ?>
         <h2>Change your settings here</h2>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">

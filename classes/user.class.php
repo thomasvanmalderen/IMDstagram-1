@@ -1,6 +1,6 @@
 <?php
 
-    // IMDSTAGRAM CODE: USER CLASS - Last edited: 20/03/2016
+    // IMDSTAGRAM CODE: USER CLASS - Last edited: 14/04/2016
     //######################################################
 
     class User {
@@ -64,40 +64,34 @@
             }
         }
         
-        //SESSIONS
-    
-        
-        
-        // LOGIN FUNCTION
+        // LOGIN VERIFICATION FUNCTION
         public function canLogin() {
             
-            if(!empty($this->m_sUsername) && !empty($this->m_sPassword)){
+            if( !empty( $this->m_sUsername ) && !empty( $this->m_sPassword ) ) {
                 
                 $PDO = Db::getInstance();
                 $statement = $PDO->prepare("SELECT * FROM Users WHERE username = :username");
                 $statement->bindValue(":username", $this->m_sUsername, PDO::PARAM_STR );
                 $statement->execute();
                 
-                if($statement->rowCount() > 0){
+                if( $statement->rowCount() > 0) {
+                    
                     $result = $statement->fetch(PDO::FETCH_ASSOC);
                     $password = $this->m_sPassword;
                     $hash = $result['password'];
                     
                     if(password_verify($password, $hash)) {
-                        //$this->createSession($result['user_id']);
                         return true;
-                        
-                        } else{
-                        
-                            return false;
-                        }
-                    } else {
+                    } else{
                         return false;
                     }
+                } else {
+                    return false;
+                }
             }
         }
         
-        //
+        // LOGIN SESSIONS FUNCTION
         public function DoLogin() {
             
             $_SESSION['loggedin'] = "thomasvm";
@@ -109,11 +103,12 @@
                   
         }
         
-        public function Authenticate(){
+        // CHECK IF USER IS LOGGED IN
+        public function Authenticate() {
             
-            if (!empty($_SESSION['loggedin'])){
+            if ( !empty( $_SESSION['loggedin'] ) ) {
         
-                if ($_SESSION['loggedin'] == "thomasvm") {
+                if ( $_SESSION['loggedin'] == "thomasvm" ) {
                     return true;
                 } else {
                     echo "Session is not set correctly";
@@ -149,19 +144,18 @@
                 $statement->bindValue(":email", $this->m_sEmail);
                 $statement->bindValue(":password", $password);
                 
-                if ($this->UsernameAvailable()) {
+                // CHECK IF USERNAME/EMAIL ALREADY EXISTS
+                if ( $this->UsernameAvailable() ) {
                     
-                    //echo "taken";
-                    if ($this->EmailAvailable()){
+                    if ( $this->EmailAvailable() ){
                         $_SESSION['loginfeedback'] = "This username and email address are already taken!";
                     } else {
                         $_SESSION['loginfeedback'] = "This username is already taken!";
                     }
                     
-                    
                 } else { 
                     
-                    if ($this->EmailAvailable()){
+                    if ( $this->EmailAvailable() ) {
                         $_SESSION['loginfeedback'] = "This email address is already taken!";
                     } else {
                         $_SESSION['loginfeedback'] = "Welcome aboard!";
@@ -176,33 +170,30 @@
         }
         
         // CHECK IF USERNAME IS TAKEN
-        public function UsernameAvailable(){
+        public function UsernameAvailable() {
             
             $PDO = Db::getInstance();
-            //$conn = mysqli_connect("localhost", "root", "root", "imd");
-            //$conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
             
             $statement = $PDO->prepare("SELECT username FROM Users WHERE username = :username");
             $statement->bindValue(":username", $this->m_sUsername);
             
             $statement->execute();
-            $count = count($statement->fetchAll());
+            $count = count( $statement->fetchAll() );
             
             if($count > 0){
-                //echo "username taken";
-                //echo $count;
+                
                 return true;
                 
             } else {
                 
-                //echo "Vrij";
                 return false;
             }
             
             
         }
         
-        public function EmailAvailable(){
+        // CHECK IF EMAILADDRESS IS TAKEN
+        public function EmailAvailable() {
             
             $PDO = Db::getInstance();
             
@@ -210,7 +201,7 @@
             $statement->bindValue(":email", $this->m_sEmail);
             
             $statement->execute();
-            $count = count($statement->fetchAll());
+            $count = count( $statement->fetchAll() );
             
             if($count > 0){
                 
@@ -224,16 +215,14 @@
             
         }
         
-        public function getAllInfo(){
+        // GET INFO OF USER
+        public function getAllInfo() {
             
-            //$conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
             $PDO = Db::getInstance();
             $statement = $PDO->prepare("SELECT * FROM Users WHERE username = '" . $_SESSION['username_'] . "'");
-            //$statement1->bindValue(":username", );
             $statement->execute();
             $result = $statement->fetch();
             //return $result;
-            
             
             $_SESSION['id'] = $result[0];
             $_SESSION['firstname'] = $result[2];
@@ -245,17 +234,15 @@
         
         // CHANGE USER INFO FUNCTION
         public function Update(){
-            
-            
-            //$this->getAllInfo(); 
+             
             $PDO = Db::getInstance();
             $query = $PDO->prepare("SELECT id FROM Users WHERE username='" . $_SESSION['username_'] . "'");
             $query->execute();
-            $result = $query->fetch(PDO::FETCH_OBJ);
+            $result = $query->fetch( PDO::FETCH_OBJ );
             $v_result = $result->id;
             
             $options = ['cost' => 12];
-            $password = password_hash($this->m_sPassword, PASSWORD_DEFAULT, $options);
+            $password = password_hash( $this->m_sPassword, PASSWORD_DEFAULT, $options );
             
             $statement = $PDO->prepare('UPDATE Users SET username=:username, firstname=:firstname, lastname=:lastname, email=:email, password=:password, bio=:bio WHERE id=' . $v_result);
             
@@ -267,17 +254,18 @@
             $statement->bindValue(":password", $password);
             
             
-            if($this->Username == $_SESSION['username_']){
+            if( $this->Username == $_SESSION['username_'] ) {
+                
                 $_SESSION['loginfeedback'] = "Settings saved!";
                 $statement->execute();
                 $_SESSION['username_'] = $_POST["username"];
                 $_SESSION['username'] = $_POST["username"];
+                
             } else {
                 
-                if ($this->UsernameAvailable()) {
+                if ( $this->UsernameAvailable() ) {
                     
-                    //echo "taken";
-                    if ($this->EmailAvailable()){
+                    if ( $this->EmailAvailable() ) {
                         $_SESSION['loginfeedback'] = "This username and email address are already taken!";
                     } else {
                         $_SESSION['loginfeedback'] = "This username is already taken!";
@@ -286,9 +274,12 @@
                     
                 } else { 
                     
-                    if ($this->EmailAvailable()){
+                    if ( $this->EmailAvailable() ) {
+                        
                         $_SESSION['loginfeedback'] = "This email address is already taken!";
+                        
                     } else {
+                        
                         $_SESSION['loginfeedback'] = "Settings saved!";
                         $statement->execute();
                         $_SESSION['username_'] = $_POST["username"];
@@ -297,11 +288,6 @@
                     
                 }
             }
-            
-            
-            
-            
-            
             
         }
     }

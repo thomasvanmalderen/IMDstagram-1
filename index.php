@@ -1,9 +1,10 @@
 <?php
 
-    // IMDSTAGRAM CODE: HOME - Last edited: 20/03/2016
+    // IMDSTAGRAM CODE: HOME - Last edited: 14/04/2016
     //######################################################
     
     ob_start();
+
     // SESSION START
     session_start();
 
@@ -11,7 +12,7 @@
     include_once("classes/db.class.php");
     include_once("classes/user.class.php");
     
-    
+    // AUTHENTICATE USER
     $user = new User();
     if($user->Authenticate()){
         
@@ -31,7 +32,6 @@
 </head>
 <body>
 
-    
     <nav>
     <a href="profile.php"><?php echo $_SESSION['username']; ?></a>
     <a href="changeProfile.php">Change profile settings</a>
