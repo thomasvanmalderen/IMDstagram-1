@@ -8,14 +8,19 @@
     session_start();
 
     // INCLUDE CLASSES
+    include_once("classes/db.class.php");
     include_once("classes/user.class.php");
+    
     
     $user = new User();
     if($user->Authenticate()){
-
+        
     } else {
         header('Location: login.php');
     }
+
+    
+    $user->getAllInfo();
 
 ?><!doctype html>
 <html lang="en">
@@ -28,11 +33,12 @@
 
     
     <nav>
+    <a href="profile.php"><?php echo $_SESSION['username']; ?></a>
     <a href="changeProfile.php">Change profile settings</a>
     <a href="logout.php">Log out</a>
     </nav>
     <br>
-    <h1>Welcome <?php echo $_SESSION['username']; ?>!</h1>
+    <h1>Welcome <?php echo $_SESSION['firstname']; ?>!</h1>
 
 
 </body>

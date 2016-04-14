@@ -7,13 +7,10 @@
     include_once("classes/db.class.php");
     // CHANGE INFO FUNCTION
 
-    //$user = new User;
-    //$user->getAllInfo();
-
-    /*echo $_SESSION['fullname'];
-    echo $_SESSION['username'];
-    echo $_SESSION['email'];*/
-
+    $user = new User();
+    $user->getAllInfo();
+    
+    
     if(!empty($_POST)) {
         
         if ($_POST['action'] === "verander") {
@@ -36,6 +33,7 @@
                     
                     
                     $changer->Update();
+                    header('Location: index.php');
                     //$_SESSION['username_'] = $_POST["username"];
                     //$_SESSION['username'] = $_POST["username"];
                     
@@ -56,6 +54,7 @@
                     
                     
                     $changer->Update();
+                    header('Location: index.php');
                     
                     
                 } elseif(empty($_POST["firstname"]) && empty($_POST["lastname"]) && empty($_POST["username"]) && empty($_POST["email"]) && empty($_POST["bio"]) && !empty($_POST["password"])) {
@@ -92,22 +91,22 @@
         <h2>Change your settings here</h2>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <label for="firstname">New first name</label>
-            <input type="text" name="firstname" placeholder="First name" id="firstname" value=""/>
+            <input type="text" name="firstname" id="firstname" value="<?php echo $_SESSION['firstname']; ?>"/>
             <br>
             <label for="lastname">New last name</label>
-            <input type="text" name="lastname" placeholder="Last name" id="lastname" value=""/>
+            <input type="text" name="lastname" id="lastname" value="<?php echo $_SESSION['lastname']; ?>"/>
             <br>
             <label for="username">New username</label>
-                <input type="text" name="username" placeholder="Username" id="username" value=""/>
+                <input type="text" name="username" id="username" value="<?php echo $_SESSION['username_']; ?>"/>
             <br>
             <label for="email">New email</label>
-                <input type="email" name="email" placeholder="Email" id="email" value=""/>
+                <input type="email" name="email" id="email" value="<?php echo $_SESSION['email']; ?>"/>
             <br>
             <label for="new_password">New password</label>
                 <input type="password" name="new_password" placeholder="Password" id="new_password" />
             <br>
             <label for="bio">Biography</label>
-                <textarea name="bio" id="bio" cols="30" rows="2" placeholder="Tell us something about yourself."></textarea>
+                <input type="text" name="bio" id="bio" value="<?php echo $_SESSION['bio']; ?>"/>
             <br>
             <br>
 

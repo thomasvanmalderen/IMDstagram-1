@@ -228,31 +228,18 @@
             
             //$conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
             $PDO = Db::getInstance();
+            $statement = $PDO->prepare("SELECT * FROM Users WHERE username = '" . $_SESSION['username_'] . "'");
+            //$statement1->bindValue(":username", );
+            $statement->execute();
+            $result = $statement->fetch();
+            //return $result;
             
-            $statement1 = $PDO->prepare("SELECT first FROM Users WHERE username = :username");
-            $statement1->bindValue(":username", $_SESSION['username_']);
-            $statement1->execute();
-            $_SESSION['firstname'] = $statement1;
-            
-            $statement2 = $PDO->prepare("SELECT email FROM Users WHERE username = :username");
-            $statement2->bindValue(":username", $_SESSION['username_']);
-            $statement2->execute();
-            $_SESSION['lastname'] = $statement2;
-            
-            $statement3 = $PDO->prepare("SELECT username FROM Users WHERE username = :username");
-            $statement3->bindValue(":username", $_SESSION['username_']);
-            $statement3->execute();
-            $_SESSION['username'] = $statement3;
-            
-            $statement4 = $PDO->prepare("SELECT email FROM Users WHERE username = :username");
-            $statement4->bindValue(":username", $_SESSION['username_']);
-            $statement4->execute();
-            $_SESSION['email'] = $statement4;
-            
-            $statement5 = $PDO->prepare("SELECT bio FROM Users WHERE username = :username");
-            $statement5->bindValue(":username", $_SESSION['username_']);
-            $statement5->execute();
-            $_SESSION['bio'] = $statement5;
+            //echo $result[3];
+            $_SESSION['firstname'] = $result[2];
+            $_SESSION['lastname'] = $result[3];
+            $_SESSION['email'] = $result[4];
+            $_SESSION['bio'] = $result[7];
+            //var_dump($result[0][0]);
         }
         
         // CHANGE USER INFO FUNCTION
@@ -279,7 +266,14 @@
             $statement->bindValue(":password", $password);
             
             
-            if ($this->UsernameAvailable()) {
+            if($this->Username == $_SESSION['username_']){
+                $_SESSION['loginfeedback'] = "Settings saved!";
+                $statement->execute();
+                $_SESSION['username_'] = $_POST["username"];
+                $_SESSION['username'] = $_POST["username"];
+            } else {
+                
+                if ($this->UsernameAvailable()) {
                     
                     //echo "taken";
                     if ($this->EmailAvailable()){
@@ -301,6 +295,7 @@
                     }
                     
                 }
+            }
             
             
             
