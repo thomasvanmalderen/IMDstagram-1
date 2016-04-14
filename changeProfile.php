@@ -33,8 +33,11 @@
                     } else {
                         $changer->Password = $_POST['new_password'];
                     }
-                    $_SESSION['username'] = $_POST["username"];
+                    
+                    
                     $changer->Update();
+                    //$_SESSION['username_'] = $_POST["username"];
+                    //$_SESSION['username'] = $_POST["username"];
                     
                 } elseif(!empty($_POST["firstname"]) || !empty($_POST["lastname"]) || !empty($_POST["username"]) || !empty($_POST["email"]))  {
                     // USER NOT FOUND
@@ -50,8 +53,10 @@
                     } else {
                         $changer->Password = $_POST['new_password'];
                     }
-                    $_SESSION['username'] = $_POST["username"];
+                    
+                    
                     $changer->Update();
+                    
                     
                 } elseif(empty($_POST["firstname"]) && empty($_POST["lastname"]) && empty($_POST["username"]) && empty($_POST["email"]) && empty($_POST["bio"]) && !empty($_POST["password"])) {
                     $feedback = "You asked for no changes";
@@ -80,7 +85,7 @@
     <section id="signup">
         <!-- IMDstagram Logo goes here -->
         <?php if(isset($feedback)): ?>
-        <div class="feedback"><?php echo $feedback; ?></div>
+        <div class="feedback"><?php echo $_SESSION['loginfeedback']; ?></div>
         <?php else: ?>
 	    <!--<div class="feedback">Gelieve alle velden in te vullen</div>-->
 	    <?php endif; ?>

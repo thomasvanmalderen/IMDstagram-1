@@ -296,6 +296,8 @@
                     } else {
                         $_SESSION['loginfeedback'] = "Settings saved!";
                         $statement->execute();
+                        $_SESSION['username_'] = $_POST["username"];
+                        $_SESSION['username'] = $_POST["username"];
                     }
                     
                 }
