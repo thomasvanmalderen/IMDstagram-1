@@ -31,15 +31,7 @@ $user->getAllInfo();
 </head>
 <body>
 
-<nav>
-    <a href="index.php">IMDstagram</a>
-    <form action="">
-        <input type="text" placeholder="Search">
-        <button type="submit"><img src="images/search-icon.png" alt="Search"></button>
-    </form>
-    <a href="profile.php"><?php echo $_SESSION['username']; ?></a>
-    <a href="logout.php">Log out</a>
-</nav>
+<?php include_once("nav.inc.php") ?>
 <br>
 <h2><?php echo $_SESSION['username']; ?></h2>
 <p><?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname'] ?></p>

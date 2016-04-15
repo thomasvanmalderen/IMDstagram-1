@@ -38,6 +38,37 @@ class Post {
                 break;
         }
     }
+
+    public function PostSaveImage() {
+
+        $file_name = $_SESSION['username'] . "-" . time() . $_FILES['pictures']['name'];
+
+        $allow = array("jpg", "jpeg", "gif", "png");
+
+        $todir = 'images/posts/';
+
+        if ( !!$_FILES['pictures']['tmp_name'] ) // is the file uploaded yet?
+        {
+            $info = explode('.', strtolower( $_FILES['pictures']['name']) ); // whats the extension of the file
+
+            if ( in_array( end($info), $allow) ) // is this file allowed
+            {
+                if ( move_uploaded_file( $_FILES['pictures']['tmp_name'], $todir . basename( $file_name ) ) )
+                {
+
+                    echo "Upload: " .$file_name . "<br>";
+                    echo "Type: " . $_FILES["pictures"]["type"] . "<br>";
+                    echo "Size: " . ($_FILES["pictures"]["size"] / 1024) . " kB<br>";
+                    echo "Stored in: " . $_FILES["pictures"]["tmp_name"];
+                }
+            }
+            else
+            {
+                echo "Error: " . $_FILES["pictures"]["error"] . "<br>";
+            }
+        }
+    }
+
     public function Save() {
         $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "");
         $statement = $conn->prepare("insert into posts (description, userID) values (:description, :userID)");

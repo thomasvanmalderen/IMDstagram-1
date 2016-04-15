@@ -88,7 +88,7 @@
 </head>
 <body>
 
-    <a href="profile.php">Back to profile</a>
+<?php include_once("nav.inc.php") ?>
     
     <section id="signup">
         <!-- IMDstagram Logo goes here -->

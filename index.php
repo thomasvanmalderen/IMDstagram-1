@@ -11,6 +11,7 @@
     // INCLUDE CLASSES
     include_once("classes/db.class.php");
     include_once("classes/user.class.php");
+    include_once ("classes/post.class.php");
     
     // AUTHENTICATE USER
     $user = new User();
@@ -20,7 +21,13 @@
         header('Location: login.php');
     }
 
-    
+if(!empty($_POST)) {
+    if ($_POST['action'] === "foto") {
+        $post = new Post();
+        $post->PostSaveImage();
+    }
+}
+
     $user->getAllInfo();
 
 ?><!doctype html>
@@ -32,17 +39,14 @@
 </head>
 <body>
 
-<nav>
-    <a href="index.php">IMDstagram</a>
-    <form action="">
-        <input type="text" placeholder="Search">
-        <button type="submit"><img src="images/search-icon.png" alt="Search"></button>
-    </form>
-    <a href="profile.php"><?php echo $_SESSION['username']; ?></a>
-    <a href="logout.php">Log out</a>
-</nav>
+<?php include_once("nav.inc.php") ?>
 <br>
-<h1><?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?></h1>
+<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+    <label for="file">Filename:</label>
+    <input type="file" name="pictures" id="pictures"><br>
+    <input type="hidden" name="action" value="foto">
+    <input type="submit" name="submit" value="Submit">
+</form>
 
 </body>
 </html>
