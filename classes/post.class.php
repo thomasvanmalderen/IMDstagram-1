@@ -4,7 +4,7 @@ class Post {
     private $m_sPicture;
     private $m_sDescription;
     private $m_sTags;
-    private $m_iReports;
+    private $m_iReport;
     private $m_iUserID;
 
     public function __set($p_sProperty, $p_vValue)
@@ -41,7 +41,7 @@ class Post {
 
     public function PostSaveImage() {
 
-        $file_name = $_SESSION['username'] . "-" . time() . $_FILES['pictures']['name'];
+        $file_name = $_SESSION['username'] . "-" . time() . "-" .$_FILES['pictures']['name'];
 
         $allow = array("jpg", "jpeg", "gif", "png");
 
@@ -67,22 +67,15 @@ class Post {
                 echo "Error: " . $_FILES["pictures"]["error"] . "<br>";
             }
         }
-    }
 
-    public function Save() {
-        $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "");
-        $statement = $conn->prepare("insert into posts (description, userID) values (:description, :userID)");
-        $statement->bindValue(":description", $this->m_sPost);
-        $statement->bindValue(":userID", $this->m_iUserID);
-        $result = $statement->execute();
-        return $result;
-    }
-    public function GetAll() {
-        $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "");
-        $statement = $conn->prepare("select * from posts where userID = ".$_SESSION['userID']);
+        $PDO = Db::getInstance();
+        $statement = $PDO->prepare("INSERT into posts (picture, description, tags, idUser) VALUES (:picture, :description, :tags, :idUser)");
+        $statement->bindValue(":picture", "images/" . $file_name);
+        $statement->bindValue(":description", $this->m_sDescription);
+        $statement->bindValue(":tags", $this->m_sTags);
+        $statement->bindValue("idUser", $_SESSION['id']);
         $statement->execute();
-        $result = $statement->fetchAll();
-        return $result;
+
     }
 }
 

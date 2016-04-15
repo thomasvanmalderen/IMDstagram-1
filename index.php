@@ -24,6 +24,8 @@
 if(!empty($_POST)) {
     if ($_POST['action'] === "foto") {
         $post = new Post();
+        $post->Description = $_POST['description'];
+        $post->Tags = $_POST['tags'];
         $post->PostSaveImage();
     }
 }
@@ -44,8 +46,10 @@ if(!empty($_POST)) {
 <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
     <label for="file">Filename:</label>
     <input type="file" name="pictures" id="pictures"><br>
+    <input type="text" name="description" id="description">
+    <input type="text" name="tags" id="tags">
     <input type="hidden" name="action" value="foto">
-    <input type="submit" name="submit" value="Submit">
+    <input type="submit" name="submit" value="Post">
 </form>
 
 </body>
