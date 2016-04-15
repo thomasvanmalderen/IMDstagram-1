@@ -12,6 +12,11 @@
 
     // GET USER INFO
     $user = new User();
+    if($user->Authenticate()){
+
+    } else {
+        header('Location: login.php');
+    }
     $user->getAllInfo();
     
     
@@ -83,7 +88,7 @@
 </head>
 <body>
 
-    <a href="index.php">Back to home</a>
+    <a href="profile.php">Back to profile</a>
     
     <section id="signup">
         <!-- IMDstagram Logo goes here -->

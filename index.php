@@ -32,14 +32,17 @@
 </head>
 <body>
 
-    <nav>
+<nav>
+    <a href="index.php">IMDstagram</a>
+    <form action="">
+        <input type="text" placeholder="Search">
+        <button type="submit"><img src="images/search-icon.png" alt="Search"></button>
+    </form>
     <a href="profile.php"><?php echo $_SESSION['username']; ?></a>
-    <a href="changeProfile.php">Change profile settings</a>
     <a href="logout.php">Log out</a>
-    </nav>
-    <br>
-    <h1>Welcome <?php echo $_SESSION['firstname']; ?>!</h1>
-
+</nav>
+<br>
+<h1><?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?></h1>
 
 </body>
 </html>
