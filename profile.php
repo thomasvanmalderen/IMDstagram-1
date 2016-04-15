@@ -33,6 +33,9 @@ $user->getAllInfo();
 
 <?php include_once("nav.inc.php") ?>
 <br>
+<a href="changeProfile.php">Edit Profile</a>
+<br>
+<img src="<?php echo $_SESSION['avatar']; ?>" alt="<?php echo $_SESSION['avatar']; ?>">
 <h2><?php echo $_SESSION['username']; ?></h2>
 <p><?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname'] ?></p>
 <p><?php echo $_SESSION['bio']; ?></p>

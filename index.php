@@ -16,14 +16,13 @@
     // AUTHENTICATE USER
     $user = new User();
     if($user->Authenticate()){
-        
+        $post = new Post();
     } else {
         header('Location: login.php');
     }
 
 if(!empty($_POST)) {
     if ($_POST['action'] === "foto") {
-        $post = new Post();
         $post->Description = $_POST['description'];
         $post->Tags = $_POST['tags'];
         $post->PostSaveImage();
@@ -31,6 +30,7 @@ if(!empty($_POST)) {
 }
 
     $user->getAllInfo();
+    $post->displayAll();
 
 ?><!doctype html>
 <html lang="en">
@@ -51,6 +51,14 @@ if(!empty($_POST)) {
     <input type="hidden" name="action" value="foto">
     <input type="submit" name="submit" value="Post">
 </form>
+
+<?php foreach($_SESSION['photo'] as $post): ?>
+<article>
+    <img src="<?php echo $post['picture']; ?>" alt="<?php echo $post['picture'] ?>">
+    <p><?php echo $post['description']; ?></p>
+    <p><?php echo $post['tags']; ?></p>
+</article>
+<?php endforeach; ?>
 
 </body>
 </html>

@@ -12,6 +12,7 @@
         private $m_sEmail;
         private $m_sBio;
         private $m_sPassword;
+        private $m_sAvatar;
         
         
         // SETTER FUNCTION
@@ -35,6 +36,9 @@
                     break;
                 case "Password":
                     $this->m_sPassword = $p_vValue;
+                    break;
+                case "Avatar":
+                    $this->m_sAvatar = $p_vValue;
                     break;
             }
         }
@@ -60,6 +64,9 @@
                     break;
                 case "Password":
                     return $this->m_sPassword;
+                    break;
+                case "Avatar":
+                    return $this->m_sAvatar;
                     break;
             }
         }
@@ -229,6 +236,7 @@
             $_SESSION['lastname'] = $result[3];
             $_SESSION['email'] = $result[4];
             $_SESSION['bio'] = $result[7];
+            $_SESSION['avatar'] = $result[6];
             
         }
         
@@ -240,17 +248,22 @@
             $query->execute();
             $result = $query->fetch( PDO::FETCH_OBJ );
             $v_result = $result->id;
+
+            $this->SaveAvatar();
+
+            $this->getAllInfo();
             
             $options = ['cost' => 12];
             $password = password_hash( $this->m_sPassword, PASSWORD_DEFAULT, $options );
             
-            $statement = $PDO->prepare('UPDATE Users SET username=:username, firstname=:firstname, lastname=:lastname, email=:email, password=:password, bio=:bio WHERE id=' . $v_result);
+            $statement = $PDO->prepare('UPDATE Users SET username=:username, firstname=:firstname, lastname=:lastname, email=:email, password=:password, bio=:bio, avatar=:avatar WHERE id=' . $v_result);
             
             $statement->bindValue(":username", $this->m_sUsername);
             $statement->bindValue(":firstname", $this->m_sFirstname);
             $statement->bindValue(":lastname", $this->m_sLastname);
             $statement->bindValue(":email", $this->m_sEmail);
             $statement->bindValue(":bio", $this->m_sBio);
+            $statement->bindValue(":avatar", $this->m_sAvatar);
             $statement->bindValue(":password", $password);
             
             
@@ -289,6 +302,33 @@
                 }
             }
             
+        }
+
+        public function SaveAvatar()
+        {
+            $file_name = $_SESSION['username'] . "-" . time() . "-" . $_FILES['avatar']['name'];
+
+            $allow = array("jpg", "jpeg", "gif", "png");
+
+            $todir = 'images/avatars/';
+
+            if (!!$_FILES['avatar']['tmp_name']) // is the file uploaded yet?
+            {
+                $info = explode('.', strtolower($_FILES['avatar']['name'])); // whats the extension of the file
+
+                if (in_array(end($info), $allow)) // is this file allowed
+                {
+                    if (move_uploaded_file($_FILES['avatar']['tmp_name'], $todir . basename($file_name))) {
+
+                        $_SESSION['avatar'] = $file_name;
+
+                        return $file_name;
+
+                    }
+                } else {
+                    echo "Error: " . $_FILES["avatar"]["error"] . "<br>";
+                }
+            }
         }
     }
 ?>

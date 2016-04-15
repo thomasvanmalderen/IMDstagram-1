@@ -77,6 +77,17 @@ class Post {
         $statement->execute();
 
     }
+
+    public function displayAll() {
+
+        $PDO = Db::getInstance();
+        $statement = $PDO->prepare("SELECT * FROM posts");
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_OBJ);
+
+        $_SESSION['photo'] = $result;
+
+    }
 }
 
 ?>

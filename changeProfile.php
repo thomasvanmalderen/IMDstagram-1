@@ -26,7 +26,7 @@
             
             if ( $_POST['old_password'] === $_SESSION['password'] ) {
                 
-                if ( !empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["username"]) && !empty($_POST["email"]) ) {
+                if ( !empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["username"]) && !empty($_POST["email"]) && !empty($_POST['avatar']) ) {
                     
                     $changer = new User();
                     $changer->Firstname = $_POST["firstname"];
@@ -34,6 +34,7 @@
                     $changer->Username = $_POST["username"];
                     $changer->Email = $_POST["email"];
                     $changer->Bio = $_POST["bio"];
+                    $changer->Avatar = $_POST["avatar"];
                     
                     if(empty($_POST['new_password'])){
                         $changer->Password = $_SESSION['password'];
@@ -42,11 +43,12 @@
                     }
                     
                     $changer->Update();
-                    header('Location: index.php');
+                    echo $_SESSION['avatar'];
+                    header('Location: changeProfile.php');
                     //$_SESSION['username_'] = $_POST["username"];
                     //$_SESSION['username'] = $_POST["username"];
                     
-                } elseif( !empty($_POST["firstname"]) || !empty($_POST["lastname"]) || !empty($_POST["username"]) || !empty($_POST["email"]) ) {
+                } elseif( !empty($_POST["firstname"]) || !empty($_POST["lastname"]) || !empty($_POST["username"]) || !empty($_POST["email"]) || !empty($_POST["avatar"]) ) {
                     
                     $changer = new User();
                     $changer->Firstname = $_POST["firstname"];
@@ -54,6 +56,13 @@
                     $changer->Username = $_POST["username"];
                     $changer->Email = $_POST["email"];
                     $changer->Bio = $_POST["bio"];
+
+                    if (!empty($_POST['avatar'])) {
+                        $changer->Avatar = $_POST["avatar"];
+                    }
+                    else {
+                        $changer->Avatar = $_SESSION["avatar"];
+                    }
                     
                     if(empty($_POST['new_password'])){
                         $changer->Password = $_SESSION['password'];
@@ -62,7 +71,8 @@
                     }
                     
                     $changer->Update();
-                    header('Location: index.php');
+                    echo $_SESSION['avatar'];
+                    header('Location: changeProfile.php');
                     
                     
                 } elseif ( empty($_POST["firstname"]) && empty($_POST["lastname"]) && empty($_POST["username"]) && empty($_POST["email"]) && empty($_POST["bio"]) && !empty($_POST["password"]) ) {
@@ -92,13 +102,12 @@
     
     <section id="signup">
         <!-- IMDstagram Logo goes here -->
-        <?php if(isset($feedback)): ?>
-        <div class="feedback"><?php echo $_SESSION['loginfeedback']; ?></div>
-        <?php else: ?>
-	    
-	    <?php endif; ?>
+
         <h2>Change your settings here</h2>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+            <label for="file">New avatar:</label>
+            <input type="file" name="avatar" id="avatar" value="<?php echo $_SESSION['avatar']; ?>">
+            <br>
             <label for="firstname">New first name</label>
             <input type="text" name="firstname" id="firstname" value="<?php echo $_SESSION['firstname']; ?>"/>
             <br>
