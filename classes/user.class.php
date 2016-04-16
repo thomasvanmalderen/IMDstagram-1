@@ -248,7 +248,6 @@
             $result = $query->fetch( PDO::FETCH_OBJ );
             $v_result = $result->id;
 
-            $file_name = $_SESSION['username'] . "-" . time() . "-" . $_FILES['avatar']['name'];
             $allow = array("jpg", "jpeg", "gif", "png");
             $todir = 'images/avatars/';
 
@@ -258,6 +257,8 @@
 
                 if ( in_array( end($info), $allow) ) // is this file allowed
                 {
+                    $file_name = $_SESSION['username'] . "-" . time() . "-" . $_FILES['avatar']['name'];
+
                     if ( move_uploaded_file( $_FILES['avatar']['tmp_name'], $todir . basename( $file_name ) ) )
                     {
 
@@ -265,7 +266,7 @@
                 }
                 else
                 {
-                    echo "Error: " . $_FILES["avatar"]["error"] . "<br>";
+                    echo "<p>Your file isn't a \"jpg\", \"jpeg\", \"gif\" or a \"png\</p> <br>";
                 }
             }
 
@@ -320,34 +321,6 @@
                 }
             }
             
-        }
-
-        // SAVE YOUR AVATAR
-        public function SaveImage() {
-            $file_name = $_SESSION['username'] . "-" . time() . "-" . $_FILES['avatar']['name'];
-            $allow = array("jpg", "jpeg", "gif", "png");
-            $todir = 'images/avatars/';
-
-            if ( !!$_FILES['pictures']['tmp_name'] ) // is the file uploaded yet?
-            {
-                $info = explode('.', strtolower( $_FILES['avatar']['name']) ); // whats the extension of the file
-
-                if ( in_array( end($info), $allow) ) // is this file allowed
-                {
-                    if ( move_uploaded_file( $_FILES['avatar']['tmp_name'], $todir . basename( $file_name ) ) )
-                    {
-
-                        echo "Upload: " .$file_name . "<br>";
-                        echo "Type: " . $_FILES["avatar"]["type"] . "<br>";
-                        echo "Size: " . ($_FILES["avatar"]["size"] / 1024) . " kB<br>";
-                        echo "Stored in: " . $_FILES["avatar"]["tmp_name"];
-                    }
-                }
-                else
-                {
-                    echo "Error: " . $_FILES["avatar"]["error"] . "<br>";
-                }
-            }
         }
     }
 ?>

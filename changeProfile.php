@@ -43,7 +43,6 @@
                     }
                     
                     $changer->Update();
-                    echo $_SESSION['avatar'];
                     header('Location: profile.php');
                     //$_SESSION['username_'] = $_POST["username"];
                     //$_SESSION['username'] = $_POST["username"];
@@ -57,7 +56,7 @@
                     $changer->Email = $_POST["email"];
                     $changer->Bio = $_POST["bio"];
 
-                    if (!empty($_POST['avatar'])) {
+                    if ($file_name =! "") {
                         $changer->Avatar = $_POST["avatar"];
                     }
                     else {
@@ -110,7 +109,7 @@
             <img src="<?php echo $_SESSION['avatar']; ?>" alt="<?php echo $_SESSION['avatar']; ?>">
             <br>
             <label for="file">New avatar:</label>
-            <input type="file" name="avatar" id="avatar" value="<?php echo $_SESSION['avatar']; ?>" ; ?>
+            <input type="file" name="avatar" id="avatar"; ?>
             <br>
             <label for="firstname">New first name</label>
             <input type="text" name="firstname" id="firstname" value="<?php echo $_SESSION['firstname']; ?>"/>
