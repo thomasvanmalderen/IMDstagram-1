@@ -125,8 +125,7 @@
                 echo "Session is empty";
             }
         }
-        
-        
+
         // SIGNUP FUNCTION
         public function Register() {
             
@@ -134,11 +133,11 @@
             if(!empty($this->m_sUsername) && !empty($this->m_sFirstname) && !empty($this->m_sLastname) && !empty($this->m_sEmail) && !empty($this->m_sPassword)){
                 
                 // CONNECTION WITH DATABASE
-                $conn = new PDO("mysql:host=localhost;dbname=db_imdstagram", "root", "root");
+                $conn = Db::getInstance();
                 //$conn = mysqli_connect("localhost", "root", "root", "imd");
                 
                 // PREPARE QUERY
-                $statement = $conn->prepare("INSERT INTO Users (username, firstname, lastname, email, password) VALUES (:username, :firstname, :lastname, :email, :password)");
+                $statement = $conn->prepare("INSERT INTO Users (username, firstname, lastname, email, password, avatar) VALUES (:username, :firstname, :lastname, :email, :password, :avatar)");
                 
                 // HASH PASSWORD
                 $options = ['cost' => 12];
@@ -149,6 +148,7 @@
                 $statement->bindValue(":firstname", $this->m_sFirstname);
                 $statement->bindValue(":lastname", $this->m_sLastname);
                 $statement->bindValue(":email", $this->m_sEmail);
+                $statement->bindValue(":avatar", "images/avatars/basic_avatar.jpg");
                 $statement->bindValue(":password", $password);
                 
                 // CHECK IF USERNAME/EMAIL ALREADY EXISTS
@@ -235,9 +235,8 @@
             $_SESSION['firstname'] = $result[2];
             $_SESSION['lastname'] = $result[3];
             $_SESSION['email'] = $result[4];
-            $_SESSION['bio'] = $result[7];
             $_SESSION['avatar'] = $result[6];
-            
+            $_SESSION['bio'] = $result[7];
         }
         
         // CHANGE USER INFO FUNCTION
@@ -249,7 +248,26 @@
             $result = $query->fetch( PDO::FETCH_OBJ );
             $v_result = $result->id;
 
-            $this->SaveAvatar();
+            $file_name = $_SESSION['username'] . "-" . time() . "-" . $_FILES['avatar']['name'];
+            $allow = array("jpg", "jpeg", "gif", "png");
+            $todir = 'images/avatars/';
+
+            if ( !!$_FILES['avatar']['tmp_name'] ) // is the file uploaded yet?
+            {
+                $info = explode('.', strtolower( $_FILES['avatar']['name']) ); // whats the extension of the file
+
+                if ( in_array( end($info), $allow) ) // is this file allowed
+                {
+                    if ( move_uploaded_file( $_FILES['avatar']['tmp_name'], $todir . basename( $file_name ) ) )
+                    {
+
+                    }
+                }
+                else
+                {
+                    echo "Error: " . $_FILES["avatar"]["error"] . "<br>";
+                }
+            }
 
             $this->getAllInfo();
             
@@ -263,7 +281,7 @@
             $statement->bindValue(":lastname", $this->m_sLastname);
             $statement->bindValue(":email", $this->m_sEmail);
             $statement->bindValue(":bio", $this->m_sBio);
-            $statement->bindValue(":avatar", $this->m_sAvatar);
+            $statement->bindValue(":avatar", "images/avatars/" . $file_name);
             $statement->bindValue(":password", $password);
             
             
@@ -304,28 +322,29 @@
             
         }
 
-        public function SaveAvatar()
-        {
+        // SAVE YOUR AVATAR
+        public function SaveImage() {
             $file_name = $_SESSION['username'] . "-" . time() . "-" . $_FILES['avatar']['name'];
-
             $allow = array("jpg", "jpeg", "gif", "png");
-
             $todir = 'images/avatars/';
 
-            if (!!$_FILES['avatar']['tmp_name']) // is the file uploaded yet?
+            if ( !!$_FILES['pictures']['tmp_name'] ) // is the file uploaded yet?
             {
-                $info = explode('.', strtolower($_FILES['avatar']['name'])); // whats the extension of the file
+                $info = explode('.', strtolower( $_FILES['avatar']['name']) ); // whats the extension of the file
 
-                if (in_array(end($info), $allow)) // is this file allowed
+                if ( in_array( end($info), $allow) ) // is this file allowed
                 {
-                    if (move_uploaded_file($_FILES['avatar']['tmp_name'], $todir . basename($file_name))) {
+                    if ( move_uploaded_file( $_FILES['avatar']['tmp_name'], $todir . basename( $file_name ) ) )
+                    {
 
-                        $_SESSION['avatar'] = $file_name;
-
-                        return $file_name;
-
+                        echo "Upload: " .$file_name . "<br>";
+                        echo "Type: " . $_FILES["avatar"]["type"] . "<br>";
+                        echo "Size: " . ($_FILES["avatar"]["size"] / 1024) . " kB<br>";
+                        echo "Stored in: " . $_FILES["avatar"]["tmp_name"];
                     }
-                } else {
+                }
+                else
+                {
                     echo "Error: " . $_FILES["avatar"]["error"] . "<br>";
                 }
             }

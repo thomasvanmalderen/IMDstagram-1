@@ -44,7 +44,7 @@
                     
                     $changer->Update();
                     echo $_SESSION['avatar'];
-                    header('Location: changeProfile.php');
+                    header('Location: profile.php');
                     //$_SESSION['username_'] = $_POST["username"];
                     //$_SESSION['username'] = $_POST["username"];
                     
@@ -61,7 +61,7 @@
                         $changer->Avatar = $_POST["avatar"];
                     }
                     else {
-                        $changer->Avatar = $_SESSION["avatar"];
+                        //$changer->Avatar = $_SESSION["avatar"];
                     }
                     
                     if(empty($_POST['new_password'])){
@@ -71,8 +71,7 @@
                     }
                     
                     $changer->Update();
-                    echo $_SESSION['avatar'];
-                    header('Location: changeProfile.php');
+                    header('Location: profile.php');
                     
                     
                 } elseif ( empty($_POST["firstname"]) && empty($_POST["lastname"]) && empty($_POST["username"]) && empty($_POST["email"]) && empty($_POST["bio"]) && !empty($_POST["password"]) ) {
@@ -102,11 +101,16 @@
     
     <section id="signup">
         <!-- IMDstagram Logo goes here -->
+        <?php if(isset($feedback)){; ?>
+            <h1><?php $feedback; ?></h1>
+        <?php }; ?>
 
         <h2>Change your settings here</h2>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+            <img src="<?php echo $_SESSION['avatar']; ?>" alt="<?php echo $_SESSION['avatar']; ?>">
+            <br>
             <label for="file">New avatar:</label>
-            <input type="file" name="avatar" id="avatar" value="<?php echo $_SESSION['avatar']; ?>">
+            <input type="file" name="avatar" id="avatar" value="<?php echo $_SESSION['avatar']; ?>" ; ?>
             <br>
             <label for="firstname">New first name</label>
             <input type="text" name="firstname" id="firstname" value="<?php echo $_SESSION['firstname']; ?>"/>
