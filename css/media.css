@@ -6,6 +6,19 @@
      
     }
     
+    #center{
+        width: 495px;
+        background-color: white;
+        margin-bottom: 25px;
+     
+    }
+    
+    #centernav{
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
     #account{
         width: 350px;
         background-color: white;
@@ -28,5 +41,56 @@
         width: 90%;
         margin-right: 5%;
         margin-left: 5%;
+    }
+    
+    input[type="file"].profileinput{
+    width: 90%;
+    margin-right: 3%;
+    margin-left: 3%;
+}
+    
+    input[type="text"]#search{
+    float: center;
+    width: 35%;
+    margin-top: 30px;
+    margin-left: 10%;
+    border-radius: 25px;
+    text-align: center;
+    height: 25px;
+}
+    input[type="text"]#search:focus{
+    background-position: 5px;
+    text-align: left;
+    padding-left: 25px;
+}
+    .profilelabel{
+    width: 80%;
+    float: left;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+    input[type="submit"].profileinput{
+    width: 250px;
+    margin-top: 25px;
+}
+    #profile{
+        margin-top: 35px;
+    }
+    
+    input#search:focus{
+    width: 30%;
+    }
+}
+
+@media only screen and (min-width: 870px){
+    input[type="text"]#search{
+    width: 250px;
+    margin-left: 10%;
+        background-size: 5%;
+    }
+    
+    input[type="text"]#search:focus{
+    padding-left: 30px;
+    width: 240px;
     }
 }

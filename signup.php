@@ -42,11 +42,7 @@
     
     <section id="login">
         <div id="logo">IMDstagram</div>
-        <?php if(isset($_SESSION['loginfeedback'])): ?>
-        <div class="feedback"><?php echo $_SESSION['loginfeedback']; ?></div>
-        <?php else: ?>
-	    <!--<div class="feedback">Gelieve alle velden in te vullen</div>-->
-	    <?php endif; ?>
+
         <h2>Sign up to see photos and videos from your friends.</h2>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <input type="text" name="firstname" placeholder="First name" />
@@ -57,6 +53,11 @@
 
             <input type="hidden" name="action" value="registreer">
             <input type="submit" name="btnSignup" value="Sign up"/>
+            <?php if(isset($_SESSION['loginfeedback'])): ?>
+                <div class="feedback"><?php echo $_SESSION['loginfeedback']; ?></div>
+            <?php else: ?>
+                <!--<div class="feedback">Gelieve alle velden in te vullen</div>-->
+            <?php endif; ?>
         </form>
 
       </section>

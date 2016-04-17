@@ -93,50 +93,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Profile settings</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
 </head>
 <body>
 
 <?php include_once("nav.inc.php") ?>
     
-    <section id="signup">
+    <section id="center">
         <!-- IMDstagram Logo goes here -->
         <?php if(isset($feedback)){; ?>
             <h1><?php $feedback; ?></h1>
         <?php }; ?>
 
-        <h2>Change your settings here</h2>
+        <h3>Change your settings here</h3>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
             <img src="<?php echo $_SESSION['avatar']; ?>" alt="<?php echo $_SESSION['avatar']; ?>">
             <br>
-            <label for="file">New avatar:</label>
-            <input type="file" name="avatar" id="avatar"; ?>
+            <label for="file" class="profilelabel">Avatar</label>
+            <input type="file" name="avatar" id="avatar" class="profileinput" ?>
             <br>
-            <label for="firstname">New first name</label>
-            <input type="text" name="firstname" id="firstname" value="<?php echo $_SESSION['firstname']; ?>"/>
+            <label for="firstname" class="profilelabel">First name</label>
+            <input type="text" name="firstname" id="firstname" class="profileinput" value="<?php echo $_SESSION['firstname']; ?>"/>
             <br>
-            <label for="lastname">New last name</label>
-            <input type="text" name="lastname" id="lastname" value="<?php echo $_SESSION['lastname']; ?>"/>
+            <label for="lastname" class="profilelabel">Last name</label>
+            <input type="text" name="lastname" id="lastname" class="profileinput" value="<?php echo $_SESSION['lastname']; ?>"/>
             <br>
-            <label for="username">New username</label>
-                <input type="text" name="username" id="username" value="<?php echo $_SESSION['username_']; ?>"/>
+            <label for="username" class="profilelabel">Username</label>
+                <input type="text" name="username" id="username" class="profileinput" value="<?php echo $_SESSION['username_']; ?>"/>
             <br>
-            <label for="email">New email</label>
-                <input type="email" name="email" id="email" value="<?php echo $_SESSION['email']; ?>"/>
+            <label for="email" class="profilelabel">Email</label>
+                <input type="text" name="email" id="email" class="profileinput" value="<?php echo $_SESSION['email']; ?>"/>
             <br>
-            <label for="new_password">New password</label>
-                <input type="password" name="new_password" placeholder="Password" id="new_password" />
+            <label for="new_password" class="profilelabel">Password</label>
+                <input type="password" name="new_password" class="profileinput" placeholder="Password" id="new_password" />
             <br>
-            <label for="bio">Biography</label>
-                <input type="text" name="bio" id="bio" value="<?php echo $_SESSION['bio']; ?>"/>
+            <label for="bio" class="profilelabel">Biography</label>
+                <input type="text" name="bio" id="bio" class="profileinput" value="<?php echo $_SESSION['bio']; ?>"/>
             <br>
             <br>
 
-            <label for="old_password">Type here your current password for validation</label>
-            <input type="password" name="old_password" placeholder="Current password" id="old_password">
+            <label for="old_password" class="profilelabel">Type here your current password for validation</label>
+            <input type="password" name="old_password" class="profileinput" placeholder="Current password" id="old_password">
 
 
             <input type="hidden" name="action" value="verander">
-            <input type="submit" name="btnSignup" value="Save changes"/>
+            <input type="submit" name="btnSignup" class="profileinput" value="Save changes"/>
         </form>
     </section>
         
