@@ -28,18 +28,23 @@ $user->getAllInfo();
     <meta charset="UTF-8">
     <title>IMDstagram</title>
     <link rel="favicon" href="favicon.ico">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
 </head>
 <body>
 
 <?php include_once("nav.inc.php") ?>
 <br>
+<section id="center">
 <a href="changeProfile.php">Edit Profile</a>
+<a href="logout.php">Log out</a>
 <br>
 <img src="<?php echo $_SESSION['avatar']; ?>" alt="<?php echo $_SESSION['avatar']; ?>">
 <h2><?php echo $_SESSION['username']; ?></h2>
 <p><?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname'] ?></p>
 <p><?php echo $_SESSION['bio']; ?></p>
-
+</section>
 
 </body>
 </html>
