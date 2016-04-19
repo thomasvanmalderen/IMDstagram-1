@@ -198,6 +198,8 @@
             
             
         }
+
+
         
         // CHECK IF EMAILADDRESS IS TAKEN
         public function EmailAvailable() {

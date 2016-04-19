@@ -37,12 +37,16 @@ if(!empty($_POST)) {
 <head>
     <meta charset="UTF-8">
     <title>IMDstagram</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
     <link rel="favicon" href="favicon.ico">
 </head>
 <body>
 
 <?php include_once("nav.inc.php") ?>
 <br>
+<section id="center">
 <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
     <label for="file">Filename:</label>
     <input type="file" name="pictures" id="pictures"><br>
@@ -59,6 +63,6 @@ if(!empty($_POST)) {
     <p><?php echo $post['tags']; ?></p>
 </article>
 <?php endforeach; ?>
-
+</section>
 </body>
 </html>
