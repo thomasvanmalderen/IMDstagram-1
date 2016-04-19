@@ -23,7 +23,7 @@
                 $_SESSION['loginfeedback'] = "Username already taken";
             } else {
                 $user->Register(); //INSERT USER INTO TABLE
-                $_SESSION['loginfeedback'] = "Thanks for signing up!";
+                header('Location: index.php');
 
             }
 
@@ -62,7 +62,7 @@
             <input type="text" name="lastname" placeholder="Last name" />
             <input type="text" name="username" placeholder="Username" id="username" />
 
-            <input type="text" name="email" placeholder="Email" />
+            <input type="email" name="email" placeholder="Email" />
             <input type="password" name="password" placeholder="Password" />
 
             <input type="hidden" name="action" value="registreer">

@@ -131,6 +131,17 @@ input[type="text"]{
     border: 1px solid #EAEAEA;
     }
 
+input[type="email"]{
+    background-color: #FFF;
+    height: 35px;
+    width: 80%;
+    margin-bottom: 10px;
+    margin-right: 10%;
+    margin-left: 10%;
+    padding-left: 2%;
+    border: 1px solid #EAEAEA;
+    }
+
 input[type="password"]{
     background-color: #FFF;
      height: 35px;
