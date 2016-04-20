@@ -30,6 +30,7 @@ if(!empty($_POST)) {
 }
 
     $user->getAllInfo();
+    var_dump($_SESSION['avatar']['name']);
     $post->displayAll();
 
 ?><!doctype html>
@@ -50,8 +51,8 @@ if(!empty($_POST)) {
 <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
     <label for="file">Filename:</label>
     <input type="file" name="pictures" id="pictures"><br>
-    <input type="text" name="description" id="description">
-    <input type="text" name="tags" id="tags">
+    <input type="text" name="description" id="description" placeholder="What's this photo about?">
+    <input type="text" name="tags" id="tags" placeholder="#tags">
     <input type="hidden" name="action" value="foto">
     <input type="submit" name="submit" value="Post">
 </form>

@@ -113,7 +113,7 @@
         // CHECK IF USER IS LOGGED IN
         public function Authenticate() {
             
-            if ( !empty( $_SESSION['loggedin'] ) ) {
+            if ( isset( $_SESSION['loggedin'] ) ) {
         
                 if ( $_SESSION['loggedin'] == "thomasvm" ) {
                     return true;
@@ -253,27 +253,45 @@
             $allow = array("jpg", "jpeg", "gif", "png");
             $todir = 'images/avatars/';
 
-            if ( !!$_FILES['avatar']['tmp_name'] ) // is the file uploaded yet?
-            {
-                $info = explode('.', strtolower( $_FILES['avatar']['name']) ); // whats the extension of the file
 
-                if ( in_array( end($info), $allow) ) // is this file allowed
+
+                if (!!$_FILES['avatar']['tmp_name']) // is the file uploaded yet?
                 {
-                    $file_name = $_SESSION['username'] . "-" . time() . "-" . $_FILES['avatar']['name'];
+                    $info = explode('.', strtolower($_FILES['avatar']['name'])); // whats the extension of the file
 
-                    if ( move_uploaded_file( $_FILES['avatar']['tmp_name'], $todir . basename( $file_name ) ) )
+                    if (in_array(end($info), $allow)) // is this file allowed
                     {
 
+                        $file_name = $_SESSION['username'] . "-" . time() . "-" . $_FILES['avatar']['name'];
+
+                        if (move_uploaded_file($_FILES['avatar']['tmp_name'], $todir . basename($file_name))) {
+
+                        }
+
+
+                    } else {
+                        echo "<p>Your file isn't a \"jpg\", \"jpeg\", \"gif\" or a \"png\</p> <br>";
                     }
                 }
-                else
-                {
-                    echo "<p>Your file isn't a \"jpg\", \"jpeg\", \"gif\" or a \"png\</p> <br>";
+
+
+            $this->getAllInfo();
+
+            if( $_FILES['avatar']['name'] == ""){
+                echo "gebruik session";
+                $this->m_sAvatar = $_SESSION['avatar'];
+
+            } else {
+                if ($_FILES["avatar"]["size"] > 500000) {
+                    echo "Sorry, your file is too large.";
+                    $this->m_sAvatar = $_SESSION['avatar'];
+                } else {
+                    echo "nieuwe file";
+                    $this->m_sAvatar = $todir . $file_name;
                 }
             }
 
-            $this->getAllInfo();
-            
+
             $options = ['cost' => 12];
             $password = password_hash( $this->m_sPassword, PASSWORD_DEFAULT, $options );
             
@@ -284,7 +302,7 @@
             $statement->bindValue(":lastname", $this->m_sLastname);
             $statement->bindValue(":email", $this->m_sEmail);
             $statement->bindValue(":bio", $this->m_sBio);
-            $statement->bindValue(":avatar", "images/avatars/" . $file_name);
+            $statement->bindValue(":avatar", $this->m_sAvatar);
             $statement->bindValue(":password", $password);
             
             
