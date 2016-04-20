@@ -49,14 +49,43 @@
 
                     $changer->Avatar = $_FILES["avatar"];
 
-                    echo $_SESSION['avatar'];
-                    $changer->Update();
-                    //$_SESSION["avatar"] =
-                    //$_SESSION['username_'] = $_POST["username"];
-                    //$_SESSION['username'] = $_POST["username"];
-                    //header('Location: profile.php');
-                    //$_SESSION['username_'] = $_POST["username"];
-                    //$_SESSION['username'] = $_POST["username"];
+                    if($_POST['username'] == $_SESSION['username_'] && $_POST['email'] == $_SESSION['email']){
+
+                            $changer->Update();
+                            header('Location: profile.php');
+
+                    } elseif($_POST['username'] == $_SESSION['username_']) {
+                        if($changer->EmailAvailable()){
+                            $feedback="This email address is already taken.";
+                        } else {
+
+                            $changer->Update();
+                            header('Location: profile.php');
+                        }
+
+                    } elseif($_POST['email'] == $_SESSION['email']) {
+                        if($changer->UsernameAvailable()){
+                            $feedback="This username is already taken.";
+                        } else {
+
+                            $changer->Update();
+                            header('Location: profile.php');
+                        }
+
+                    } else {
+
+                        if($changer->UsernameAvailable() || $changer->EmailAvailable()){
+                            $feedback="This username and/or email address is already taken.";
+                        } else {
+
+                            $changer->Update();
+                            header('Location: profile.php');
+                        }
+                    }
+
+
+
+
                     
                 } elseif( !empty($_POST["firstname"]) || !empty($_POST["lastname"]) || !empty($_POST["username"]) || !empty($_POST["email"]) || !empty($_POST["avatar"]) ) {
                     
@@ -84,9 +113,23 @@
                         $_SESSION['password'] = $_POST['new_password'];
                     }
 
+                    if($_POST['username'] == $_SESSION['username_']){
+                        if($changer->EmailAvailable()){
+                            $feedback="This email address is already taken.";
+                        } else {
 
-                    $changer->Update();
-                    //header('Location: profile.php');
+                            $changer->Update();
+                            header('Location: profile.php');
+                        }
+                    } else {
+                        if($changer->UsernameAvailable() || $changer->EmailAvailable()){
+                            $feedback="This username and/or email address is already taken.";
+                        } else {
+
+                            $changer->Update();
+                            header('Location: profile.php');
+                        }
+                    }
                     
                     
                 } elseif ( empty($_POST["firstname"]) && empty($_POST["lastname"]) && empty($_POST["username"]) && empty($_POST["email"]) && empty($_POST["bio"]) && !empty($_POST["password"]) ) {
@@ -119,11 +162,12 @@
     
     <section id="center">
         <!-- IMDstagram Logo goes here -->
-        <?php if(isset($feedback)){; ?>
-            <h1><?php $feedback; ?></h1>
-        <?php }; ?>
+
 
         <h3>Change your settings here</h3>
+        <?php if(isset($feedback)){; ?>
+            <h1><?php echo $feedback; ?></h1>
+        <?php }; ?>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
             <img src="<?php echo $_SESSION['avatar']; ?>" alt="<?php echo $_SESSION['username'] . " avatar"; ?>">
             <br>

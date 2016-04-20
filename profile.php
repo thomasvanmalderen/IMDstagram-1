@@ -37,7 +37,11 @@
     <?php include_once("nav.inc.php") ?>
     <br>
     <section id="center">
-    <a href="changeProfile.php">Edit Profile</a>
+        <?php if(isset($feedback)){; ?>
+            <h1><?php $feedback; ?></h1>
+        <?php }; ?>
+
+        <a href="changeProfile.php">Edit Profile</a>
     <a href="logout.php">Log out</a>
     <br>
     <img src="<?php echo $_SESSION['avatar']; ?>" alt="<?php echo $_SESSION['avatar']; ?>">

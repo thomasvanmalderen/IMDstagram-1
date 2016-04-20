@@ -30,7 +30,7 @@ if(!empty($_POST)) {
 }
 
     $user->getAllInfo();
-    var_dump($_SESSION['avatar']['name']);
+
     $post->displayAll();
 
 ?><!doctype html>
@@ -48,7 +48,11 @@ if(!empty($_POST)) {
 <?php include_once("nav.inc.php") ?>
 <br>
 <section id="center">
-<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+    <?php if(isset($feedback)){; ?>
+        <h1><?php $feedback; ?></h1>
+    <?php }; ?>
+
+    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
     <label for="file">Filename:</label>
     <input type="file" name="pictures" id="pictures"><br>
     <input type="text" name="description" id="description" placeholder="What's this photo about?">

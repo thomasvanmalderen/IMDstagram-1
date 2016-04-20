@@ -304,42 +304,12 @@
             $statement->bindValue(":bio", $this->m_sBio);
             $statement->bindValue(":avatar", $this->m_sAvatar);
             $statement->bindValue(":password", $password);
-            
-            
-            if( $this->Username == $_SESSION['username_'] ) {
-                
-                $_SESSION['loginfeedback'] = "Settings saved!";
-                $statement->execute();
-                $_SESSION['username_'] = $_POST["username"];
-                $_SESSION['username'] = $_POST["username"];
-                
-            } else {
-                
-                if ( $this->UsernameAvailable() ) {
-                    
-                    if ( $this->EmailAvailable() ) {
-                        $_SESSION['loginfeedback'] = "This username and email address are already taken!";
-                    } else {
-                        $_SESSION['loginfeedback'] = "This username is already taken!";
-                    }
-                    
-                    
-                } else { 
-                    
-                    if ( $this->EmailAvailable() ) {
-                        
-                        $_SESSION['loginfeedback'] = "This email address is already taken!";
-                        
-                    } else {
-                        
-                        $_SESSION['loginfeedback'] = "Settings saved!";
-                        $statement->execute();
-                        $_SESSION['username_'] = $_POST["username"];
-                        $_SESSION['username'] = $_POST["username"];
-                    }
-                    
-                }
-            }
+
+
+            $feedback = "Settings saved!";
+            $statement->execute();
+            $_SESSION['username_'] = $_POST["username"];
+            $_SESSION['username'] = $_POST["username"];
             
         }
     }
