@@ -31,7 +31,7 @@ if(!empty($_POST)) {
 
     $user->getAllInfo();
 
-    $post->displayAll();
+    $post = $post->displayAll();
 
 ?><!doctype html>
 <html lang="en">
@@ -61,11 +61,11 @@ if(!empty($_POST)) {
     <input type="submit" name="submit" value="Post">
 </form>
 
-<?php foreach($_SESSION['photo'] as $post): ?>
+<?php foreach($post as $p): ?>
 <article>
-    <img src="<?php echo $post['picture']; ?>" alt="<?php echo $post['picture'] ?>">
-    <p><?php echo $post['description']; ?></p>
-    <p><?php echo $post['tags']; ?></p>
+    <img  style="width: 100%" src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>">
+    <p><?php echo $p['description']; ?></p>
+    <p><?php echo $p['tags']; ?></p>
 </article>
 <?php endforeach; ?>
 </section>

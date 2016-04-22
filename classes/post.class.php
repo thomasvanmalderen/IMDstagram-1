@@ -42,9 +42,7 @@ class Post {
     public function PostSaveImage() {
 
         $file_name = $_SESSION['username'] . "-" . time() . "-" .$_FILES['pictures']['name'];
-
         $allow = array("jpg", "jpeg", "gif", "png");
-
         $todir = 'images/posts/';
 
         if ( !!$_FILES['pictures']['tmp_name'] ) // is the file uploaded yet?
@@ -56,10 +54,6 @@ class Post {
                 if ( move_uploaded_file( $_FILES['pictures']['tmp_name'], $todir . basename( $file_name ) ) )
                 {
 
-                    echo "Upload: " .$file_name . "<br>";
-                    echo "Type: " . $_FILES["pictures"]["type"] . "<br>";
-                    echo "Size: " . ($_FILES["pictures"]["size"] / 1024) . " kB<br>";
-                    echo "Stored in: " . $_FILES["pictures"]["tmp_name"];
                 }
             }
             else
@@ -70,7 +64,7 @@ class Post {
 
         $PDO = Db::getInstance();
         $statement = $PDO->prepare("INSERT into posts (picture, description, tags, idUser) VALUES (:picture, :description, :tags, :idUser)");
-        $statement->bindValue(":picture", "images/" . $file_name);
+        $statement->bindValue(":picture", $todir . $file_name);
         $statement->bindValue(":description", $this->m_sDescription);
         $statement->bindValue(":tags", $this->m_sTags);
         $statement->bindValue("idUser", $_SESSION['id']);
@@ -81,11 +75,9 @@ class Post {
     public function displayAll() {
 
         $PDO = Db::getInstance();
-        $statement = $PDO->prepare("SELECT * FROM posts");
-        $statement->execute();
-        $result = $statement->fetch(PDO::FETCH_OBJ);
-
-        $_SESSION['photo'] = $result;
+        $statement = $PDO->query("SELECT * FROM posts");
+        $result = $statement->fetchAll();
+        return $result;
 
     }
 }

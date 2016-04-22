@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd9c214a-bd4c-4276-9acb-f27810bd46b1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql/import.sql" afterPath="$PROJECT_DIR$/sql/import.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/db.class.php" afterPath="$PROJECT_DIR$/classes/db.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/post.class.php" afterPath="$PROJECT_DIR$/classes/post.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
     </list>
     <ignored path="IMDstagram.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,62 +26,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="signup.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/signup.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="changeProfile.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/changeProfile.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1005">
-              <caret line="67" column="52" selection-start-line="67" selection-start-column="52" selection-end-line="67" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="post.class.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="post.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classes/post.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.08789954">
+              <caret line="43" column="93" selection-start-line="43" selection-start-column="93" selection-end-line="43" selection-end-column="93" />
               <folding>
-                <marker date="1461144890000" expanded="true" signature="2193:2295" placeholder="INSERT into posts... " />
-                <marker date="1461144890000" expanded="true" signature="2695:2714" placeholder="SELECT * FRO... posts" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="import.sql" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sql/import.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="631">
-              <caret line="95" column="73" selection-start-line="95" selection-start-column="73" selection-end-line="95" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classes/user.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2475">
-              <caret line="165" column="40" selection-start-line="165" selection-start-column="40" selection-end-line="165" selection-end-column="40" />
-              <folding>
-                <marker date="1461158786000" expanded="true" signature="2484:2530" placeholder="SELECT * FRO... Users" />
-                <marker date="1461158786000" expanded="true" signature="4616:4760" placeholder="INSERT INTO Users... " />
-                <marker date="1461158786000" expanded="true" signature="6577:6630" placeholder="SELECT usern... Users" />
-                <marker date="1461158786000" expanded="true" signature="7226:7270" placeholder="SELECT email... Users" />
-                <marker date="1461158786000" expanded="true" signature="7827:7896" placeholder="SELECT * FRO... Users" />
-                <marker date="1461158786000" expanded="true" signature="8472:8540" placeholder="SELECT id FR... Users" />
-                <marker date="1461158786000" expanded="true" signature="10228:10375" placeholder="UPDATE Users... " />
+                <marker date="1461312604750" expanded="true" signature="1899:2001" placeholder="INSERT into posts... " />
+                <marker date="1461312604750" expanded="true" signature="2396:2415" placeholder="SELECT * FRO... posts" />
               </folding>
             </state>
           </provider>
@@ -89,29 +42,11 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="795">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/profile.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="46" />
-              <folding />
+            <state vertical-scroll-proportion="-10.153846">
+              <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#article#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -127,11 +62,13 @@
         <option value="$PROJECT_DIR$/../booking/classes/Booking.class.php" />
         <option value="$PROJECT_DIR$/../booking/create_reservation.php" />
         <option value="$PROJECT_DIR$/signup.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/profile.php" />
         <option value="$PROJECT_DIR$/classes/user.class.php" />
         <option value="$PROJECT_DIR$/changeProfile.php" />
         <option value="$PROJECT_DIR$/sql/import.sql" />
+        <option value="$PROJECT_DIR$/classes/db.class.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/classes/post.class.php" />
       </list>
     </option>
   </component>
@@ -145,9 +82,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1339" />
-    <option name="height" value="812" />
+    <option name="x" value="960" />
+    <option name="width" value="960" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -174,6 +111,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -182,57 +120,16 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IMDstagram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IMDstagram" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IMDstagram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IMDstagram" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sql" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IMDstagram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IMDstagram" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="classes" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
-  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -241,7 +138,6 @@
       <changelist id="bd9c214a-bd4c-4276-9acb-f27810bd46b1" name="Default" comment="" />
       <created>1460970050530</created>
       <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
       <updated>1460970050530</updated>
       <workItem from="1461149539900" duration="8985000" />
       <workItem from="1461244739031" duration="546000" />
@@ -252,10 +148,10 @@
     <option name="totallyTimeSpent" value="9531000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1339" height="812" extended-state="0" />
+    <frame x="960" y="0" width="960" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14189693" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14088982" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -292,7 +188,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/signup.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
+        <state vertical-scroll-proportion="0.0">
           <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
           <folding />
         </state>
@@ -300,7 +196,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/changeProfile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="67" column="28" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/post.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1461312604750" expanded="true" signature="1899:2001" placeholder="INSERT into posts... " />
+            <marker date="1461312604750" expanded="true" signature="2396:2415" placeholder="SELECT * FRO... posts" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql/import.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -308,31 +223,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/user.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2475">
+        <state vertical-scroll-proportion="0.0">
           <caret line="165" column="40" selection-start-line="165" selection-start-column="40" selection-end-line="165" selection-end-column="40" />
           <folding>
-            <marker date="1461158786000" expanded="true" signature="2484:2530" placeholder="SELECT * FRO... Users" />
-            <marker date="1461158786000" expanded="true" signature="4616:4760" placeholder="INSERT INTO Users... " />
-            <marker date="1461158786000" expanded="true" signature="6577:6630" placeholder="SELECT usern... Users" />
-            <marker date="1461158786000" expanded="true" signature="7226:7270" placeholder="SELECT email... Users" />
-            <marker date="1461158786000" expanded="true" signature="7827:7896" placeholder="SELECT * FRO... Users" />
-            <marker date="1461158786000" expanded="true" signature="8472:8540" placeholder="SELECT id FR... Users" />
-            <marker date="1461158786000" expanded="true" signature="10228:10375" placeholder="UPDATE Users... " />
+            <marker date="1461235507360" expanded="true" signature="2484:2530" placeholder="SELECT * FRO... Users" />
+            <marker date="1461235507360" expanded="true" signature="4616:4760" placeholder="INSERT INTO Users... " />
+            <marker date="1461235507360" expanded="true" signature="6577:6630" placeholder="SELECT usern... Users" />
+            <marker date="1461235507360" expanded="true" signature="7226:7270" placeholder="SELECT email... Users" />
+            <marker date="1461235507360" expanded="true" signature="7827:7896" placeholder="SELECT * FRO... Users" />
+            <marker date="1461235507360" expanded="true" signature="8472:8540" placeholder="SELECT id FR... Users" />
+            <marker date="1461235507360" expanded="true" signature="10228:10375" placeholder="UPDATE Users... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
+        <state vertical-scroll-proportion="0.0">
           <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#article#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/profile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
+        <state vertical-scroll-proportion="0.0">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding />
         </state>
@@ -340,7 +257,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state vertical-scroll-proportion="0.0">
           <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="46" />
           <folding />
         </state>
@@ -348,7 +265,65 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/signup.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changeProfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/user.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="165" column="40" selection-start-line="165" selection-start-column="40" selection-end-line="165" selection-end-column="40" />
+          <folding>
+            <marker date="1461235507360" expanded="true" signature="2484:2530" placeholder="SELECT * FRO... Users" />
+            <marker date="1461235507360" expanded="true" signature="4616:4760" placeholder="INSERT INTO Users... " />
+            <marker date="1461235507360" expanded="true" signature="6577:6630" placeholder="SELECT usern... Users" />
+            <marker date="1461235507360" expanded="true" signature="7226:7270" placeholder="SELECT email... Users" />
+            <marker date="1461235507360" expanded="true" signature="7827:7896" placeholder="SELECT * FRO... Users" />
+            <marker date="1461235507360" expanded="true" signature="8472:8540" placeholder="SELECT id FR... Users" />
+            <marker date="1461235507360" expanded="true" signature="10228:10375" placeholder="UPDATE Users... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#article#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/signup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -356,7 +331,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state vertical-scroll-proportion="0.0">
           <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="46" />
           <folding />
         </state>
@@ -364,31 +339,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/reset.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../booking/create_reservation.php" />
-    <entry file="file://$PROJECT_DIR$/../booking/classes/Booking.class.php" />
-    <entry file="file://$PROJECT_DIR$/../week5/booking/classes/Db.class.php" />
-    <entry file="file://$PROJECT_DIR$/../week5/booking/create_reservation.php" />
-    <entry file="file://$PROJECT_DIR$/../week1/ReynsRobin_TestJezelf_Week1/3/index.php" />
-    <entry file="file://$PROJECT_DIR$/../week1/ReynsRobin_TestJezelf_Week1/2/home.php" />
-    <entry file="file://$PROJECT_DIR$/../week1/ReynsRobin_TestJezelf_Week1/1/index.php" />
-    <entry file="file://$PROJECT_DIR$/../week2/Test Jezelf/Twitter/createpost.php" />
-    <entry file="file://$PROJECT_DIR$/../week2/Test Jezelf/Twitter/logout.php" />
-    <entry file="file://$PROJECT_DIR$/../week2/Test Jezelf/Twitter/index.php" />
-    <entry file="file://$PROJECT_DIR$/../week2/Test Jezelf/Twitter/classes/User.class.php" />
-    <entry file="file://$PROJECT_DIR$/../week5/check-login-realtime-opgave/classes/Db.class.php" />
-    <entry file="file://$PROJECT_DIR$/../week5/check-login-realtime-opgave/classes/User.class.php" />
-    <entry file="file://$PROJECT_DIR$/../week5/Imessage/classes/Message.class.php" />
-    <entry file="file://$PROJECT_DIR$/../week5/start-fbook-OOP/classes/Activity.class.php" />
-    <entry file="file://$PROJECT_DIR$/../week3/testjezelf/login/login.php" />
-    <entry file="file://$PROJECT_DIR$/../week5/booking/classes/Booking.class.php" />
+    <entry file="file://$PROJECT_DIR$/sql/import.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9433962">
+          <caret line="95" column="73" selection-start-line="95" selection-start-column="73" selection-end-line="95" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/signup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.019406393">
+          <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changeProfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.019406393">
+          <caret line="129" column="28" selection-start-line="129" selection-start-column="28" selection-end-line="129" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/db.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21347032">
+          <caret line="11" column="92" selection-start-line="11" selection-start-column="92" selection-end-line="11" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/user.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.019406393">
+          <caret line="183" column="40" selection-start-line="183" selection-start-column="40" selection-end-line="183" selection-end-column="40" />
+          <folding>
+            <marker date="1461235507360" expanded="true" signature="2484:2530" placeholder="SELECT * FRO... Users" />
+            <marker date="1461235507360" expanded="true" signature="4616:4760" placeholder="INSERT INTO Users... " />
+            <marker date="1461235507360" expanded="true" signature="6577:6630" placeholder="SELECT usern... Users" />
+            <marker date="1461235507360" expanded="true" signature="7226:7270" placeholder="SELECT email... Users" />
+            <marker date="1461235507360" expanded="true" signature="7827:7896" placeholder="SELECT * FRO... Users" />
+            <marker date="1461235507360" expanded="true" signature="8472:8540" placeholder="SELECT id FR... Users" />
+            <marker date="1461235507360" expanded="true" signature="10228:10375" placeholder="UPDATE Users... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6312785">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state vertical-scroll-proportion="0.019406393">
           <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="46" />
           <folding />
         </state>
@@ -396,68 +410,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/signup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="46" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/user.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2475">
-          <caret line="165" column="40" selection-start-line="165" selection-start-column="40" selection-end-line="165" selection-end-column="40" />
+        <state vertical-scroll-proportion="-10.153846">
+          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
           <folding>
-            <marker date="1461158786000" expanded="true" signature="2484:2530" placeholder="SELECT * FRO... Users" />
-            <marker date="1461158786000" expanded="true" signature="4616:4760" placeholder="INSERT INTO Users... " />
-            <marker date="1461158786000" expanded="true" signature="6577:6630" placeholder="SELECT usern... Users" />
-            <marker date="1461158786000" expanded="true" signature="7226:7270" placeholder="SELECT email... Users" />
-            <marker date="1461158786000" expanded="true" signature="7827:7896" placeholder="SELECT * FRO... Users" />
-            <marker date="1461158786000" expanded="true" signature="8472:8540" placeholder="SELECT id FR... Users" />
-            <marker date="1461158786000" expanded="true" signature="10228:10375" placeholder="UPDATE Users... " />
+            <element signature="n#style#0;n#img#0;n#article#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/changeProfile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="67" column="52" selection-start-line="67" selection-start-column="52" selection-end-line="67" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/post.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.08789954">
+          <caret line="43" column="93" selection-start-line="43" selection-start-column="93" selection-end-line="43" selection-end-column="93" />
           <folding>
-            <marker date="1461144890000" expanded="true" signature="2193:2295" placeholder="INSERT into posts... " />
-            <marker date="1461144890000" expanded="true" signature="2695:2714" placeholder="SELECT * FRO... posts" />
+            <marker date="1461312604750" expanded="true" signature="1899:2001" placeholder="INSERT into posts... " />
+            <marker date="1461312604750" expanded="true" signature="2396:2415" placeholder="SELECT * FRO... posts" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sql/import.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="631">
-          <caret line="95" column="73" selection-start-line="95" selection-start-column="73" selection-end-line="95" selection-end-column="73" />
-          <folding />
         </state>
       </provider>
     </entry>
