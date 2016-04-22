@@ -33,6 +33,11 @@
 
     $post = $post->displayAll();
 
+    if(!empty($_POST["action"]) == "search") {
+        $_SESSION['search'] = $_POST['search'];
+        header('Location: search.php');
+    }
+
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -63,6 +68,7 @@
 
 <?php foreach($post as $p): ?>
 <article>
+    <img style="width: 10%; border-radius: 100%" src="<?php echo $p['avatar']; ?>" alt="<?php echo $p['avatar']; ?>">
     <p><?php echo $p['username']; ?></p>
     <img  style="width: 100%" src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>">
     <p><?php echo $p['description'];?></p>

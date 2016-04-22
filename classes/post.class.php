@@ -75,12 +75,22 @@ class Post {
     public function displayAll() {
 
         $PDO = Db::getInstance();
-        //$statement = $PDO->prepare("SELECT * FROM posts ORDER BY id DESC ");
         $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id ORDER BY idUser DESC");
         $statement->execute();
         $result = $statement->fetchAll();
         return $result;
 
+    }
+
+    public function search() {
+        $PDO = Db::getInstance();
+        $statement = $PDO-> prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id ORDER BY idUser DESC
+        WHERE description LIKE :description"); //OR tags LIKE :tags
+        $statement->bindValue(":description", $_SESSION['search']);
+        //$statement->bindValue(":tags", $_SESSION['search']);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        return $result;
     }
 }
 
