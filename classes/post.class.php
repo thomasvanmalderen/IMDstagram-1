@@ -67,7 +67,7 @@ class Post {
         $statement->bindValue(":picture", $todir . $file_name);
         $statement->bindValue(":description", $this->m_sDescription);
         $statement->bindValue(":tags", $this->m_sTags);
-        $statement->bindValue("idUser", $_SESSION['id']);
+        $statement->bindValue(":idUser", $_SESSION['id']);
         $statement->execute();
 
     }
@@ -75,7 +75,9 @@ class Post {
     public function displayAll() {
 
         $PDO = Db::getInstance();
-        $statement = $PDO->query("SELECT * FROM posts");
+        //$statement = $PDO->prepare("SELECT * FROM posts ORDER BY id DESC ");
+        $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id ORDER BY idUser DESC");
+        $statement->execute();
         $result = $statement->fetchAll();
         return $result;
 

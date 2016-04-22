@@ -11,7 +11,7 @@
     // INCLUDE CLASSES
     include_once("classes/db.class.php");
     include_once("classes/user.class.php");
-    include_once ("classes/post.class.php");
+    include_once("classes/post.class.php");
     
     // AUTHENTICATE USER
     $user = new User();
@@ -21,13 +21,13 @@
         header('Location: login.php');
     }
 
-if(!empty($_POST)) {
-    if ($_POST['action'] === "foto") {
-        $post->Description = $_POST['description'];
-        $post->Tags = $_POST['tags'];
-        $post->PostSaveImage();
+    if(!empty($_POST)) {
+        if ($_POST['action'] === "foto") {
+            $post->Description = $_POST['description'];
+            $post->Tags = $_POST['tags'];
+            $post->PostSaveImage();
+        }
     }
-}
 
     $user->getAllInfo();
 
@@ -63,8 +63,9 @@ if(!empty($_POST)) {
 
 <?php foreach($post as $p): ?>
 <article>
+    <p><?php echo $p['username']; ?></p>
     <img  style="width: 100%" src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>">
-    <p><?php echo $p['description']; ?></p>
+    <p><?php echo $p['description'];?></p>
     <p><?php echo $p['tags']; ?></p>
 </article>
 <?php endforeach; ?>
