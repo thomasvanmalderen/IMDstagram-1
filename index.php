@@ -33,8 +33,6 @@
 
     $post = $post->displayAll();
 
-    
-
 ?><!doctype html>
 <html lang="en">
 <head>

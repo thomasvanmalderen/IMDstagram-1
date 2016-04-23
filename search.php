@@ -23,15 +23,12 @@ if($user->Authenticate()){
 
 $user->getAllInfo();
 
-//$post = $post->displayAll();
-
 if(!empty($_POST["search"])) {
     $_SESSION['search'] = $_POST['search'];
     header('Location: search.php');
 }
     
-    $post = $post->search();
-
+$post = $post->search();
 
 ?><!doctype html>
 <html lang="en">
