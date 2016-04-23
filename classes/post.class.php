@@ -84,9 +84,9 @@ class Post {
 
     public function search() {
         $PDO = Db::getInstance();
-        $statement = $PDO-> prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id ORDER BY idUser DESC
-        WHERE description LIKE :description"); //OR tags LIKE :tags
-        $statement->bindValue(":description", $_SESSION['search']);
+        $statement = $PDO-> prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id WHERE description LIKE '%" . $_SESSION['search']  . "%' OR tags LIKE '%" . $_SESSION['search']  . "%'"); //OR tags LIKE :tags
+
+        //$statement->bindValue(":description", $_SESSION['search']);
         //$statement->bindValue(":tags", $_SESSION['search']);
         $statement->execute();
         $result = $statement->fetchAll();

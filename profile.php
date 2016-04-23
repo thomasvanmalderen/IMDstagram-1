@@ -22,6 +22,8 @@
 
     $user->getAllInfo();
 
+    
+
 ?><!doctype html>
     <html lang="en">
     <head>

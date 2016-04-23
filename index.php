@@ -33,10 +33,7 @@
 
     $post = $post->displayAll();
 
-    if(!empty($_POST["action"]) == "search") {
-        $_SESSION['search'] = $_POST['search'];
-        header('Location: search.php');
-    }
+    
 
 ?><!doctype html>
 <html lang="en">

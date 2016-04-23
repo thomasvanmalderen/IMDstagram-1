@@ -23,14 +23,15 @@ if($user->Authenticate()){
 
 $user->getAllInfo();
 
-$post = $post->displayAll();
+//$post = $post->displayAll();
 
 if(!empty($_POST["search"])) {
     $_SESSION['search'] = $_POST['search'];
     header('Location: search.php');
 }
+    
+    $post = $post->search();
 
-    echo $_SESSION['search'];
 
 ?><!doctype html>
 <html lang="en">
@@ -53,6 +54,7 @@ if(!empty($_POST["search"])) {
 
     <?php foreach($post as $p): ?>
         <article>
+            <img style="width: 10%; border-radius: 100%" src="<?php echo $p['avatar']; ?>" alt="<?php echo $p['avatar']; ?>">
             <p><?php echo $p['username']; ?></p>
             <img  style="width: 100%" src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>">
             <p><?php echo $p['description'];?></p>
