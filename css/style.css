@@ -43,6 +43,26 @@ a{
     padding-top: 5px;
 }
 
+#postcenter{
+    margin-right: auto;
+    margin-left: auto;
+    width: 80%;
+    margin-top: 25px;
+    padding-bottom: 25px;
+    color: black;
+    padding-top: 5px;
+}
+
+#center-profile{
+    margin-right: auto;
+    margin-left: auto;
+    width: 80%;
+    margin-top: 25px;
+    padding-bottom: 25px;
+    color: black;
+    padding-top: 5px;
+}
+
 h2{
     font-size: 1.2em;
     color: #A5A7BC;
@@ -213,4 +233,115 @@ div.usernameFeedback{
     margin-top: 10px;
     color: #B44A58;
     
+}
+
+.avatar{
+    width: 25%;
+    height: 25%;
+    border-radius: 100%;
+    margin-right: 5%;
+    float: right;
+    
+}
+
+.avatar-profile{
+    width: 80%; 
+    border-radius: 100%
+}
+
+#profileavatar{
+    width: 25%;
+    float: left;
+}
+
+#profileinfo{
+    width: 75%;
+    float: right;
+}
+
+#profilelinks{
+    text-align: right;
+}
+
+.changeavatar{
+    margin-top: 20px;
+    float: left;
+    width: 65%;
+}
+
+#editprofile{
+    padding-top: 10px;
+}
+
+#info{
+    margin-bottom: 50px;
+}
+
+#info-name{
+    margin-bottom: 10px;
+    
+}
+
+h2#username{
+    text-align: left;
+    margin-left: 0;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.postinfo{
+    margin-bottom: 80px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.avatar-small{
+    width: 10%; 
+    border-radius: 100%;
+    float: left;
+}
+
+.postusername{
+    margin-top: 10px;
+    margin-left: 15px;
+    float: left;
+    color: #1D557A;
+}
+
+#post{
+    background-color: white;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+
+.postprofile{
+    color: #1D557A;
+    margin-bottom: 10px;
+}
+
+.tags{
+    color: #1D557A;
+    margin-top: 10px;
+}
+.postdescription{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#addpicture{
+    padding-bottom: 25px;
+    padding-top: 25px;
+
+}
+
+#file{
+     margin-bottom: 10px;
+    margin-right: 10%;
+    margin-left: 10%;
 }

@@ -43,9 +43,7 @@
 <head>
     <meta charset="UTF-8">
     <title>IMDstagram - Sign up for free!</title>
-    <link rel="stylesheet" href="http://meyerweb.com/eric/tools/css/reset/reset.css">
-     <link rel="stylesheet" href="css/bootstrap-theme.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/media.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>

@@ -155,6 +155,8 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/media.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
 </head>
 <body>
 
@@ -169,11 +171,13 @@
             <h1><?php echo $feedback; ?></h1>
         <?php }; ?>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
-            <img src="<?php echo $_SESSION['avatar']; ?>" alt="<?php echo $_SESSION['username'] . " avatar"; ?>">
+            <img src="<?php echo $_SESSION['avatar']; ?>" alt="<?php echo $_SESSION['username'] . " avatar"; ?>" class="avatar">
             <br>
+            <div class="changeavatar">
             <label for="file" class="profilelabel">Avatar</label>
             <input type="file" name="avatar" id="avatar" class="profileinput" ?>
             <br>
+            </div>
             <label for="firstname" class="profilelabel">First name</label>
             <input type="text" name="firstname" id="firstname" class="profileinput" value="<?php echo $_SESSION['firstname']; ?>"/>
             <br>
@@ -200,7 +204,9 @@
 
             <input type="hidden" name="action" value="verander">
             <input type="submit" name="btnSignup" class="profileinput" value="Save changes"/>
+
         </form>
+        <div class="usernameFeedback"><span></span></div>
     </section>
         
 </body>

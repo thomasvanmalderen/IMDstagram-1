@@ -7,9 +7,23 @@
     }
     
     #center{
-        width: 495px;
+        width: 60%;
         background-color: white;
         margin-bottom: 25px;
+     
+    }
+    
+     #postcenter{
+        width: 60%;
+        margin-bottom: 25px;
+     
+    }
+    
+     #center-profile{
+        width: 60%;
+        margin-bottom: 25px;
+         margin-left: auto;
+        margin-right: auto;
      
     }
     
@@ -81,22 +95,52 @@
 }
     #profile{
         margin-top: 35px;
+    width: 10%; 
+
     }
     
     input#search:focus{
     width: 30%;
     }
+    
+    #addpicture{
+        
+        background-color: white;
+        margin-bottom: 25px;
+     
+    }
+    
+    #file{
+     width: 90%;
+        margin-right: 5%;
+        margin-left: 5%;
 }
-
+ 
+}
 @media only screen and (min-width: 870px){
     input[type="text"]#search{
     width: 250px;
     margin-left: 10%;
-        background-size: 5%;
+    background-size: 5%;
     }
     
     input[type="text"]#search:focus{
     padding-left: 30px;
     width: 240px;
     }
+    
+       .avatar{
+    width: 150px;
+    height: 150px;
+    }
+    
+    #postcenter{
+        width: 550px;
+    }
 }
+    
+    @media only screen and (min-width: 1300px){
+    input[type="text"]#search{
+    width: 350px;
+    }
+ }

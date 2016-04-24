@@ -74,9 +74,10 @@ class Post {
     public function displayAll() {
 
         $PDO = Db::getInstance();
-        $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id ORDER BY idUser DESC");
+        $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id ORDER BY idUser desc");
         $statement->execute();
         $result = $statement->fetchAll();
+        $result = array_slice($result, -20, 20, true);
         return $result;
 
     }

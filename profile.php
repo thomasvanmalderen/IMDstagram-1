@@ -38,18 +38,27 @@
 
     <?php include_once("nav.inc.php") ?>
     <br>
-    <section id="center">
+    <section id="center-profile">
         <?php if(isset($feedback)){; ?>
             <h1><?php $feedback; ?></h1>
         <?php }; ?>
-
+    <div id="profileavatar">
+    <img src="<?php echo $_SESSION['avatar']; ?>" alt="<?php echo $_SESSION['avatar']; ?>" class="avatar-profile">
+    </div>
+        <div id="profileinfo">
+            <div id="profilelinks">
         <a href="changeProfile.php">Edit Profile</a>
-    <a href="logout.php">Log out</a>
-    <br>
-    <img src="<?php echo $_SESSION['avatar']; ?>" alt="<?php echo $_SESSION['avatar']; ?>">
-    <h2><?php echo $_SESSION['username']; ?></h2>
-    <p><?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname'] ?></p>
-    <p><?php echo $_SESSION['bio']; ?></p>
+                <br>
+                <br>
+    <a href="logout.php" id="editprofile">Log out </a>
+                <br>
+                </div>
+    <h2 id="username"><?php echo $_SESSION['username']; ?></h2>
+            <div id="info">
+    <p id="info-name"><?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname'] ?></p>
+    <p id="info-bio"><?php echo $_SESSION['bio']; ?></p>
+            </div>
+        </div>
     </section>
 
     </body>
