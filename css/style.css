@@ -21,6 +21,7 @@ a{
     width: 100%;
     background-color: white;
     padding-bottom: 20px;
+    border-bottom: #DADADA;
 }
 
 #login{
@@ -315,6 +316,7 @@ h2#username{
     margin-top: 20px;
     padding-bottom: 25px;
     padding-top: 25px;
+    border: 1px solid #DADADA;
 }
 
 .postprofile{
@@ -337,11 +339,17 @@ h2#username{
 #addpicture{
     padding-bottom: 25px;
     padding-top: 25px;
-
+    border: 1px solid #DADADA;
 }
 
 #file{
      margin-bottom: 10px;
     margin-right: 10%;
     margin-left: 10%;
+}
+
+
+
+.postpicture{
+    width: 100%;
 }

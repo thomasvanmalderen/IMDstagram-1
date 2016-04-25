@@ -312,5 +312,18 @@
             $_SESSION['username'] = $_POST["username"];
             
         }
+
+        public function getProfileInfo(){
+            $PDO = Db::getInstance();
+            $p_user = $_GET['user'];
+            $statement = $PDO->prepare('SELECT * FROM Users WHERE username=:username');
+            $statement->bindValue(":username", $p_user);
+            $statement->execute();
+            $result = $statement->fetchAll();
+            return $result;
+
+        }
+
     }
+
 ?>

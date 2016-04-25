@@ -21,10 +21,9 @@
         header('Location: login.php');
     }
 
-    if(!empty(!empty($_FILES["pictures"]) || !empty($_POST["description"]) || !empty($_POST["tags"]))) {
+    if(!empty(!empty($_FILES["pictures"]) || !empty($_POST["description"]) )) {
         if ($_POST['action'] === "foto") {
             $post->Description = $_POST['description'];
-            $post->Tags = $_POST['tags'];
             $post->PostSaveImage();
         }
     }
@@ -60,7 +59,6 @@
     <input type="file" name="pictures" id="pictures"><br>
     </div>
     <input type="text" name="description" id="description" placeholder="What's this photo about?">
-    <input type="text" name="tags" id="tags" placeholder="#tags">
     <input type="hidden" name="action" value="foto">
     <input type="submit" name="submit" value="Post">
 </form>
@@ -68,13 +66,12 @@
 <?php foreach($post as $p): ?>
 <article id="post">
     <div class="postinfo">
-    <img src="<?php echo $p['avatar']; ?>" alt="<?php echo $p['avatar']; ?>" class="avatar-small">
-    <p class="postusername"><?php echo $p['username']; ?></p>
+        <a href="profile.php?user=<?php echo $p['username']; ?>"><img src="<?php echo $p['avatar']; ?>" alt="<?php echo $p['avatar']; ?>" class="avatar-small"></a>
+    <p><a href="profile.php?user=<?php echo $p['username']; ?>" class="postusername"><?php echo $p['username']; ?></a></p>
     </div>
-    <img  style="width: 100%" src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>">
+    <img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" >
     <div class="postdescription">
-    <p><a href="profile.php" class="postprofile"><?php echo $p['username'] ?> </a><?php echo $p['description'];?></p>
-    <p class="tags"><?php echo $p['tags']; ?></p>
+    <p><a href="profile.php?user=<?php echo $p['username']; ?>" class="postprofile"><?php echo $p['username'];?> </a><?php echo $p['description'];?></p>
     </div>
 </article>
 <?php endforeach; ?>

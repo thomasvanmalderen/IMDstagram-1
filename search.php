@@ -44,18 +44,22 @@ $post = $post->search();
 
 <?php include_once("nav.inc.php") ?>
 <br>
-<section id="center">
+<section id="postcenter">
     <?php if(isset($feedback)){; ?>
         <h1><?php $feedback; ?></h1>
     <?php }; ?>
 
     <?php foreach($post as $p): ?>
-        <article>
-            <img style="width: 10%; border-radius: 100%" src="<?php echo $p['avatar']; ?>" alt="<?php echo $p['avatar']; ?>">
-            <p><?php echo $p['username']; ?></p>
-            <img  style="width: 100%" src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>">
-            <p><?php echo $p['description'];?></p>
-            <p><?php echo $p['tags']; ?></p>
+        <article id="post">
+            <div class="postinfo">
+            <img src="<?php echo $p['avatar']; ?>" alt="<?php echo $p['avatar']; ?>" class="avatar-small">
+            <p class="postusername"><?php echo $p['username']; ?></p>
+                </div>
+            <img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture">
+            <div class="postdescription">
+                <p><a href="profile.php" class="postprofile"><?php echo $p['username'] ?> </a><?php echo $p['description'];?></p>
+                <p class="tags"><?php echo $p['tags']; ?></p>
+            </div>
         </article>
     <?php endforeach; ?>
 </section>
