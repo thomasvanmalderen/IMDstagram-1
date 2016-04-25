@@ -26,7 +26,7 @@
     //$user->getAllInfo();
 
 
-    $post = $post->displayAll();
+    $post = $post->displayUserPosts();
 
 ?><!doctype html>
     <html lang="en">
@@ -51,10 +51,16 @@
     </div>
         <div id="profileinfo">
             <div id="profilelinks">
-        <a href="changeProfile.php">Edit Profile</a>
+
                 <br>
-                <br>
-    <a href="logout.php" id="editprofile">Log out </a>
+                <div>
+                    <?php if($_GET['user'] == $_SESSION['username_']) {?>
+                        <a href="changeProfile.php">Edit Profile</a>
+                        <br>
+                        <a href="logout.php" id="editprofile">Log out </a>
+                    <?php }?>
+                </div>
+
                 <br>
                 </div>
     <h2 id="username"><?php echo $user[0]['username']; ?></h2>

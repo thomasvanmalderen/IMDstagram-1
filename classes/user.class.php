@@ -250,7 +250,7 @@
             $result = $query->fetch( PDO::FETCH_OBJ );
             $v_result = $result->id;
 
-            $allow = array("jpg", "jpeg", "gif", "png");
+            $allow = array("jpg", "jpeg", "png");
             $todir = 'images/avatars/';
 
 
@@ -270,7 +270,7 @@
 
 
                     } else {
-                        echo "<p>Your file isn't a \"jpg\", \"jpeg\", \"gif\" or a \"png\</p> <br>";
+                        echo "<p>Your file isn't a \"jpg\", \"jpeg\" or a \"png\</p> <br>";
                     }
                 }
 

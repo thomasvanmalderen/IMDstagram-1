@@ -6,6 +6,8 @@ class Post {
     private $m_iReport;
     private $m_iUserID;
 
+
+
     public function __set($p_sProperty, $p_vValue)
     {
         switch ($p_sProperty) {
@@ -37,6 +39,7 @@ class Post {
 
     public function PostSaveImage() {
 
+        date_default_timezone_set("Europe/Brussels");
         $file_name = $_SESSION['username'] . "-" . time() . "-" .$_FILES['pictures']['name'];
         $allow = array("jpg", "jpeg", "gif", "png");
         $todir = 'images/posts/';
@@ -59,9 +62,10 @@ class Post {
         }
 
         $PDO = Db::getInstance();
-        $statement = $PDO->prepare("INSERT into posts (picture, description, idUser) VALUES (:picture, :description, :idUser)");
+        $statement = $PDO->prepare("INSERT into posts (picture, description, posttime,idUser) VALUES (:picture, :description, :posttime, :idUser)");
         $statement->bindValue(":picture", $todir . $file_name);
         $statement->bindValue(":description", $this->m_sDescription);
+        $statement->bindValue(":posttime", date("Y-m-d h:i:sa"));
         $statement->bindValue(":idUser", $_SESSION['id']);
         $statement->execute();
     }
@@ -77,16 +81,18 @@ class Post {
 
     }
 
-    /*public function displayUserPosts() {
+    public function displayUserPosts() {
 
         $PDO = Db::getInstance();
-        $statement = $PDO->prepare("SELECT * FROM posts  LEFT OUTER JOIN Users ON posts.idUser=users.id ");
+        $p_user = $_GET['user'];
+        $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id WHERE users.username = :user LIMIT 10");
+        $statement->bindValue(":user", $p_user);
         $statement->execute();
         $result = $statement->fetchAll();
         return $result;
 
     }
-*/
+
     public function search() {
         $PDO = Db::getInstance();
         $statement = $PDO-> prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id WHERE description LIKE '%" . $_SESSION['search']  . "%' OR tags LIKE '%" . $_SESSION['search']  . "%'");

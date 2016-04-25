@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Gegenereerd op: 23 apr 2016 om 21:47
+-- Gegenereerd op: 25 apr 2016 om 22:42
 -- Serverversie: 5.5.42
 -- PHP-versie: 7.0.0
 
@@ -25,7 +25,7 @@ CREATE TABLE `Posts` (
   `id` int(11) NOT NULL,
   `picture` varchar(255) COLLATE utf8_bin NOT NULL,
   `description` varchar(300) COLLATE utf8_bin DEFAULT NULL,
-  `tags` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `posttime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Report` int(5) NOT NULL,
   `idUser` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -34,17 +34,17 @@ CREATE TABLE `Posts` (
 -- Gegevens worden geëxporteerd voor tabel `Posts`
 --
 
-INSERT INTO `Posts` (`id`, `picture`, `description`, `tags`, `Report`, `idUser`) VALUES
-(1, 'images/posts/admin-1461439777-thegym.jpg', 'The fabled creativity gym', '#gym #thomasmore', 0, 1),
-(2, 'images/posts/robinreyns-1461439899-superbrein.jpg', 'Superbrein, super programma!', '#project2 #ketnet', 0, 2),
-(3, 'images/posts/antoinehendrickx-1461439979-akira.jpg', 'Akira is a great movie. ', '#akira #OVA', 0, 3),
-(4, 'images/posts/jorishens-1461440193-stempeltje-fb.jpg', 'My new app: stempeltje!', '#app #goodbytes', 0, 4),
-(5, 'images/posts/michaelrosen-1461440268-rosen book.jpg', 'My new book is out!', '#books #rosen', 0, 5),
-(6, 'images/posts/lucina-1461440437-Awakening_Map.jpg', 'This map is huge!', '#FE #map', 0, 6),
-(7, 'images/posts/chrom-1461440527-fe.jpg', 'Cover art for FE: Awakening.', '#FE #art', 0, 7),
-(8, 'images/posts/bedje-1461440584-slapen.jpg', 'Want wie slaapt er nu niet graag?', '#zzz #bed', 0, 8),
-(9, 'images/posts/dickladder-1461440655-meeting.jpg', 'Straks meeting. Het zit hier al vol.', '#work #busy', 0, 9),
-(10, 'images/posts/thomasvanmalderen-1461440764-holhorse.jpg', 'A drawing I made.', '#art #jojo', 0, 10);
+INSERT INTO `Posts` (`id`, `picture`, `description`, `posttime`, `Report`, `idUser`) VALUES
+(1, 'images/posts/admin-1461439777-thegym.jpg', 'The fabled creativity gym', '0000-00-00 00:00:00', 0, 1),
+(2, 'images/posts/robinreyns-1461439899-superbrein.jpg', 'Superbrein, super programma!', '0000-00-00 00:00:00', 0, 2),
+(3, 'images/posts/antoinehendrickx-1461439979-akira.jpg', 'Akira is a great movie. ', '0000-00-00 00:00:00', 0, 3),
+(4, 'images/posts/jorishens-1461440193-stempeltje-fb.jpg', 'My new app: stempeltje!', '0000-00-00 00:00:00', 0, 4),
+(5, 'images/posts/michaelrosen-1461440268-rosen book.jpg', 'My new book is out!', '0000-00-00 00:00:00', 0, 5),
+(6, 'images/posts/lucina-1461440437-Awakening_Map.jpg', 'This map is huge!', '0000-00-00 00:00:00', 0, 6),
+(7, 'images/posts/chrom-1461440527-fe.jpg', 'Cover art for FE: Awakening.', '0000-00-00 00:00:00', 0, 7),
+(8, 'images/posts/bedje-1461440584-slapen.jpg', 'Want wie slaapt er nu niet graag?', '0000-00-00 00:00:00', 0, 8),
+(9, 'images/posts/dickladder-1461440655-meeting.jpg', 'Straks meeting. Het zit hier al vol.', '0000-00-00 00:00:00', 0, 9),
+(10, 'images/posts/thomasvanmalderen-1461440764-holhorse.jpg', 'A drawing I made.', '0000-00-00 00:00:00', 0, 10);
 
 -- --------------------------------------------------------
 
