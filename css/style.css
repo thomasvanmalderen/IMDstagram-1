@@ -348,7 +348,15 @@ h2#username{
     margin-left: 10%;
 }
 
+#addpicture h3{
+    text-align: left;
+    margin-left: 0;
+    color: black;
+}
 
+#addpicture input[type="submit"]{
+    width: 25%;
+}
 
 .postpicture{
     width: 100%;
