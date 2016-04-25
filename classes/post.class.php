@@ -69,7 +69,7 @@ class Post {
     public function displayAll() {
 
         $PDO = Db::getInstance();
-        $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id LIMIT 3");
+        $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id LIMIT 20");
         $statement->execute();
         $result = $statement->fetchAll();
         //$result = array_slice($result, -20, 20, true);

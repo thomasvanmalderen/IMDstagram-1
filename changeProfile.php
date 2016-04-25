@@ -52,7 +52,7 @@
                     if($_POST['username'] == $_SESSION['username_'] && $_POST['email'] == $_SESSION['email']){
 
                             $changer->Update();
-                            header('Location: profile.php');
+                        header('Location: profile.php?user=' . $_SESSION['username_']);
 
                     } elseif($_POST['username'] == $_SESSION['username_']) {
                         if($changer->EmailAvailable()){
@@ -60,7 +60,7 @@
                         } else {
 
                             $changer->Update();
-                            header('Location: profile.php');
+                            header('Location: profile.php?user=' . $_SESSION['username_']);
                         }
 
                     } elseif($_POST['email'] == $_SESSION['email']) {
@@ -69,7 +69,7 @@
                         } else {
 
                             $changer->Update();
-                            header('Location: profile.php');
+                            header('Location: profile.php?user=' . $_SESSION['username_']);
                         }
 
                     } else {
@@ -79,7 +79,7 @@
                         } else {
 
                             $changer->Update();
-                            header('Location: profile.php');
+                            header('Location: profile.php?user=' . $_SESSION['username_']);
                         }
                     }
 
@@ -119,7 +119,7 @@
                         } else {
 
                             $changer->Update();
-                            header('Location: profile.php');
+                            header('Location: profile.php?user=' . $_SESSION['username_']);
                         }
                     } else {
                         if($changer->UsernameAvailable() || $changer->EmailAvailable()){
@@ -127,7 +127,7 @@
                         } else {
 
                             $changer->Update();
-                            header('Location: profile.php');
+                            header('Location: profile.php?user=' . $_SESSION['username_']);
                         }
                     }
                     
