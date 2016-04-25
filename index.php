@@ -55,7 +55,7 @@
 <div id="addpicture">
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
     <div id="file">
-        <label for="file">Filename:</label>
+        <h3>Add picture</h3>
     <input type="file" name="pictures" id="pictures"><br>
     </div>
     <input type="text" name="description" id="description" placeholder="What's this photo about?">
