@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Gegenereerd op: 26 apr 2016 om 15:11
+-- Gegenereerd op: 26 apr 2016 om 15:41
 -- Serverversie: 5.5.42
 -- PHP-versie: 7.0.0
 
@@ -22,7 +22,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `Posts`;
 CREATE TABLE `Posts` (
-  `id` int(11) NOT NULL,
+  `p_id` int(11) NOT NULL,
   `picture` varchar(255) COLLATE utf8_bin NOT NULL,
   `description` varchar(300) COLLATE utf8_bin DEFAULT NULL,
   `posttime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -34,7 +34,7 @@ CREATE TABLE `Posts` (
 -- Gegevens worden geëxporteerd voor tabel `Posts`
 --
 
-INSERT INTO `Posts` (`id`, `picture`, `description`, `posttime`, `Report`, `idUser`) VALUES
+INSERT INTO `Posts` (`p_id`, `picture`, `description`, `posttime`, `Report`, `idUser`) VALUES
   (1, 'images/posts/admin-1461439777-thegym.jpg', 'The fabled creativity gym', '2016-04-15 22:00:00', 0, 1),
   (2, 'images/posts/robinreyns-1461439899-superbrein.jpg', 'Superbrein, super programma!', '2016-04-16 22:00:00', 0, 2),
   (3, 'images/posts/antoinehendrickx-1461439979-akira.jpg', 'Akira is a great movie. ', '2016-04-17 22:00:00', 0, 3),
@@ -54,7 +54,7 @@ INSERT INTO `Posts` (`id`, `picture`, `description`, `posttime`, `Report`, `idUs
 
 DROP TABLE IF EXISTS `Users`;
 CREATE TABLE `Users` (
-  `id` int(11) unsigned NOT NULL,
+  `u_id` int(11) unsigned NOT NULL,
   `username` varchar(255) COLLATE utf8_bin NOT NULL,
   `firstname` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `lastname` varchar(255) COLLATE utf8_bin DEFAULT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE `Users` (
 -- Gegevens worden geëxporteerd voor tabel `Users`
 --
 
-INSERT INTO `Users` (`id`, `username`, `firstname`, `lastname`, `email`, `password`, `avatar`, `bio`) VALUES
+INSERT INTO `Users` (`u_id`, `username`, `firstname`, `lastname`, `email`, `password`, `avatar`, `bio`) VALUES
   (1, 'admin', 'IMDstagram', 'admin', 'admin@email.com', '$2y$12$E3eqUj3m7BqYPp33ib5qz.U.aQUOD1KRRF5dCmpQ0L580q1.FGqB6', 'images/avatars/basic_avatar.jpg', 'This is the official page of IMDstagram. Try posting some pictures!'),
   (2, 'robinreyns', 'Robin', 'Reyns', 'robin@email.com', '$2y$12$.FarmgfPWxYVtvw/YWMP3eTphLeLZZ16G7NV.b.2W7ndCifpO63ny', 'images/avatars/robinreyns-1461439863-robin.jpg', 'Robin Reyns from Thomas MORE. Hello!'),
   (3, 'antoinehendrickx', 'Antoine', 'Hendrickx', 'antoine@email.com', '$2y$12$eIrRKIO6n.FsslGlSxpjju8oifTRnXsJUOREc40TU3gUQy1HtfsZ6', 'images/avatars/antoinehendrickx-1461439948-antoinehendrickx-1461312837-me.jpg', 'Antoine here. I love loempia''s! '),
@@ -88,13 +88,13 @@ INSERT INTO `Users` (`id`, `username`, `firstname`, `lastname`, `email`, `passwo
 -- Indexen voor tabel `Posts`
 --
 ALTER TABLE `Posts`
-ADD PRIMARY KEY (`id`);
+ADD PRIMARY KEY (`p_id`);
 
 --
 -- Indexen voor tabel `Users`
 --
 ALTER TABLE `Users`
-ADD PRIMARY KEY (`id`);
+ADD PRIMARY KEY (`u_id`);
 
 --
 -- AUTO_INCREMENT voor geëxporteerde tabellen
@@ -104,9 +104,9 @@ ADD PRIMARY KEY (`id`);
 -- AUTO_INCREMENT voor een tabel `Posts`
 --
 ALTER TABLE `Posts`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT voor een tabel `Users`
 --
 ALTER TABLE `Users`
-MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `u_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
