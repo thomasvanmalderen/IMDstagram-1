@@ -141,6 +141,7 @@ input#search{
     color: #1D557A;
 }
 
+
 input[type="text"]{
     background-color: #FFF;
     height: 35px;
@@ -200,8 +201,6 @@ input[type="submit"]{
     padding-top: 10px;
     padding-bottom: 10px;
 }
-
-
 
 input.profileinput{
     margin-top: 5px;
@@ -339,7 +338,7 @@ h2#username{
 #addpicture{
     padding-bottom: 25px;
     padding-top: 25px;
-    border: 1px solid #DADADA;
+   
 }
 
 #file{
@@ -352,6 +351,7 @@ h2#username{
     text-align: left;
     margin-left: 0;
     color: black;
+    margin-left: 10%;
 }
 
 #addpicture input[type="submit"]{
@@ -360,4 +360,33 @@ h2#username{
 
 .postpicture{
     width: 100%;
+}
+
+label.myLabel input[type="file"] {
+    position: fixed;
+    top: -1000px;
+}
+
+.myLabel {
+    border-radius: 4px;
+    background: #4090DB;
+    display: inline-block;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 10%;
+    width: 50%;
+    padding: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+input[type="text"]#uploadFile{
+    background-color: #FAFAFA;
+    height: 35px;
+    width: 80%;
+    margin-bottom: 10px;
+    margin-right: 10%;
+    margin-left: 10%;
+    padding-left: 2%;
+    border: 0;
 }

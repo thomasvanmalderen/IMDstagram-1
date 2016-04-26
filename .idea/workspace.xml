@@ -2,9 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd9c214a-bd4c-4276-9acb-f27810bd46b1" name="Default" comment="">
+<<<<<<< HEAD
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/posts/thomasvanmalderen-1461676826-180px-Maestro_logo.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql/import.sql" afterPath="$PROJECT_DIR$/sql/import.sql" />
+=======
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/Helper.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/db.class.php" afterPath="$PROJECT_DIR$/classes/db.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/post.class.php" afterPath="$PROJECT_DIR$/classes/post.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/picture.php" afterPath="$PROJECT_DIR$/picture.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/profile.php" afterPath="$PROJECT_DIR$/profile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/search.php" afterPath="$PROJECT_DIR$/search.php" />
+>>>>>>> RobinN
     </list>
     <ignored path="IMDstagram.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,26 +37,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file leaf-file-name="db.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/db.class.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
               <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+=======
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="28" column="9" selection-start-line="25" selection-start-column="8" selection-end-line="28" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nav.inc.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nav.inc.php">
+      <file leaf-file-name="changeProfile.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/changeProfile.php">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3075">
+              <caret line="205" column="93" selection-start-line="204" selection-start-column="12" selection-end-line="205" selection-end-column="93" />
+>>>>>>> RobinN
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/user.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="315">
               <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+=======
+            <state relative-caret-position="798">
+              <caret line="319" column="40" selection-start-line="319" selection-start-column="40" selection-end-line="319" selection-end-column="40" />
+>>>>>>> RobinN
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="changeProfile.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/changeProfile.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -71,25 +106,46 @@
                 <marker date="1461672310000" expanded="true" signature="10218:10365" placeholder="UPDATE Users... " />
                 <marker date="1461672310000" expanded="true" signature="11217:11261" placeholder="SELECT * FRO... Users" />
               </folding>
+=======
+      <file leaf-file-name="profile.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/profile.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
+              <folding />
+>>>>>>> RobinN
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="import.sql" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sql/import.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="658">
               <caret line="111" column="73" selection-start-line="111" selection-start-column="73" selection-end-line="111" selection-end-column="73" />
+=======
+      <file leaf-file-name="search.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/search.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="372">
+              <caret line="29" column="1" selection-start-line="26" selection-start-column="0" selection-end-line="29" selection-end-column="1" />
+>>>>>>> RobinN
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/profile.php">
+      <file leaf-file-name="picture.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/picture.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="481">
               <caret line="74" column="61" selection-start-line="74" selection-start-column="61" selection-end-line="74" selection-end-column="61" />
+=======
+            <state relative-caret-position="-57">
+              <caret line="35" column="3" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
+>>>>>>> RobinN
               <folding />
             </state>
           </provider>
@@ -122,6 +178,7 @@
       <file leaf-file-name="post.class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/post.class.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="495">
               <caret line="66" column="67" selection-start-line="66" selection-start-column="46" selection-end-line="66" selection-end-column="67" />
               <folding>
@@ -130,6 +187,20 @@
                 <marker date="1461676156000" expanded="true" signature="2763:2869" placeholder="SELECT * FRO... posts" />
                 <marker date="1461676156000" expanded="true" signature="3173:3275" placeholder="SELECT * FRO... posts" />
                 <marker date="1461676156000" expanded="true" signature="3534:3658" placeholder="SELECT * FRO... posts" />
+=======
+            <state relative-caret-position="573">
+              <caret line="107" column="23" selection-start-line="107" selection-start-column="23" selection-end-line="107" selection-end-column="23" />
+              <folding>
+                <marker date="1461692303000" expanded="true" signature="1841:1950" placeholder="INSERT into posts... " />
+                <marker date="1461692303000" expanded="true" signature="2380:2484" placeholder="SELECT * FRO... posts" />
+                <marker date="1461692303000" expanded="true" signature="2763:2869" placeholder="SELECT * FRO... posts" />
+                <marker date="1461692303000" expanded="true" signature="3173:3275" placeholder="SELECT * FRO... posts" />
+                <marker date="1461692303000" expanded="true" signature="3548:3576" placeholder="DELETE FROM " />
+                <marker date="1461692303000" expanded="true" signature="3548:3579" placeholder="DELETE FROM " />
+                <marker date="1461692303000" expanded="true" signature="3548:3588" placeholder="DELETE FROM " />
+                <marker date="1461692303000" expanded="true" signature="3554:3576" placeholder="SELECT * FRO... posts" />
+                <marker date="1461692303000" expanded="true" signature="3731:3855" placeholder="SELECT * FRO... posts" />
+>>>>>>> RobinN
               </folding>
             </state>
           </provider>
@@ -163,12 +234,23 @@
         <option value="$PROJECT_DIR$/changeProfile.php" />
         <option value="$PROJECT_DIR$/classes/db.class.php" />
         <option value="$PROJECT_DIR$/classes/user.class.php" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/picture.php" />
         <option value="$PROJECT_DIR$/profile.php" />
         <option value="$PROJECT_DIR$/search.php" />
         <option value="$PROJECT_DIR$/classes/post.class.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/sql/import.sql" />
+=======
+        <option value="$PROJECT_DIR$/sql/import.sql" />
+        <option value="$PROJECT_DIR$/classes/db.class.php" />
+        <option value="$PROJECT_DIR$/classes/Helper.class.php" />
+        <option value="$PROJECT_DIR$/search.php" />
+        <option value="$PROJECT_DIR$/classes/post.class.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/profile.php" />
+        <option value="$PROJECT_DIR$/picture.php" />
+>>>>>>> RobinN
       </list>
     </option>
   </component>
@@ -211,6 +293,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -259,19 +343,25 @@
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
       <pane id="Scratches" />
       <pane id="Scope" />
+=======
+>>>>>>> RobinN
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+<<<<<<< HEAD
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+=======
+>>>>>>> RobinN
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -322,12 +412,20 @@
       <workItem from="1461244739031" duration="546000" />
       <workItem from="1461434304015" duration="3081000" />
       <workItem from="1461596230336" duration="4195000" />
+<<<<<<< HEAD
       <workItem from="1461669542889" duration="7823000" />
+=======
+      <workItem from="1461690891520" duration="4928000" />
+>>>>>>> RobinN
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="24630000" />
+=======
+    <option name="totallyTimeSpent" value="21735000" />
+>>>>>>> RobinN
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1339" height="812" extended-state="0" />
@@ -424,11 +522,23 @@
         <state relative-caret-position="1140">
           <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding>
+<<<<<<< HEAD
             <marker date="1461676156000" expanded="true" signature="1841:1950" placeholder="INSERT into posts... " />
             <marker date="1461676156000" expanded="true" signature="2380:2484" placeholder="SELECT * FRO... posts" />
             <marker date="1461676156000" expanded="true" signature="2763:2869" placeholder="SELECT * FRO... posts" />
             <marker date="1461676156000" expanded="true" signature="3173:3275" placeholder="SELECT * FRO... posts" />
             <marker date="1461676156000" expanded="true" signature="3534:3658" placeholder="SELECT * FRO... posts" />
+=======
+            <marker date="1461692303000" expanded="true" signature="1841:1950" placeholder="INSERT into posts... " />
+            <marker date="1461692303000" expanded="true" signature="2380:2484" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="2763:2869" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="3173:3275" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="3548:3576" placeholder="DELETE FROM " />
+            <marker date="1461692303000" expanded="true" signature="3548:3579" placeholder="DELETE FROM " />
+            <marker date="1461692303000" expanded="true" signature="3548:3588" placeholder="DELETE FROM " />
+            <marker date="1461692303000" expanded="true" signature="3554:3576" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="3731:3855" placeholder="SELECT * FRO... posts" />
+>>>>>>> RobinN
           </folding>
         </state>
       </provider>
@@ -495,11 +605,23 @@
         <state relative-caret-position="0">
           <caret line="91" column="41" selection-start-line="91" selection-start-column="41" selection-end-line="91" selection-end-column="41" />
           <folding>
+<<<<<<< HEAD
             <marker date="1461676156000" expanded="true" signature="1841:1950" placeholder="INSERT into posts... " />
             <marker date="1461676156000" expanded="true" signature="2380:2484" placeholder="SELECT * FRO... posts" />
             <marker date="1461676156000" expanded="true" signature="2763:2869" placeholder="SELECT * FRO... posts" />
             <marker date="1461676156000" expanded="true" signature="3173:3275" placeholder="SELECT * FRO... posts" />
             <marker date="1461676156000" expanded="true" signature="3534:3658" placeholder="SELECT * FRO... posts" />
+=======
+            <marker date="1461692303000" expanded="true" signature="1841:1950" placeholder="INSERT into posts... " />
+            <marker date="1461692303000" expanded="true" signature="2380:2484" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="2763:2869" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="3173:3275" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="3548:3576" placeholder="DELETE FROM " />
+            <marker date="1461692303000" expanded="true" signature="3548:3579" placeholder="DELETE FROM " />
+            <marker date="1461692303000" expanded="true" signature="3548:3588" placeholder="DELETE FROM " />
+            <marker date="1461692303000" expanded="true" signature="3554:3576" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="3731:3855" placeholder="SELECT * FRO... posts" />
+>>>>>>> RobinN
           </folding>
         </state>
       </provider>
@@ -508,6 +630,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="183" column="40" selection-start-line="183" selection-start-column="40" selection-end-line="183" selection-end-column="40" />
+<<<<<<< HEAD
           <folding>
             <marker date="1461672310000" expanded="true" signature="2484:2530" placeholder="SELECT * FRO... Users" />
             <marker date="1461672310000" expanded="true" signature="4616:4760" placeholder="INSERT INTO Users... " />
@@ -518,6 +641,9 @@
             <marker date="1461672310000" expanded="true" signature="10218:10365" placeholder="UPDATE Users... " />
             <marker date="1461672310000" expanded="true" signature="11217:11261" placeholder="SELECT * FRO... Users" />
           </folding>
+=======
+          <folding />
+>>>>>>> RobinN
         </state>
       </provider>
     </entry>
@@ -552,11 +678,23 @@
         <state relative-caret-position="0">
           <caret line="87" column="37" selection-start-line="87" selection-start-column="37" selection-end-line="87" selection-end-column="37" />
           <folding>
+<<<<<<< HEAD
             <marker date="1461676156000" expanded="true" signature="1841:1950" placeholder="INSERT into posts... " />
             <marker date="1461676156000" expanded="true" signature="2380:2484" placeholder="SELECT * FRO... posts" />
             <marker date="1461676156000" expanded="true" signature="2763:2869" placeholder="SELECT * FRO... posts" />
             <marker date="1461676156000" expanded="true" signature="3173:3275" placeholder="SELECT * FRO... posts" />
             <marker date="1461676156000" expanded="true" signature="3534:3658" placeholder="SELECT * FRO... posts" />
+=======
+            <marker date="1461692303000" expanded="true" signature="1841:1950" placeholder="INSERT into posts... " />
+            <marker date="1461692303000" expanded="true" signature="2380:2484" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="2763:2869" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="3173:3275" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="3548:3576" placeholder="DELETE FROM " />
+            <marker date="1461692303000" expanded="true" signature="3548:3579" placeholder="DELETE FROM " />
+            <marker date="1461692303000" expanded="true" signature="3548:3588" placeholder="DELETE FROM " />
+            <marker date="1461692303000" expanded="true" signature="3554:3576" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="3731:3855" placeholder="SELECT * FRO... posts" />
+>>>>>>> RobinN
           </folding>
         </state>
       </provider>
@@ -581,11 +719,23 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+<<<<<<< HEAD
             <marker date="1461676156000" expanded="true" signature="1841:1950" placeholder="INSERT into posts... " />
             <marker date="1461676156000" expanded="true" signature="2380:2484" placeholder="SELECT * FRO... posts" />
             <marker date="1461676156000" expanded="true" signature="2763:2869" placeholder="SELECT * FRO... posts" />
             <marker date="1461676156000" expanded="true" signature="3173:3275" placeholder="SELECT * FRO... posts" />
             <marker date="1461676156000" expanded="true" signature="3534:3658" placeholder="SELECT * FRO... posts" />
+=======
+            <marker date="1461692303000" expanded="true" signature="1841:1950" placeholder="INSERT into posts... " />
+            <marker date="1461692303000" expanded="true" signature="2380:2484" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="2763:2869" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="3173:3275" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="3548:3576" placeholder="DELETE FROM " />
+            <marker date="1461692303000" expanded="true" signature="3548:3579" placeholder="DELETE FROM " />
+            <marker date="1461692303000" expanded="true" signature="3548:3588" placeholder="DELETE FROM " />
+            <marker date="1461692303000" expanded="true" signature="3554:3576" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="3731:3855" placeholder="SELECT * FRO... posts" />
+>>>>>>> RobinN
           </folding>
         </state>
       </provider>
@@ -601,6 +751,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="165" column="40" selection-start-line="165" selection-start-column="40" selection-end-line="165" selection-end-column="40" />
+<<<<<<< HEAD
           <folding>
             <marker date="1461672310000" expanded="true" signature="2484:2530" placeholder="SELECT * FRO... Users" />
             <marker date="1461672310000" expanded="true" signature="4616:4760" placeholder="INSERT INTO Users... " />
@@ -611,6 +762,9 @@
             <marker date="1461672310000" expanded="true" signature="10218:10365" placeholder="UPDATE Users... " />
             <marker date="1461672310000" expanded="true" signature="11217:11261" placeholder="SELECT * FRO... Users" />
           </folding>
+=======
+          <folding />
+>>>>>>> RobinN
         </state>
       </provider>
     </entry>
@@ -658,6 +812,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="165" column="40" selection-start-line="165" selection-start-column="40" selection-end-line="165" selection-end-column="40" />
+<<<<<<< HEAD
           <folding>
             <marker date="1461672310000" expanded="true" signature="2484:2530" placeholder="SELECT * FRO... Users" />
             <marker date="1461672310000" expanded="true" signature="4616:4760" placeholder="INSERT INTO Users... " />
@@ -668,6 +823,9 @@
             <marker date="1461672310000" expanded="true" signature="10218:10365" placeholder="UPDATE Users... " />
             <marker date="1461672310000" expanded="true" signature="11217:11261" placeholder="SELECT * FRO... Users" />
           </folding>
+=======
+          <folding />
+>>>>>>> RobinN
         </state>
       </provider>
     </entry>
@@ -749,10 +907,25 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/changeProfile.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-135">
           <caret line="121" column="91" selection-start-line="121" selection-start-column="91" selection-end-line="121" selection-end-column="91" />
+=======
+    <entry file="file://$PROJECT_DIR$/sql/import.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="111" column="73" selection-start-line="111" selection-start-column="73" selection-end-line="111" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nav.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="46" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="46" />
+>>>>>>> RobinN
           <folding />
         </state>
       </provider>
@@ -765,6 +938,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/classes/user.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -779,27 +953,45 @@
             <marker date="1461672310000" expanded="true" signature="10218:10365" placeholder="UPDATE Users... " />
             <marker date="1461672310000" expanded="true" signature="11217:11261" placeholder="SELECT * FRO... Users" />
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="9" selection-start-line="25" selection-start-column="8" selection-end-line="28" selection-end-column="9" />
+          <folding />
+>>>>>>> RobinN
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/picture.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="408">
           <caret line="51" column="27" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nav.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+=======
+        <state relative-caret-position="798">
+          <caret line="319" column="40" selection-start-line="319" selection-start-column="40" selection-end-line="319" selection-end-column="40" />
+>>>>>>> RobinN
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/search.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="315">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+=======
+        <state relative-caret-position="372">
+          <caret line="29" column="1" selection-start-line="26" selection-start-column="0" selection-end-line="29" selection-end-column="1" />
+>>>>>>> RobinN
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="123">
           <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
           <folding>
@@ -812,12 +1004,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="481">
           <caret line="74" column="61" selection-start-line="74" selection-start-column="61" selection-end-line="74" selection-end-column="61" />
+=======
+        <state relative-caret-position="483">
+          <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/Helper.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/picture.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-57">
+          <caret line="35" column="3" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changeProfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3075">
+          <caret line="205" column="93" selection-start-line="204" selection-start-column="12" selection-end-line="205" selection-end-column="93" />
+>>>>>>> RobinN
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/post.class.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="495">
           <caret line="66" column="67" selection-start-line="66" selection-start-column="46" selection-end-line="66" selection-end-column="67" />
           <folding>
@@ -836,6 +1057,20 @@
           <caret line="2" column="54" selection-start-line="2" selection-start-column="54" selection-end-line="2" selection-end-column="54" />
           <folding>
             <marker date="1461676156000" expanded="true" signature="2962:3010" placeholder="..." />
+=======
+        <state relative-caret-position="573">
+          <caret line="107" column="23" selection-start-line="107" selection-start-column="23" selection-end-line="107" selection-end-column="23" />
+          <folding>
+            <marker date="1461692303000" expanded="true" signature="1841:1950" placeholder="INSERT into posts... " />
+            <marker date="1461692303000" expanded="true" signature="2380:2484" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="2763:2869" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="3173:3275" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="3548:3576" placeholder="DELETE FROM " />
+            <marker date="1461692303000" expanded="true" signature="3548:3579" placeholder="DELETE FROM " />
+            <marker date="1461692303000" expanded="true" signature="3548:3588" placeholder="DELETE FROM " />
+            <marker date="1461692303000" expanded="true" signature="3554:3576" placeholder="SELECT * FRO... posts" />
+            <marker date="1461692303000" expanded="true" signature="3731:3855" placeholder="SELECT * FRO... posts" />
+>>>>>>> RobinN
           </folding>
         </state>
       </provider>
