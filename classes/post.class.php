@@ -73,10 +73,13 @@ class Post {
     public function displayAll() {
 
         $PDO = Db::getInstance();
-        $limit =3;
+        $limit =20;
+
         $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.u_id ORDER BY posts.posttime desc LIMIT $limit");
         $statement->execute();
+
         $result = $statement->fetchAll();
+        
         
         return $result;
 
@@ -115,6 +118,10 @@ class Post {
     
     public function loadmore(){
         $limit = $limit + 3;
+    }
+    
+    public function timeago($postresult){
+        
     }
 }
 

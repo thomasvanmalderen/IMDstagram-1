@@ -72,8 +72,8 @@
         <?php foreach($post as $p): ?>
             <article id="post">
 
-                <img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" >
-                
+                <a href="picture.php?post=<?php echo $p['p_id']; ?>"><img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" ></a>
+
             </article>
         <?php endforeach; ?>
 
