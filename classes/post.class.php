@@ -73,7 +73,8 @@ class Post {
     public function displayAll() {
 
         $PDO = Db::getInstance();
-        $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id LIMIT 20");
+        $limit =3;
+        $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id ORDER BY posts.posttime desc LIMIT $limit");
         $statement->execute();
         $result = $statement->fetchAll();
         //$result = array_slice($result, -20, 20, true);
@@ -95,10 +96,14 @@ class Post {
 
     public function search() {
         $PDO = Db::getInstance();
-        $statement = $PDO-> prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id WHERE description LIKE '%" . $_SESSION['search']  . "%' OR tags LIKE '%" . $_SESSION['search']  . "%'");
+        $statement = $PDO-> prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id WHERE description LIKE '%" . $_SESSION['search']  . "%'");
         $statement->execute();
         $result = $statement->fetchAll();
         return $result;
+    }
+    
+    public function loadmore(){
+        $limit = $limit + 3;
     }
 }
 

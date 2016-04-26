@@ -42,7 +42,7 @@
 
     <?php include_once("nav.inc.php") ?>
     <br>
-    <section id="center-profile">
+    <section id="postcenter">
         <?php if(isset($feedback)){; ?>
             <h1><?php $feedback; ?></h1>
         <?php }; ?>
