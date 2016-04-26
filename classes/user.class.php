@@ -233,7 +233,7 @@
             $result = $statement->fetch();
             //return $result;
             
-            $_SESSION['id'] = $result[0];
+            $_SESSION['u_id'] = $result[0];
             $_SESSION['firstname'] = $result[2];
             $_SESSION['lastname'] = $result[3];
             $_SESSION['email'] = $result[4];
@@ -245,10 +245,10 @@
         public function Update(){
              
             $PDO = Db::getInstance();
-            $query = $PDO->prepare("SELECT id FROM Users WHERE username='" . $_SESSION['username_'] . "'");
+            $query = $PDO->prepare("SELECT u_id FROM Users WHERE username='" . $_SESSION['username_'] . "'");
             $query->execute();
             $result = $query->fetch( PDO::FETCH_OBJ );
-            $v_result = $result->id;
+            $v_result = $result->u_id;
 
             $allow = array("jpg", "jpeg", "png");
             $todir = 'images/avatars/';

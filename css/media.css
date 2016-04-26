@@ -44,6 +44,9 @@
         margin-right: 5%;
         margin-left: 5%;
     }
+    
+   
+    
     input[type="email"]{
         background-color: #FAFAFA;
         width: 90%;
@@ -107,6 +110,7 @@
         
         background-color: white;
         margin-bottom: 25px;
+         border: 1px solid #DADADA;
      
     }
     
@@ -115,6 +119,35 @@
         margin-right: 5%;
         margin-left: 5%;
 }
+    #btnUp{
+        float: left;
+        width: 30%;
+        margin-right: 5%;
+        margin-left: 2%;
+    }
+    .myLabel {
+        
+        width: 100%;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    label{
+        margin: 0;
+    }
+    
+    #addpicture h3{
+        margin-left: 5%;
+    }
+    
+     input[type="text"]#uploadFile{
+        background-color: #fff;
+        width: 50%;
+        margin-right: 5%;
+        margin-left: 5%;
+        float: left;
+    }
  
 }
 @media only screen and (min-width: 870px){
