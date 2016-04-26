@@ -108,6 +108,13 @@ class Post {
         return $result;
     }
 
+    public function removePicture($userid) {
+        $PDO = Db::getInstance();
+        $statement = $PDO-> prepare("DELETE FROM posts WHERE p_id = $userid");
+        $statement->execute();
+
+    }
+
     public function search() {
         $PDO = Db::getInstance();
         $statement = $PDO-> prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.u_id WHERE description LIKE '%" . $_SESSION['search']  . "%'");
@@ -120,9 +127,7 @@ class Post {
         $limit = $limit + 3;
     }
     
-    public function timeago($postresult){
-        
-    }
+
 }
 
 ?>

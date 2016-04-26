@@ -12,6 +12,7 @@ session_start();
 include_once("classes/db.class.php");
 include_once("classes/user.class.php");
 include_once("classes/post.class.php");
+include_once("classes/Helper.class.php");
 
 // AUTHENTICATE USER
 $user = new User();
@@ -55,6 +56,7 @@ $post = $post->search();
             <div class="postinfo">
                 <a href="profile.php?user=<?php echo $p['username']; ?>"><img src="<?php echo $p['avatar']; ?>" alt="<?php echo $p['avatar']; ?>" class="avatar-small"></a>
                 <p><a href="profile.php?user=<?php echo $p['username']; ?>" class="postusername"><?php echo $p['username']; ?></a></p>
+                <p><?php Helper::timeAgo($p['posttime']); ?></p>
             </div>
             <a href="picture.php?post=<?php echo $p['p_id']; ?>"><img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" ></a>
             <div class="postdescription">
