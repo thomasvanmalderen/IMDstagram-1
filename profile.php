@@ -71,14 +71,9 @@
         </div>
         <?php foreach($post as $p): ?>
             <article id="post">
-                <div class="postinfo">
-                    <img src="<?php echo $p['avatar']; ?>" alt="<?php echo $p['avatar']; ?>" class="avatar-small">
-                    <p class="postusername"><?php echo $p['username']; ?></p>
-                </div>
+
                 <img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" >
-                <div class="postdescription">
-                    <p><a href="profile.php" class="postprofile"><?php echo $p['username'] ?> </a><?php echo $p['description'];?></p>
-                </div>
+                
             </article>
         <?php endforeach; ?>
 

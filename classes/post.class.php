@@ -65,8 +65,8 @@ class Post {
         $statement = $PDO->prepare("INSERT into posts (picture, description, posttime,idUser) VALUES (:picture, :description, :posttime, :idUser)");
         $statement->bindValue(":picture", $todir . $file_name);
         $statement->bindValue(":description", $this->m_sDescription);
-        $statement->bindValue(":posttime", date("Y-m-d h:i:sa"));
-        $statement->bindValue(":idUser", $_SESSION['id']);
+        $statement->bindValue(":posttime", date("Y-m-d H:i:sa"));
+        $statement->bindValue(":idUser", $_SESSION['u_id']);
         $statement->execute();
     }
 
@@ -74,10 +74,10 @@ class Post {
 
         $PDO = Db::getInstance();
         $limit =3;
-        $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id ORDER BY posts.posttime desc LIMIT $limit");
+        $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.u_id ORDER BY posts.posttime desc LIMIT $limit");
         $statement->execute();
         $result = $statement->fetchAll();
-        //$result = array_slice($result, -20, 20, true);
+        
         return $result;
 
     }
@@ -86,17 +86,28 @@ class Post {
 
         $PDO = Db::getInstance();
         $p_user = $_GET['user'];
-        $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id WHERE users.username = :user LIMIT 10");
+        $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.u_id WHERE users.username = :user LIMIT 10");
         $statement->bindValue(":user", $p_user);
         $statement->execute();
         $result = $statement->fetchAll();
         return $result;
 
     }
+    
+    public function DisplayPicture(){
+
+        $PDO = Db::getInstance();
+        $p_post = $_GET['post'];
+        $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.u_id WHERE posts.p_id = :post LIMIT 10");
+        $statement->bindValue(":post", $p_post);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        return $result;
+    }
 
     public function search() {
         $PDO = Db::getInstance();
-        $statement = $PDO-> prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.id WHERE description LIKE '%" . $_SESSION['search']  . "%'");
+        $statement = $PDO-> prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.u_id WHERE description LIKE '%" . $_SESSION['search']  . "%'");
         $statement->execute();
         $result = $statement->fetchAll();
         return $result;
