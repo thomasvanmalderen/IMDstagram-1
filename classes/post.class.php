@@ -136,7 +136,7 @@ class Post {
         $PDO = Db::getInstance();
         $limit =20;
 
-        $statement = $PDO->prepare("SELECT * FROM posts JOIN users ON users.u_id = posts.idUser JOIN follows ON follows.idFollowed = posts.idUser WHERE follows.idFollowing = " . $_SESSION['u_id'] . " ORDER BY posts.posttime desc LIMIT $limit");
+        $statement = $PDO->prepare("SELECT * FROM posts JOIN users ON users.u_id = posts.idUser JOIN follows ON follows.idFollowed = posts.idUser WHERE follows.idFollowing = " . $_SESSION['u_id'] . " OR posts.idUser = " . $_SESSION['u_id']  . " ORDER BY posts.posttime desc LIMIT $limit");
         $statement->execute();
 
         $result = $statement->fetchAll();
