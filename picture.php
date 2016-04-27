@@ -12,12 +12,14 @@ include_once("classes/db.class.php");
 include_once("classes/user.class.php");
 include_once("classes/post.class.php");
 include_once("classes/Helper.class.php");
+include_once("classes/Like.class.php");
 
 // AUTHENTICATE USER
 $user = new User();
 if($user->Authenticate()){
     $post = new Post();
     $d_post  =new Post();
+    $like = New Like();
 } else {
     header('Location: login.php');
 }
@@ -38,6 +40,20 @@ if(!empty($_POST["delete"])) {
 
 }
 
+if(!empty($_POST["like"])) {
+    if ($_POST['like'] === "like") {
+        $like->doLike($_POST['postval']);
+        //header("Location: index.php");
+        //var_dump($_GET['post']);
+    }
+}
+
+if(!empty($_POST["unlike"])) {
+    if ($_POST['unlike'] === "unlike") {
+        $like->doUnlike($_POST['postval']);
+
+    }
+}
 
 
 
@@ -81,7 +97,22 @@ if(!empty($_POST["delete"])) {
             <img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" >
             <div class="postdescription">
                 <p><a href="profile.php?user=<?php echo $p['username']; ?>" class="postprofile"><?php echo $p['username'];?> </a><?php echo $p['description'];?></p>
-
+                <?php if($like->didLike($p['p_id']) == true){?>
+                    <form action="" method="post">
+                        <input type="hidden" name="unlike" value="unlike">
+                        <input type="hidden" name="postval" value="<?php echo $p['p_id'];?>">
+                        <img src="images/liked-icon.png" alt="Liked">
+                        <input style="background-color: #B44A58;" id="unlike"  type="submit" name="btnunLike" class="followinput" value="Unlike"/>
+                    </form>
+                <?php } elseif($like->didLike($p['p_id']) == false){?>
+                    <form action="" method="post">
+                        <input type="hidden" name="like" value="like">
+                        <input type="hidden" name="postval" value="<?php echo $p['p_id'];?>">
+                        <img src="images/like-icon.png" alt="Not liked">
+                        <input id="like"  type="submit" name="btnLike" class="followinput" value="Like"/>
+                    </form>
+                <?php } ?>
+                <?php echo $like->getLikes($p['p_id']) . " Likes"; ?>
             </div>
         </article>
 <?php endforeach; ?>

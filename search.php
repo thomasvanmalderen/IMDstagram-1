@@ -13,11 +13,13 @@ include_once("classes/db.class.php");
 include_once("classes/user.class.php");
 include_once("classes/post.class.php");
 include_once("classes/Helper.class.php");
+include_once("classes/Like.class.php");
 
 // AUTHENTICATE USER
 $user = new User();
 if($user->Authenticate()){
     $post = new Post();
+    $like = New Like();
 } else {
     header('Location: login.php');
 }
@@ -61,6 +63,7 @@ $post = $post->search();
             <a href="picture.php?post=<?php echo $p['p_id']; ?>"><img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" ></a>
             <div class="postdescription">
                 <p><a href="profile.php?user=<?php echo $p['username']; ?>" class="postprofile"><?php echo $p['username'];?> </a><?php echo $p['description'];?></p>
+                <?php echo $like->getLikes($p['p_id']) . " Likes"; ?>
             </div>
         </article>
     <?php endforeach; ?>

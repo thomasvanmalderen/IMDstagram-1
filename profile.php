@@ -13,6 +13,7 @@
     include_once("classes/user.class.php");
     include_once("classes/post.class.php");
     include_once("classes/follow.class.php");
+    include_once("classes/Like.class.php");
 
     // AUTHENTICATE USER
     $user = new User();
