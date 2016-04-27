@@ -107,8 +107,7 @@ class Post {
         $result = $statement->fetchAll();
         return $result;
     }
-<<<<<<< HEAD
-=======
+
 
     public function removePicture($userid) {
         $PDO = Db::getInstance();
@@ -116,7 +115,7 @@ class Post {
         $statement->execute();
 
     }
->>>>>>> RobinN
+
 
     public function search() {
         $PDO = Db::getInstance();
@@ -130,13 +129,13 @@ class Post {
         $limit = $limit + 3;
     }
     
-<<<<<<< HEAD
+
     public function timeago($postresult){
         
     }
-=======
 
->>>>>>> RobinN
+
+
 }
 
 ?>

@@ -75,11 +75,7 @@
             <article id="post">
 
                 <a href="picture.php?post=<?php echo $p['p_id']; ?>"><img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" ></a>
-<<<<<<< HEAD
 
-=======
-                
->>>>>>> RobinN
             </article>
         <?php endforeach; ?>
 

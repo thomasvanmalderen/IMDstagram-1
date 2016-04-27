@@ -77,19 +77,8 @@
     <div class="postinfo">
         <a href="profile.php?user=<?php echo $p['username']; ?>"><img src="<?php echo $p['avatar']; ?>" alt="<?php echo $p['avatar']; ?>" class="avatar-small"></a>
     <p><a href="profile.php?user=<?php echo $p['username']; ?>" class="postusername"><?php echo $p['username']; ?></a></p>
-<<<<<<< HEAD
-        <p><?php if(time("Y-m-d H:i:sa") - strtotime($p['posttime']) < 60){
-                        echo 'just now';
-                    } elseif( time("Y-m-d H:i:sa") - strtotime($p['posttime']) < 3600){
-                        echo floor((time("Y-m-d H:i:sa") - strtotime($p['posttime']))/ 60) . 'mins ago';
-                    } elseif( time("Y-m-d H:i:sa") - strtotime($p['posttime']) < 86400){
-                        echo floor((time("Y-m-d H:i:sa") - strtotime($p['posttime']))/ 3600) . 'hrs ago';
-                    } else{
-                        echo floor((time("Y-m-d H:i:sa") - strtotime($p['posttime']))/ 86400) . 'days ago';
-} ?></p>
-=======
         <p><?php Helper::timeAgo($p['posttime']); ?></p>
->>>>>>> RobinN
+
     </div>
     <a href="picture.php?post=<?php echo $p['p_id']; ?>"><img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" ></a>
     <div class="postdescription">
