@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Gegenereerd op: 26 apr 2016 om 15:41
+-- Gegenereerd op: 27 apr 2016 om 11:31
 -- Serverversie: 5.5.42
 -- PHP-versie: 7.0.0
 
@@ -13,6 +13,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_imdstagram`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `Follows`
+--
+
+DROP TABLE IF EXISTS `Follows`;
+CREATE TABLE `Follows` (
+  `f_id` int(11) unsigned NOT NULL,
+  `idFollowing` int(11) NOT NULL,
+  `idFollowed` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `Follows`
+--
+
+INSERT INTO `Follows` (`f_id`, `idFollowing`, `idFollowed`) VALUES
+  (1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -85,6 +105,12 @@ INSERT INTO `Users` (`u_id`, `username`, `firstname`, `lastname`, `email`, `pass
 --
 
 --
+-- Indexen voor tabel `Follows`
+--
+ALTER TABLE `Follows`
+ADD PRIMARY KEY (`f_id`);
+
+--
 -- Indexen voor tabel `Posts`
 --
 ALTER TABLE `Posts`
@@ -100,6 +126,11 @@ ADD PRIMARY KEY (`u_id`);
 -- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
+--
+-- AUTO_INCREMENT voor een tabel `Follows`
+--
+ALTER TABLE `Follows`
+MODIFY `f_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT voor een tabel `Posts`
 --
