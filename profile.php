@@ -12,11 +12,13 @@
     include_once("classes/db.class.php");
     include_once("classes/user.class.php");
     include_once("classes/post.class.php");
+    include_once("classes/follow.class.php");
 
     // AUTHENTICATE USER
     $user = new User();
     if($user->Authenticate()){
         $post = new Post();
+        $follow = new Follow();
 
     } else {
         header('Location: login.php');
@@ -24,9 +26,33 @@
 
     $user = $user->getProfileInfo();
     //$user->getAllInfo();
-
+    //var_dump($user[0]['u_id']);
 
     $post = $post->displayUserPosts();
+
+    $follow->Following = $_SESSION['u_id'];
+    $follow->Followed = $user[0]['u_id'];
+
+    /*if( $follow->isFollowing()){
+        $kak = true;
+    } else {
+        $kak = false;
+    }*/
+
+    if(!empty($_POST["follow"])) {
+        if ($_POST['follow'] === "follow") {
+            $follow->doFollow();
+            //header("Location: index.php");
+            //var_dump($_GET['post']);
+        }
+    }
+
+    if(!empty($_POST["unfollow"])) {
+        if ($_POST['unfollow'] === "unfollow") {
+            $follow->doUnfollow();
+
+        }
+    }
 
     
 
@@ -60,7 +86,18 @@
                         <a href="changeProfile.php">Edit Profile</a>
                         <br>
                         <a href="logout.php" id="editprofile">Log out </a>
-                    <?php }?>
+                    <?php } elseif($follow->isFollowing()) {?>
+                        <form action="" method="post">
+                            <input type="hidden" name="unfollow" value="unfollow">
+                            <input style="background-color: #B44A58;" type="submit" name="btnunFollow" class="followinput" value="Unfollow"/>
+                        </form>
+
+                    <?php } elseif($follow->isFollowing() == false) {?>
+                        <form action="" method="post">
+                            <input type="hidden" name="follow" value="follow">
+                            <input type="submit" name="btnFollow" class="followinput" value="Follow"/>
+                        </form>
+                    <?php } ?>
                 </div>
 
                 <br>

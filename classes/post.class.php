@@ -109,10 +109,12 @@ class Post {
     }
 
 
-    public function removePicture($userid) {
+    public function removePicture() {
         $PDO = Db::getInstance();
-        $statement = $PDO-> prepare("DELETE FROM posts WHERE p_id = $userid");
+        $statement = $PDO-> prepare("DELETE FROM posts WHERE p_id = " . $_GET['post']);
         $statement->execute();
+        $result = $statement->fetchAll();
+        return $result;
 
     }
 
@@ -125,9 +127,9 @@ class Post {
         return $result;
     }
     
-    public function loadmore(){
+    /*public function loadmore(){
         $limit = $limit + 3;
-    }
+    }*/
     
 
     public function timeago($postresult){
