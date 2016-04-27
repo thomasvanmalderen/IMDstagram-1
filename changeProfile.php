@@ -51,7 +51,7 @@
 
                     if($_POST['username'] == $_SESSION['username_'] && $_POST['email'] == $_SESSION['email']){
 
-                            $changer->Update();
+                        $changer->Update();
                         header('Location: profile.php?user=' . $_SESSION['username_']);
 
                     } elseif($_POST['username'] == $_SESSION['username_']) {
@@ -119,7 +119,7 @@
                         } else {
 
                             $changer->Update();
-                            header('Location: profile.php?user=' . $_SESSION['username_']);
+                            //header('Location: profile.php?user=' . $_SESSION['username_']);
                         }
                     } else {
                         if($changer->UsernameAvailable() || $changer->EmailAvailable()){
@@ -127,7 +127,7 @@
                         } else {
 
                             $changer->Update();
-                            header('Location: profile.php?user=' . $_SESSION['username_']);
+                            //header('Location: profile.php?user=' . $_SESSION['username_']);
                         }
                     }
                     

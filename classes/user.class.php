@@ -295,7 +295,7 @@
             $options = ['cost' => 12];
             $password = password_hash( $this->m_sPassword, PASSWORD_DEFAULT, $options );
             
-            $statement = $PDO->prepare('UPDATE Users SET username=:username, firstname=:firstname, lastname=:lastname, email=:email, password=:password, bio=:bio, avatar=:avatar WHERE id=' . $v_result);
+            $statement = $PDO->prepare('UPDATE Users SET username=:username, firstname=:firstname, lastname=:lastname, email=:email, password=:password, bio=:bio, avatar=:avatar WHERE u_id=' . $v_result);
             
             $statement->bindValue(":username", $this->m_sUsername);
             $statement->bindValue(":firstname", $this->m_sFirstname);
