@@ -32,7 +32,7 @@
 
     $user->getAllInfo();
 
-    $post = $post->displayAll();
+    $post = $post->displayPostsFollowing();
     //var_dump($post);
 
 ?><!doctype html>

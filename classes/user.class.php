@@ -255,7 +255,7 @@
 
 
 
-                if (!!$_FILES['avatar']['tmp_name']) // is the file uploaded yet?
+                if ($_FILES['avatar']['tmp_name']) // is the file uploaded yet?
                 {
                     $info = explode('.', strtolower($_FILES['avatar']['name'])); // whats the extension of the file
 

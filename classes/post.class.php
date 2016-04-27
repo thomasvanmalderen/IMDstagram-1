@@ -44,7 +44,7 @@ class Post {
         $allow = array("jpg", "jpeg", "gif", "png");
         $todir = 'images/posts/';
 
-        if ( !!$_FILES['pictures']['tmp_name'] ) // is the file uploaded yet?
+        if ( $_FILES['pictures']['tmp_name'] ) // is the file uploaded yet?
         {
             $info = explode('.', strtolower( $_FILES['pictures']['name']) ); // whats the extension of the file
 
@@ -79,7 +79,6 @@ class Post {
         $statement->execute();
 
         $result = $statement->fetchAll();
-        
         
         return $result;
 
@@ -130,10 +129,20 @@ class Post {
     /*public function loadmore(){
         $limit = $limit + 3;
     }*/
-    
 
-    public function timeago($postresult){
-        
+
+    public function displayPostsFollowing() {
+
+        $PDO = Db::getInstance();
+        $limit =20;
+
+        $statement = $PDO->prepare("SELECT * FROM posts JOIN users ON users.u_id = posts.idUser JOIN follows ON follows.idFollowed = posts.idUser WHERE follows.idFollowing = " . $_SESSION['u_id'] . " ORDER BY posts.posttime desc LIMIT $limit");
+        $statement->execute();
+
+        $result = $statement->fetchAll();
+
+        return $result;
+
     }
 
 
