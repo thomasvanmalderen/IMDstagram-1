@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Gegenereerd op: 27 apr 2016 om 11:31
+-- Gegenereerd op: 27 apr 2016 om 22:07
 -- Serverversie: 5.5.42
 -- PHP-versie: 7.0.0
 
@@ -25,14 +25,64 @@ CREATE TABLE `Follows` (
   `f_id` int(11) unsigned NOT NULL,
   `idFollowing` int(11) NOT NULL,
   `idFollowed` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `Follows`
 --
 
 INSERT INTO `Follows` (`f_id`, `idFollowing`, `idFollowed`) VALUES
-  (1, 1, 2);
+  (1, 1, 2),
+  (2, 10, 7),
+  (3, 10, 5),
+  (5, 10, 3),
+  (6, 10, 1),
+  (7, 1, 6),
+  (8, 8, 6),
+  (9, 8, 5),
+  (10, 10, 8),
+  (11, 5, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `Likes`
+--
+
+DROP TABLE IF EXISTS `Likes`;
+CREATE TABLE `Likes` (
+  `l_id` int(11) unsigned NOT NULL,
+  `likerID` int(11) NOT NULL,
+  `postLikedId` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `Likes`
+--
+
+INSERT INTO `Likes` (`l_id`, `likerID`, `postLikedId`) VALUES
+  (1, 2, 1),
+  (2, 3, 1),
+  (3, 2, 10),
+  (4, 3, 10),
+  (5, 5, 10),
+  (6, 1, 1),
+  (8, 5, 1),
+  (11, 1, 1),
+  (21, 1, 6),
+  (22, 1, 2),
+  (23, 10, 1),
+  (25, 10, 7),
+  (26, 10, 5),
+  (27, 8, 6),
+  (28, 8, 8),
+  (29, 8, 5),
+  (30, 8, 1),
+  (31, 10, 3),
+  (32, 10, 10),
+  (33, 10, 8),
+  (34, 5, 5),
+  (35, 5, 6);
 
 -- --------------------------------------------------------
 
@@ -48,7 +98,7 @@ CREATE TABLE `Posts` (
   `posttime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Report` int(5) NOT NULL,
   `idUser` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `Posts`
@@ -111,6 +161,12 @@ ALTER TABLE `Follows`
 ADD PRIMARY KEY (`f_id`);
 
 --
+-- Indexen voor tabel `Likes`
+--
+ALTER TABLE `Likes`
+ADD PRIMARY KEY (`l_id`);
+
+--
 -- Indexen voor tabel `Posts`
 --
 ALTER TABLE `Posts`
@@ -130,12 +186,17 @@ ADD PRIMARY KEY (`u_id`);
 -- AUTO_INCREMENT voor een tabel `Follows`
 --
 ALTER TABLE `Follows`
-MODIFY `f_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `f_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT voor een tabel `Likes`
+--
+ALTER TABLE `Likes`
+MODIFY `l_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT voor een tabel `Posts`
 --
 ALTER TABLE `Posts`
-MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT voor een tabel `Users`
 --
