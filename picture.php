@@ -17,7 +17,7 @@ include_once("classes/Helper.class.php");
 $user = new User();
 if($user->Authenticate()){
     $post = new Post();
-    $post2  =new Post();
+    $d_post  =new Post();
 } else {
     header('Location: login.php');
 }
@@ -31,7 +31,7 @@ $user->getAllInfo();
 
 if(!empty($_POST["delete"])) {
     if ($_POST['delete'] === "delete") {
-        $post->removePicture();
+        $d_post->removePicture();
         header("Location: index.php");
         //var_dump($_GET['post']);
     }

@@ -39,7 +39,6 @@ class Post {
 
     public function PostSaveImage() {
 
-        date_default_timezone_set("Europe/Brussels");
         $file_name = $_SESSION['username'] . "-" . time() . "-" .$_FILES['pictures']['name'];
         $allow = array("jpg", "jpeg", "gif", "png");
         $todir = 'images/posts/';
@@ -112,9 +111,6 @@ class Post {
         $PDO = Db::getInstance();
         $statement = $PDO-> prepare("DELETE FROM posts WHERE p_id = " . $_GET['post']);
         $statement->execute();
-        $result = $statement->fetchAll();
-        return $result;
-
     }
 
 
