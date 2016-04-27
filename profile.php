@@ -70,26 +70,28 @@
 
     <?php include_once("nav.inc.php") ?>
     <br>
-    <section id="postcenter">
+    <section class="postcenter">
         <?php if(isset($feedback)){; ?>
             <h1><?php $feedback; ?></h1>
         <?php }; ?>
-    <div id="profileavatar">
-    <img src="<?php echo $user[0]['avatar']; ?>" alt="<?php echo $user[0]['avatar']; ?>" class="avatar-profile">
-    </div>
-        <div id="profileinfo">
-            <div id="profilelinks">
+                <div id="profileavatar">
+                <img src="<?php echo $user[0]['avatar']; ?>" alt="<?php echo $user[0]['avatar']; ?>" class="avatar-profile">
+                </div>
 
                 <br>
-                <div>
+                <div id="profiletop">
+                    <div id="profileright">
                     <?php if($_GET['user'] == $_SESSION['username_']) {?>
+                        <div class="proflinks">
                         <a href="changeProfile.php">Edit Profile</a>
                         <br>
-                        <a href="logout.php" id="editprofile">Log out </a>
+                        <a href="logout.php" id="editprofile">Log out&nbsp</a>
+
+
                     <?php } elseif($follow->isFollowing()) {?>
                         <form action="" method="post">
                             <input type="hidden" name="unfollow" value="unfollow">
-                            <input style="background-color: #B44A58;" type="submit" name="btnunFollow" class="followinput" value="Unfollow"/>
+                            <input id="unfollow"  type="submit" name="btnunFollow" class="followinput" value="Unfollow"/>
                         </form>
 
                     <?php } elseif($follow->isFollowing() == false) {?>
@@ -98,18 +100,19 @@
                             <input type="submit" name="btnFollow" class="followinput" value="Follow"/>
                         </form>
                     <?php } ?>
+                        </div>
+                    <div class="profileinfo">
+                                <h2 id="username"><?php echo $user[0]['username']; ?></h2>
+                                <div id="info">
+                                    <p id="info-name"><?php echo $user[0]['firstname'] . " " . $user[0]['lastname'] ?></p>
+                                    <p id="info-bio"><?php echo $user[0]['bio']; ?></p>
+                                </div>
+                            </div>
+                            </div>
                 </div>
 
-                <br>
-                </div>
-    <h2 id="username"><?php echo $user[0]['username']; ?></h2>
-            <div id="info">
-    <p id="info-name"><?php echo $user[0]['firstname'] . " " . $user[0]['lastname'] ?></p>
-    <p id="info-bio"><?php echo $user[0]['bio']; ?></p>
-            </div>
-        </div>
         <?php foreach($post as $p): ?>
-            <article id="post">
+            <article class="profilepost">
 
                 <a href="picture.php?post=<?php echo $p['p_id']; ?>"><img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" ></a>
 

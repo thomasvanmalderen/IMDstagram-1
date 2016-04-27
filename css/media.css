@@ -6,6 +6,10 @@
      
     }
     
+    #logo{
+        margin-bottom: 50px;
+    }
+    
     #center{
         width: 60%;
         background-color: white;
@@ -97,7 +101,7 @@
     margin-top: 25px;
 }
     #profile{
-        margin-top: 35px;
+    margin-top: 35px;
     width: 10%; 
 
     }
@@ -107,7 +111,6 @@
     }
     
     #addpicture{
-        
         background-color: white;
         margin-bottom: 25px;
          border: 1px solid #DADADA;
@@ -141,13 +144,52 @@
         margin-left: 5%;
     }
     
-     input[type="text"]#uploadFile{
+     input[type="text"].uploadFile{
         background-color: #fff;
         width: 50%;
         margin-right: 5%;
         margin-left: 5%;
         float: left;
     }
+    
+    .changeavatar input[type="text"].uploadFile{
+        background-color: #FFF;
+        width: 50%;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    
+  input[type="submit"].deleteinput{
+    background-color: #B44A58;
+    width: 140px;
+    float: right;
+    right: 10px;
+    position: relative;
+
+}
+    #profileavatar{
+    width: 25%;
+    float: left;
+    margin-left: 10px;;
+    margin-top: 10px;
+}
+
+#profilelinks{
+    float: right;
+    text-align: right;
+    margin-right: 10px;
+    width: 15%;
+}
+
+
+
+.profileinfo{
+    width: 45%;
+}
+    
+    input[type="submit"].followinput{
+    width: 15%;
+}
  
 }
 @media only screen and (min-width: 870px){
@@ -167,7 +209,7 @@
     height: 150px;
     }
     
-    #postcenter{
+    .postcenter{
         width: 550px;
     }
 }
@@ -176,4 +218,9 @@
     input[type="text"]#search{
     width: 350px;
     }
+        
+    input[type="text"]#search:focus{
+    width: 340px;
+    }
+        
  }

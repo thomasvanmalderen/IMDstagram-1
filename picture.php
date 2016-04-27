@@ -55,18 +55,19 @@ if(!empty($_POST["delete"])) {
 
 <?php include_once("nav.inc.php") ?>
 <br>
-<section id="postcenter">
+<section class="postcenter">
     <?php if(isset($feedback)){; ?>
         <h1><?php $feedback; ?></h1>
     <?php }; ?>
 
 <?php foreach ($post as $p): ?>
 
-        <article id="post">
+        <article class="post">
             <div class="postinfo">
                 <a href="profile.php?user=<?php echo $p['username']; ?>"><img src="<?php echo $p['avatar']; ?>" alt="<?php echo $p['avatar']; ?>" class="avatar-small"></a>
                 <p><a href="profile.php?user=<?php echo $p['username']; ?>" class="postusername"><?php echo $p['username']; ?></a></p>
-                <p><?php Helper::timeAgo($p['posttime']); ?></p>
+                <p class="time"><?php Helper::timeAgo($p['posttime']); ?></p>
+
                 <?php if($p['username'] == $_SESSION['username_']){ ?>
                     <form action="" method="post">
                         <input type="hidden" name="delete" value="delete">
@@ -76,6 +77,7 @@ if(!empty($_POST["delete"])) {
 
                 <?php } ?>
             </div>
+
             <img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" >
             <div class="postdescription">
                 <p><a href="profile.php?user=<?php echo $p['username']; ?>" class="postprofile"><?php echo $p['username'];?> </a><?php echo $p['description'];?></p>

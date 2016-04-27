@@ -174,33 +174,47 @@
             <img src="<?php echo $_SESSION['avatar']; ?>" alt="<?php echo $_SESSION['username'] . " avatar"; ?>" class="avatar">
             <br>
             <div class="changeavatar">
-            <label for="file" class="profilelabel">Avatar</label>
-            <input type="file" name="avatar" id="avatar" class="profileinput" ?>
-            <br>
+                <div id="btnUp">
+                    <label class="myLabel">
+                        <input type="file" name="avatar" id="pictures"/>
+                        <span>Upload avatar</span>
+                    </label>
+                </div>
+                <input type="text" class="uploadFile" disabled="disabled"/>
             </div>
+            <div class="formulier">
             <label for="firstname" class="profilelabel">First name</label>
             <input type="text" name="firstname" id="firstname" class="profileinput" value="<?php echo $_SESSION['firstname']; ?>"/>
+            </div>
             <br>
+            <div class="formulier">
             <label for="lastname" class="profilelabel">Last name</label>
             <input type="text" name="lastname" id="lastname" class="profileinput" value="<?php echo $_SESSION['lastname']; ?>"/>
+            </div>
             <br>
+            <div class="formulier">
             <label for="username" class="profilelabel">Username</label>
                 <input type="text" name="username" id="username" class="profileinput" value="<?php echo $_SESSION['username_']; ?>"/>
+                </div>
             <br>
+            <div class="formulier">
             <label for="email" class="profilelabel">Email</label>
-                <input type="email" name="email" id="email" class="profileinput" value="<?php echo $_SESSION['email']; ?>"/>
+                <input type="email" name="email" id="email" class="profileinput" value="<?php echo $_SESSION['email']; ?>"/></div>
             <br>
+            <div class="formulier">
             <label for="new_password" class="profilelabel">New Password</label>
                 <input type="password" name="new_password" class="profileinput" placeholder="New password" id="new_password" />
+                </div>
             <br>
+            <div class="formulier">
             <label for="bio" class="profilelabel">Biography</label>
-                <input type="text" name="bio" id="bio" class="profileinput" value="<?php echo $_SESSION['bio']; ?>"/>
+                <input type="text" name="bio" id="bio" class="profileinput" value="<?php echo $_SESSION['bio']; ?>"/></div>
             <br>
             <br>
-
+<div id="oldpas">
             <label for="old_password" class="profilelabel">Type here your current password for validation</label>
             <input type="password" name="old_password" class="profileinput" placeholder="Current password" id="old_password">
-
+            </div>
 
             <input type="hidden" name="action" value="verander">
             <input type="submit" name="btnSignup" class="profileinput" value="Save changes"/>

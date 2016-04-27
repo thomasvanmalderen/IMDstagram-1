@@ -44,12 +44,12 @@ a{
     padding-top: 5px;
 }
 
-#postcenter{
+.postcenter{
     margin-right: auto;
     margin-left: auto;
     width: 80%;
     margin-top: 25px;
-    padding-bottom: 25px;
+    padding-bottom: 20px;
     color: black;
     padding-top: 5px;
 }
@@ -100,6 +100,7 @@ h3{
     background-repeat: no-repeat;
     text-indent: -99999px;
     margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 #logo-top{
@@ -189,6 +190,14 @@ input[type="submit"]{
     cursor: pointer;
 }
 
+#oldpas{
+    margin-top: 30px;
+}
+
+.formulier{
+    margin-bottom: 5px;
+}
+
 ::-webkit-input-placeholder{
     color: grey;
 }
@@ -249,19 +258,7 @@ div.usernameFeedback{
     border-radius: 100%
 }
 
-#profileavatar{
-    width: 25%;
-    float: left;
-}
 
-#profileinfo{
-    width: 75%;
-    float: right;
-}
-
-#profilelinks{
-    text-align: right;
-}
 
 .changeavatar{
     margin-top: 20px;
@@ -273,9 +270,11 @@ div.usernameFeedback{
     padding-top: 10px;
 }
 
-#info{
+/*#info{
     margin-bottom: 50px;
-}
+    width: 100%;
+    background-color: green;
+}*/
 
 #info-name{
     margin-bottom: 10px;
@@ -303,19 +302,23 @@ h2#username{
 }
 
 .postusername{
-    margin-top: 10px;
+    margin-top: 15px;
     margin-left: 15px;
     float: left;
     color: #1D557A;
 }
 
-#post{
+.post{
     background-color: white;
     margin-bottom: 20px;
-    margin-top: 20px;
     padding-bottom: 25px;
     padding-top: 25px;
     border: 1px solid #DADADA;
+}
+
+.profilepost{
+    margin-bottom: 20px;
+
 }
 
 .postprofile{
@@ -323,10 +326,6 @@ h2#username{
     margin-bottom: 10px;
 }
 
-.tags{
-    color: #1D557A;
-    margin-top: 10px;
-}
 .postdescription{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -338,11 +337,12 @@ h2#username{
 #addpicture{
     padding-bottom: 25px;
     padding-top: 25px;
+    margin-bottom: 25px;
    
 }
 
 #file{
-     margin-bottom: 10px;
+    margin-bottom: 10px;
     margin-right: 10%;
     margin-left: 10%;
 }
@@ -369,18 +369,18 @@ label.myLabel input[type="file"] {
 
 .myLabel {
     border-radius: 4px;
-    background: #4090DB;
+    background: #1D557A;
     display: inline-block;
     color: #fff;
     cursor: pointer;
     margin-left: 10%;
     width: 50%;
     padding: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     text-align: center;
 }
 
-input[type="text"]#uploadFile{
+input[type="text"].uploadFile{
     background-color: #FAFAFA;
     height: 35px;
     width: 80%;
@@ -389,4 +389,68 @@ input[type="text"]#uploadFile{
     margin-left: 10%;
     padding-left: 2%;
     border: 0;
+    color: #4BAE4F;
+}
+
+.time{
+    float: right;
+    margin-top: 15px;
+}
+
+input[type="submit"].followinput{
+    float: right;
+    width: 35%;
+}
+
+#profiletop{
+    margin-bottom: 100px;
+    padding-bottom: 20px;
+    width: 100%;
+    
+}
+
+.profileinfo h2{
+    color: #1D557A; 
+    
+}
+
+#profileavatar{
+    width: 25%;
+    float: left;
+    margin-left: 10px;;
+    margin-top: 10px;
+}
+
+.proflinks{
+    float: right;
+    text-align: right;
+    margin-right: 10px;
+    width: 15%;
+    
+}
+
+.profileinfo{
+    float: left;
+    margin-top: 0px;
+    margin-bottom: 50px;
+    width: 50%;
+}
+
+#unfollow{
+    background-color: #B44A58;
+}
+
+#follow{
+    width: 90%;
+    text-align: right;
+    height: 32px;
+}
+
+input[type="submit"].deleteinput{
+    background-color: #B44A58;
+    width: 140px;;
+    float: right;
+    position: relative;
+    margin-right: 0;
+
 }
