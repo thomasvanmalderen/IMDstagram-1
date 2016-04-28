@@ -111,16 +111,19 @@
                             </div>
                             </div>
                 </div>
-
+        
+    </section>
+    <div class="ownposts">
         <?php foreach($post as $p): ?>
             <article class="profilepost">
 
-                <a href="picture.php?post=<?php echo $p['p_id']; ?>"><img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" ></a>
+                <a href="picture.php?post=<?php echo $p['p_id']; ?>">
+                    <img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" >
+                </a>
 
             </article>
         <?php endforeach; ?>
-
-    </section>
+    </div>
 
     </body>
     </html>

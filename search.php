@@ -32,6 +32,21 @@ if(!empty($_POST["search"])) {
 }
     
 $post = $post->search();
+
+if(!empty($_POST["like"])) {
+    if ($_POST['like'] === "like") {
+        $like->doLike($_POST['postval']);
+        //header("Location: index.php");
+        //var_dump($_GET['post']);
+    }
+}
+
+if(!empty($_POST["unlike"])) {
+    if ($_POST['unlike'] === "unlike") {
+        $like->doUnlike($_POST['postval']);
+
+    }
+}
     
 
 ?><!doctype html>

@@ -189,6 +189,32 @@
     .proflinks{
         width: 20%;
     }
+    .ownposts{
+        background-color: white;
+        border: 1px solid #DADADA;
+        border-radius: 5px;
+        width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 2.5%;
+
+    }
+
+    .ownposts article{
+        margin: 1%;
+    }
+
+    .ownposts article:hover{
+        transform: scale(1.05, 1.05);
+        transition-duration: 0.5s;
+
+    }
+    .ownposts article a img{
+        height: 200px;
+        width: auto;
+    }
  
 }
 @media only screen and (min-width: 870px){
