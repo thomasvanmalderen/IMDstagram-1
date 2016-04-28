@@ -245,17 +245,18 @@ div.usernameFeedback{
 }
 
 .avatar{
-    width: 25%;
-    height: 25%;
+    width: 75px;
+    height: 75px;
     border-radius: 100%;
     margin-right: 5%;
     float: right;
-    
+    background-size:cover;
 }
 
 .avatar-profile{
-    width: 80%; 
-    border-radius: 100%
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
 }
 
 
@@ -266,9 +267,6 @@ div.usernameFeedback{
     width: 65%;
 }
 
-#editprofile{
-    padding-top: 10px;
-}
 
 /*#info{
     margin-bottom: 50px;
@@ -296,9 +294,11 @@ h2#username{
 }
 
 .avatar-small{
-    width: 10%; 
+    width: 50px;
+    height: 50px;
     border-radius: 100%;
     float: left;
+    background-size: cover;
 }
 
 .postusername{
@@ -314,6 +314,7 @@ h2#username{
     padding-bottom: 25px;
     padding-top: 25px;
     border: 1px solid #DADADA;
+    border-radius: 5px;
 }
 
 .profilepost{
@@ -389,7 +390,6 @@ input[type="text"].uploadFile{
     margin-left: 10%;
     padding-left: 2%;
     border: 0;
-    color: #4BAE4F;
 }
 
 .time{
@@ -415,10 +415,13 @@ input[type="submit"].followinput{
 }
 
 #profileavatar{
-    width: 25%;
+    width: 75px;
+    height: 75px;
     float: left;
     margin-left: 10px;;
     margin-top: 10px;
+    background-size: cover;
+
 }
 
 .proflinks{
@@ -453,4 +456,74 @@ input[type="submit"].deleteinput{
     position: relative;
     margin-right: 0;
 
+}
+
+
+#unlike{
+    background-image: url(../images/liked-icon.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: contain;
+    width: 25px;
+    height: 25px;
+    margin: 5px 0px;
+    padding: 0;
+    float: left;
+}
+
+#like:hover{
+     background-image: url(../images/liked-icon.png);
+
+    
+}
+
+#like{
+    background-image: url(../images/like-icon.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: contain;
+    width: 25px;
+    height: 25px;
+    margin: 5px 0px;
+    padding: 0;
+    float: left;
+}
+
+#likes{
+    color: #1D557A;
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+#editprofile{
+    border: 1px solid #828282;
+    text-align: center;
+    padding: 5px 0px;
+    
+}
+
+#logout{
+    border: 1px solid #828282;
+    text-align: center;
+    padding: 5px 0px;
+
+}
+
+#editprofile:hover{
+    border: 1px solid #4B4F54;
+    
+    
+}
+
+#logout:hover{
+    border: 1px solid #4B4F54;
+     color: #4B4F54;
+}
+
+.proflinks a{
+    color: #828282;
+}
+
+.proflinks a:hover{
+    color: #4B4F54;
 }

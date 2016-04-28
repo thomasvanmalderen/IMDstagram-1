@@ -114,6 +114,7 @@
         background-color: white;
         margin-bottom: 25px;
          border: 1px solid #DADADA;
+        border-radius: 5px;
      
     }
     
@@ -152,12 +153,6 @@
         float: left;
     }
     
-    .changeavatar input[type="text"].uploadFile{
-        background-color: #FFF;
-        width: 50%;
-        margin-right: 5%;
-        margin-left: 5%;
-    }
     
   input[type="submit"].deleteinput{
     background-color: #B44A58;
@@ -168,7 +163,8 @@
 
 }
     #profileavatar{
-    width: 25%;
+    width: 100px;
+        height: 100px;
     float: left;
     margin-left: 10px;;
     margin-top: 10px;
@@ -190,6 +186,9 @@
     input[type="submit"].followinput{
     width: 15%;
 }
+    .proflinks{
+        width: 20%;
+    }
  
 }
 @media only screen and (min-width: 870px){
@@ -199,6 +198,11 @@
     background-size: 5%;
     }
     
+    #profileavatar{
+    width: 150px;
+        height: 150px;
+}
+    
     input[type="text"]#search:focus{
     padding-left: 30px;
     width: 240px;
@@ -207,6 +211,11 @@
        .avatar{
     width: 150px;
     height: 150px;
+    }
+    
+    .avatar-profile{
+        width: 100px;
+        height: 100px;
     }
     
     .postcenter{

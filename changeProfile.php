@@ -87,7 +87,7 @@
 
 
                     
-                } elseif( !empty($_POST["firstname"]) || !empty($_POST["lastname"]) || !empty($_POST["username"]) || !empty($_POST["email"]) || !empty($_POST["avatar"]) ) {
+                } elseif( !empty($_POST["firstname"]) || !empty($_POST["lastname"]) || !empty($_POST["username"]) || !empty($_POST["email"]) || !empty($_FILES["avatar"]) ) {
                     
                     
                     // SOME FIELDS LEFT EMPTY
@@ -176,7 +176,7 @@
             <div class="changeavatar">
                 <div id="btnUp">
                     <label class="myLabel">
-                        <input type="file" name="avatar" id="pictures"/>
+                        <input type="file" name="avatar" class="pictures"/>
                         <span>Upload avatar</span>
                     </label>
                 </div>

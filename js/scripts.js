@@ -1,9 +1,11 @@
 $(document).ready(function(){
     
-    $("#pictures").on("change", function(){
-        var upload = $("#pictures").val();
-        $("#uploadFile").val(upload);
+    $(".pictures").on("change", function(){
+        var upload = $(".pictures").val();
+        $(".uploadFile").val(upload);
     }); 
+    
+    // ajax voor username check
     
     $("#username").on("keyup", function(e) {
          "use strict";
@@ -12,7 +14,6 @@ $(document).ready(function(){
         $(".usernameFeedback").show();
          
  
-         // Ajax call: verzenden naar php bestand om query uit te voeren
          $.post("ajax/check_username.php", {username: username})
              .done(function( response ){
                $('.usernameFeedback').text(response.message);
@@ -30,4 +31,28 @@ $(document).ready(function(){
              }
              });
      })
+    
+    //ajax like post
+   /* 
+    $("#like").on("click", function(e){
+        $.post("ajax/like.php").done(function(response){
+            $('#unlike').show();
+            $('#like').hide();
+            
+        });
+       e.preventDefault();
+    });
+    
+    
+    $("#unlike").on("click", function(e){
+        $.post("ajax/like.php").done(function(response){
+            
+            $('#like').show();
+           $('#unlike').hide();
+            
+        });
+        e.preventDefault();
+    });
+           
+*/
  }); 

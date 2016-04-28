@@ -63,7 +63,22 @@ $post = $post->search();
             <a href="picture.php?post=<?php echo $p['p_id']; ?>"><img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" ></a>
             <div class="postdescription">
                 <p><a href="profile.php?user=<?php echo $p['username']; ?>" class="postprofile"><?php echo $p['username'];?> </a><?php echo $p['description'];?></p>
-                <?php echo $like->getLikes($p['p_id']) . " Likes"; ?>
+
+                <?php if($like->didLike($p['p_id']) == true){?>
+                    <form action="" method="post">
+                        <input type="hidden" name="unlike" value="unlike">
+                        <input type="hidden" name="postval" value="<?php echo $p['p_id'];?>">
+                        <input id="unlike"  type="submit" name="btnunLike" value=""/>
+                    </form>
+                <?php } elseif($like->didLike($p['p_id']) == false){?>
+                    <form action="" method="post">
+                        <input type="hidden" name="like" value="like">
+                        <input type="hidden" name="postval" value="<?php echo $p['p_id'];?>">
+                        <input id="like"  type="submit" name="btnLike" value=""/>
+                    </form>
+                <?php } ?>
+                <p id="likes"><?php echo $like->getLikes($p['p_id']) . " Likes"; ?></p>
+
             </div>
         </article>
     <?php endforeach; ?>
