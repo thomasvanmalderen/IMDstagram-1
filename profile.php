@@ -84,9 +84,9 @@
                     <div id="profileright">
                     <?php if($_GET['user'] == $_SESSION['username_']) {?>
                         <div class="proflinks">
-                        <div id="editprofile"><a href="changeProfile.php">Edit Profile</a></div>
+                            <a href="changeProfile.php"><div id="editprofile">Edit Profile</div></a>
                         <br>
-                        <div id="logout"><a href="logout.php" ">Log out</a></div>
+                            <a href="logout.php" "><div id="logout">Log out</div></a>
 
 
                     <?php } elseif($follow->isFollowing()) {?>
