@@ -14,6 +14,7 @@
     include_once("classes/post.class.php");
     include_once("classes/Helper.class.php");
     include_once("classes/Like.class.php");
+    include_once("classes/Comment.class.php");
     
     // AUTHENTICATE USER
     $user = new User();
@@ -32,10 +33,16 @@
     }
 
 
+
+
     $user->getAllInfo();
 
     $post = $post->displayPostsFollowing();
     //var_dump($post);
+/*
+if(!empty($_POST["load"])) {
+    $post->loadmore();
+}*/
 
 if(!empty($_POST["like"])) {
     if ($_POST['like'] === "like") {
@@ -52,6 +59,19 @@ if(!empty($_POST["unlike"])) {
     }
 }
 
+/*$comment = new Comment();
+$comment->getPostInfo();
+//controleer of er een update wordt verzonden
+if(!empty($_POST['comment']))
+{
+    $comment->Comment = $_POST['comment'];
+    $comment->SaveComment();
+}
+
+//altijd alle laatste comments ophalen
+$comments = $comment->GetComments();
+    var_dump($comments);*/
+
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -63,6 +83,20 @@ if(!empty($_POST["unlike"])) {
     <link rel="favicon" href="favicon.ico">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript"> $(function() {
+            $('.more_button').live("click",function() {
+                var getId = $(this).attr("id");
+                if(getId) {
+                    $("#load_more_"+getId).html('<img src="load_img.gif" style="padding:10px 0 0 100px;"/>');
+                    $.ajax({ type: "POST", url: "ajax/loadmore.php", data: "getLastContentId="+ getId, cache: false, success: function(html){
+                        $("ul#load_more_ctnt").append(html); $("#load_more_"+getId).remove(); } }); }
+                else { $(".more_tab").html('The End');
+                }
+                return false;
+            });
+        });
+    </script>
+
 </head>
 
 <body>
@@ -119,8 +153,36 @@ if(!empty($_POST["unlike"])) {
         <p id="likes"><?php echo $like->getLikes($p['p_id']) . " Likes"; ?></p>
 
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!--<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+        <div class="comments">
+            <input type="text" id="comment" name="comment" />
+            <input id="btnSubmit" type="submit" value="Share" />
+
+            <ul id="listupdates">
+                <?php
+                echo "<p class='postprofile'>username</p> ". $comments[0] ."";
+                if(count($comments) > 0)
+                {
+                    foreach($comments as $key=>$c)
+                    {
+                        echo "<li><p class='postprofile'>Username</p> ". $c['comment'] ."</li>";
+                    }
+                }
+                ?>
+            </ul>
+
+        </div>
+    </form>-->
 </article>
 <?php endforeach; ?>
+    <div class="more_div"><a href="#"><div id="load_more_<?php echo $id; ?>" class="more_tab">
+                <div class="more_button" id="<?php echo $id; ?>">Load More Content</div></a></div> -
+
 </section>
+
 </body>
 </html>

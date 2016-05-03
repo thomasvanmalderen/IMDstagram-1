@@ -13,6 +13,7 @@ include_once("classes/user.class.php");
 include_once("classes/post.class.php");
 include_once("classes/Helper.class.php");
 include_once("classes/Like.class.php");
+include_once("classes/Comment.class.php");
 
 // AUTHENTICATE USER
 $user = new User();
@@ -55,7 +56,17 @@ if(!empty($_POST["unlike"])) {
     }
 }
 
+$comment = new Comment();
+//controleer of er een update wordt verzonden
+if(!empty($_POST['comment']))
+{
+    $comment->Comment = $_POST['comment'];
+    $comment->PostID = $_GET['post'];
+    $comment->SaveComment();
+}
 
+//altijd alle laatste comments ophalen
+$comments = $comment->GetComments();
 
 ?><!doctype html>
 <html lang="en">
@@ -113,6 +124,21 @@ if(!empty($_POST["unlike"])) {
                 <?php } ?>
                 <p id="likes"><?php echo $like->getLikes($p['p_id']) . " Likes"; ?></p>
 
+            </div>
+
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+                <div class="comments">
+                    <input type="text" id="comment" name="comment" />
+                    <input id="btnSubmit" type="submit" value="Share" />
+
+                </div>
+            </form>
+            <div class="displaycomments">
+            <?php foreach($comments as $c): ?>
+                <div id="displaycomment">
+                <p><a href="profile.php?user=<?php echo $c['username']; ?>" class="postprofile"><?php echo $c['username'] ?></a> <?php echo "&nbsp;" . $c["comment"] ?></p>
+                    </div>
+            <?php endforeach; ?>
             </div>
         </article>
 <?php endforeach; ?>

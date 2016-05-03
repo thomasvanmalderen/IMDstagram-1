@@ -335,6 +335,19 @@ h2#username{
     margin-right: auto;
 }
 
+.displaycomments{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#displaycomment{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 #addpicture{
     padding-bottom: 25px;
     padding-top: 25px;
@@ -527,3 +540,4 @@ input[type="submit"].deleteinput{
 .proflinks a:hover{
     color: #4B4F54;
 }
+
