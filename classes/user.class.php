@@ -13,6 +13,7 @@
         private $m_sBio;
         private $m_sPassword;
         private $m_sAvatar;
+        private $m_sAccount;
         
         
         // SETTER FUNCTION
@@ -39,6 +40,9 @@
                     break;
                 case "Avatar":
                     $this->m_sAvatar = $p_vValue;
+                    break;
+                case "Account":
+                    $this->m_sAccount = $p_vValue;
                     break;
             }
         }
@@ -67,6 +71,9 @@
                     break;
                 case "Avatar":
                     return $this->m_sAvatar;
+                    break;
+                case "Account":
+                    return $this->m_sAccount;
                     break;
             }
         }
@@ -237,8 +244,9 @@
             $_SESSION['firstname'] = $result[2];
             $_SESSION['lastname'] = $result[3];
             $_SESSION['email'] = $result[4];
-            $_SESSION['avatar'] = $result[6];
-            $_SESSION['bio'] = $result[7];
+            $_SESSION['account'] = $result[6];
+            $_SESSION['avatar'] = $result[7];
+            $_SESSION['bio'] = $result[8];
         }
         
         // CHANGE USER INFO FUNCTION
@@ -287,7 +295,7 @@
             $options = ['cost' => 12];
             $password = password_hash( $this->m_sPassword, PASSWORD_DEFAULT, $options );
             
-            $statement = $PDO->prepare('UPDATE Users SET username=:username, firstname=:firstname, lastname=:lastname, email=:email, password=:password, bio=:bio, avatar=:avatar WHERE u_id=' . $v_result);
+            $statement = $PDO->prepare('UPDATE Users SET username=:username, firstname=:firstname, lastname=:lastname, email=:email, password=:password, account=:account, bio=:bio, avatar=:avatar WHERE u_id=' . $v_result);
             
             $statement->bindValue(":username", $this->m_sUsername);
             $statement->bindValue(":firstname", $this->m_sFirstname);
@@ -296,6 +304,7 @@
             $statement->bindValue(":bio", $this->m_sBio);
             $statement->bindValue(":avatar", $this->m_sAvatar);
             $statement->bindValue(":password", $password);
+            $statement->bindValue(":account", $this->m_sAccount);
 
 
             $feedback = "Settings saved!";

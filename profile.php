@@ -42,7 +42,7 @@
 
     if(!empty($_POST["follow"])) {
         if ($_POST['follow'] === "follow") {
-            $follow->doFollow();
+            $follow->requestFollow();
             //header("Location: index.php");
             //var_dump($_GET['post']);
         }
@@ -114,6 +114,7 @@
         
     </section>
     <div class="ownposts">
+        <?php if($user[0]['username'] == "public") {?>
         <?php foreach($post as $p): ?>
             <article class="profilepost">
 
@@ -123,6 +124,21 @@
 
             </article>
         <?php endforeach; ?>
+        <?php } else {?>
+        <?php if($_GET['user'] == $_SESSION['username_'] || $follow->isFollowing()) {?>
+        <?php foreach($post as $p): ?>
+            <article class="profilepost">
+
+                <a href="picture.php?post=<?php echo $p['p_id']; ?>">
+                    <img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" >
+                </a>
+
+            </article>
+        <?php endforeach; ?>
+        <?php } elseif($follow->isFollowing() == false) {?>
+            <h3>Sorry, Je kan de posts van deze user niet zien omdat dit account privaat is. Stuur deze persoon een follow request om hem/haar te volgen.</h3>
+        <?php } ?>
+        <?php } ?>
     </div>
 
     </body>

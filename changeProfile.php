@@ -38,6 +38,7 @@
                     $changer->Username = $_POST["username"];
                     $changer->Email = $_POST["email"];
                     $changer->Bio = $_POST["bio"];
+                    $changer->Account = $_POST["account"];
                     
                     
                     if(empty($_POST['new_password'])){
@@ -97,6 +98,7 @@
                     $changer->Username = $_POST["username"];
                     $changer->Email = $_POST["email"];
                     $changer->Bio = $_POST["bio"];
+                    $changer->Account = $_POST["account"];
 
                     if ($_FILES["avatar"]['name'] == "") {
                         $changer->Avatar = $_SESSION["avatar"];
@@ -189,6 +191,12 @@
             <div class="formulier">
             <label for="lastname" class="profilelabel">Last name</label>
             <input type="text" name="lastname" id="lastname" class="profileinput" value="<?php echo $_SESSION['lastname']; ?>"/>
+            </div>
+            <br>
+            <div class="formulier">
+                <label for="account" class="profilelabel">Account visibility</label><br>
+                <input type="radio" name="account" value="public">Public(Everyone can see your account)<br>
+                <input type="radio" name="account" value="private">Private(Only followers can see your account)<br>
             </div>
             <br>
             <div class="formulier">

@@ -48,6 +48,41 @@
             }
         }
 
+        public function requestFollow(){
+
+            $PDO = Db::getInstance();
+            $statement = $PDO->prepare("INSERT into Followrequests (FollowingId, FollowedId) VALUES (:idFollowing, :idFollowed)");
+            $statement->bindValue(":idFollowing", $this->m_iFollowingId);
+            $statement->bindValue(":idFollowed", $this->m_iFollowedId);
+            $statement->execute();
+
+        }
+
+        public function getFollowRequests(){
+
+            $PDO = Db::getInstance();
+            $statement = $PDO->prepare("SELECT * FROM Followrequests LEFT JOIN Users ON Users.u_id = Followrequests.FollowingId WHERE FollowedId = :idFollowed AND accepted = 'no'");
+            $statement->bindValue(":idFollowed", $this->m_iFollowedId);
+            $statement->execute();
+
+            $result = $statement->fetchAll();
+            return $result;
+
+        }
+
+        public function acceptFollowRequest(){
+
+            $PDO = Db::getInstance();
+            $statement = $PDO->prepare("UPDATE Followrequests WHERE FollowedId = :idFollowed AND FollowingId = :idFollowing");
+            $statement->bindValue(":idFollowed", $this->m_iFollowedId);
+            $statement->bindValue(":idFollowing", $this->m_iFollowingId);
+            $statement->execute();
+
+            $result = $statement->fetchAll();
+            return $result;
+
+        }
+
         public function doFollow(){
 
             $PDO = Db::getInstance();
