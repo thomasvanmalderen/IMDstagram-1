@@ -47,7 +47,7 @@
                         $_SESSION['password'] = $_POST['new_password'];
                     }
 
-                    $changer->Avatar = $_FILES["avatar"];
+                        $changer->Avatar = $_FILES["avatar"];
 
                     if($_POST['username'] == $_SESSION['username_'] && $_POST['email'] == $_SESSION['email']){
 
@@ -102,8 +102,7 @@
                         $changer->Avatar = $_SESSION["avatar"];
                     }
                     else {
-
-                        $changer->Avatar = $_FILES["avatar"];
+                                $changer->Avatar = $_FILES["avatar"];
                     }
                     
                     if(empty($_POST['new_password'])){

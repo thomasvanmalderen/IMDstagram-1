@@ -250,44 +250,36 @@
             $result = $query->fetch( PDO::FETCH_OBJ );
             $v_result = $result->u_id;
 
-            $allow = array("jpg", "jpeg", "png");
             $todir = 'images/avatars/';
+            $ext = strtolower(end(explode('.',$_FILES['avatar']['name'])));
 
-
-
-                if ($_FILES['avatar']['tmp_name']) // is the file uploaded yet?
-                {
-                    $info = explode('.', strtolower($_FILES['avatar']['name'])); // whats the extension of the file
-
-                    if (in_array(end($info), $allow)) // is this file allowed
-                    {
-
-                        $file_name = $_SESSION['username'] . "-" . time() . "-" . $_FILES['avatar']['name'];
-
-                        if (move_uploaded_file($_FILES['avatar']['tmp_name'], $todir . basename($file_name))) {
-
+            if ($_FILES["avatar"]["size"] < 2097152) {
+                if (($ext == "jpg" || $ext == "jpeg" || $ext == "png" || $ext == "gif")) {
+                    $newname = $_SESSION['username'] . "-" . time() . "-" . $_FILES['avatar']['name'];
+                    if (!file_exists($todir . $newname)) {
+                        if ((move_uploaded_file($_FILES['avatar']['tmp_name'], $todir . $newname))) {
+                            //file is uploaded
+                        } else {
+                            echo "Error: A problem occurred during file upload!";
                         }
-
-
-                    } else {
-                        echo "<p>Your file isn't a \"jpg\", \"jpeg\" or a \"png\</p> <br>";
                     }
                 }
+            }
 
 
             $this->getAllInfo();
 
             if( $_FILES['avatar']['name'] == ""){
-                echo "gebruik session";
+                echo "Using session";
                 $this->m_sAvatar = $_SESSION['avatar'];
 
             } else {
-                if ($_FILES["avatar"]["size"] > 500000) {
+                if ($_FILES["avatar"]["size"] > 2097152 ) {
                     echo "Sorry, your file is too large.";
                     $this->m_sAvatar = $_SESSION['avatar'];
                 } else {
-                    echo "nieuwe file";
-                    $this->m_sAvatar = $todir . $file_name;
+                    echo "New file";
+                    $this->m_sAvatar = $todir . $newname;
                 }
             }
 

@@ -39,34 +39,46 @@ class Post {
 
     public function PostSaveImage() {
 
-        $file_name = $_SESSION['username'] . "-" . time() . "-" .$_FILES['pictures']['name'];
-        $allow = array("jpg", "jpeg", "gif", "png");
         $todir = 'images/posts/';
+        $ext = strtolower(end(explode('.',$_FILES['pictures']['name'])));
 
-        if ( $_FILES['pictures']['tmp_name'] ) // is the file uploaded yet?
-        {
-            $info = explode('.', strtolower( $_FILES['pictures']['name']) ); // whats the extension of the file
-
-            if ( in_array( end($info), $allow) ) // is this file allowed
-            {
-                if ( move_uploaded_file( $_FILES['pictures']['tmp_name'], $todir . basename( $file_name ) ) )
-                {
-
+        if ($_FILES["pictures"]["size"] < 2097152) {
+            if (($ext == "jpg" || $ext == "jpeg" || $ext == "png" || $ext == "gif")) {
+                $newname = $_SESSION['username'] . "-" . time() . "-" . $_FILES['pictures']['name'];
+                if (!file_exists($todir . $newname)) {
+                    if ((move_uploaded_file($_FILES['pictures']['tmp_name'], $todir . $newname))) {
+                        //file is uploaded
+                    } else {
+                        echo "Error: A problem occurred during file upload!";
+                    }
                 }
-            }
-            else
-            {
-                echo "Error: " . $_FILES["pictures"]["error"] . "<br>";
             }
         }
 
+
+
         $PDO = Db::getInstance();
         $statement = $PDO->prepare("INSERT into posts (picture, description, posttime,idUser) VALUES (:picture, :description, :posttime, :idUser)");
-        $statement->bindValue(":picture", $todir . $file_name);
+        $statement->bindValue(":picture", $todir . $newname);
         $statement->bindValue(":description", $this->m_sDescription);
         $statement->bindValue(":posttime", date("Y-m-d H:i:sa"));
         $statement->bindValue(":idUser", $_SESSION['u_id']);
         $statement->execute();
+    }
+
+    public function CanSaveImage() {
+        if ($_FILES["pictures"]["size"] < 2097152) {
+            $ext = strtolower(end(explode('.', $_FILES['pictures']['name'])));
+            if (($ext == "jpg" || $ext == "jpeg" || $ext == "png" || $ext == "gif")) {
+                return true;
+            } else {
+                echo "Only jpg/jpeg/png/gif images are accepted for upload";
+                return false;
+            }
+        } else {
+            echo "Your file is too big";
+            return false;
+        }
     }
 
     public function displayAll() {

@@ -27,14 +27,13 @@
     }
 
     if(!empty(!empty($_FILES["pictures"]) || !empty($_POST["description"]) )) {
-        if ($_POST['action'] === "foto") {
-            $post->Description = $_POST['description'];
-            $post->PostSaveImage();
+        if ($post->CanSaveImage()) {
+            if ($_POST['action'] === "foto") {
+                $post->Description = $_POST['description'];
+                $post->PostSaveImage();
+            }
         }
     }
-
-
-
 
     $user->getAllInfo();
 
