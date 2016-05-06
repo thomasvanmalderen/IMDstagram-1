@@ -21,6 +21,7 @@
     if($user->Authenticate()){
         $post = new Post();
         $like = new Like();
+        $comment = new Comment();
     } else {
         header('Location: login.php');
     }
@@ -58,19 +59,15 @@ if(!empty($_POST["unlike"])) {
 
     }
 }
-
-/*$comment = new Comment();
-$comment->getPostInfo();
-//controleer of er een update wordt verzonden
 if(!empty($_POST['comment']))
 {
     $comment->Comment = $_POST['comment'];
+    $comment->PostID = $_POST['postid'];
     $comment->SaveComment();
 }
 
 //altijd alle laatste comments ophalen
 $comments = $comment->GetComments();
-    var_dump($comments);*/
 
 ?><!doctype html>
 <html lang="en">
@@ -83,19 +80,6 @@ $comments = $comment->GetComments();
     <link rel="favicon" href="favicon.ico">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
-    <script type="text/javascript"> $(function() {
-            $('.more_button').live("click",function() {
-                var getId = $(this).attr("id");
-                if(getId) {
-                    $("#load_more_"+getId).html('<img src="load_img.gif" style="padding:10px 0 0 100px;"/>');
-                    $.ajax({ type: "POST", url: "ajax/loadmore.php", data: "getLastContentId="+ getId, cache: false, success: function(html){
-                        $("ul#load_more_ctnt").append(html); $("#load_more_"+getId).remove(); } }); }
-                else { $(".more_tab").html('The End');
-                }
-                return false;
-            });
-        });
-    </script>
 
 </head>
 
@@ -153,34 +137,25 @@ $comments = $comment->GetComments();
         <p id="likes"><?php echo $like->getLikes($p['p_id']) . " Likes"; ?></p>
 
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <!--<form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
         <div class="comments">
-            <input type="text" id="comment" name="comment" />
-            <input id="btnSubmit" type="submit" value="Share" />
-
-            <ul id="listupdates">
-                <?php
-                echo "<p class='postprofile'>username</p> ". $comments[0] ."";
-                if(count($comments) > 0)
-                {
-                    foreach($comments as $key=>$c)
-                    {
-                        echo "<li><p class='postprofile'>Username</p> ". $c['comment'] ."</li>";
-                    }
-                }
-                ?>
-            </ul>
+            <input type="text" id="comment" name="comment" placeholder="Write your comment here" />
+            <input type="hidden" name="user" value="<?php $_SESSION['u_id'] ?>"/>
+            <input type="hidden" name="postid" value="<?php echo $p['p_id'] ?>"/>
+            <input class="btnComment" type="submit" value="Place your comment" />
 
         </div>
-    </form>-->
+    </form>
+    <ul class="displaycomments">
+        <?php foreach($comments as $c): ?>
+            <div id="displaycomment">
+                <li><a href="profile.php?user=<?php echo $c['username']; ?>" class="postprofile"><?php echo $c['username'] ?></a> <?php echo "&nbsp;" . $c["comment"] ?></li>
+            </div>
+        <?php endforeach; ?>
+    </ul>
 </article>
 <?php endforeach; ?>
-    <div class="more_div"><a href="#"><div id="load_more_<?php echo $id; ?>" class="more_tab">
-                <div class="more_button" id="<?php echo $id; ?>">Load More Content</div></a></div> -
+    <a href="#" class="loadmore" data-offset="5">Loadmore</a>
 
 </section>
 

@@ -126,9 +126,8 @@ class Post {
     public function displayPostsFollowing() {
 
         $PDO = Db::getInstance();
-        $limit =2;
 
-        $statement = $PDO->prepare("SELECT DISTINCT p_id, picture, description, posttime, username, avatar FROM posts LEFT JOIN users ON users.u_id = posts.idUser LEFT JOIN follows ON follows.idFollowed = posts.idUser WHERE follows.idFollowing = " . $_SESSION['u_id'] . " OR Posts.idUser = " . $_SESSION['u_id'] . " ORDER BY posts.posttime desc LIMIT $limit");
+        $statement = $PDO->prepare("SELECT DISTINCT p_id, picture, description, posttime, username, avatar FROM posts LEFT JOIN users ON users.u_id = posts.idUser LEFT JOIN follows ON follows.idFollowed = posts.idUser WHERE follows.idFollowing = " . $_SESSION['u_id'] . " OR Posts.idUser = " . $_SESSION['u_id'] . " ORDER BY posts.posttime desc LIMIT 0,5");
         $statement->execute();
 
         $result = $statement->fetchAll();
@@ -138,11 +137,6 @@ class Post {
 
     }
 
-    /*public function loadmore(){
-       $limit = 5;
-
-
-    }*/
 
 }
 

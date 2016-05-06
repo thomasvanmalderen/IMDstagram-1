@@ -51,7 +51,7 @@ include_once("Db.class.php");
        public function GetComments( )
         {
             $PDO = Db::getInstance();
-            //$p_post = $_GET['post'];
+            //$p_post = $_POST['postid'];
             $statement = $PDO->prepare("SELECT * FROM COMMENTS LEFT OUTER JOIN Posts ON comments.idPost=posts.p_id LEFT OUTER JOIN Users ON comments.idUser=users.u_id WHERE posts.p_id = :p_id ");
             $statement->bindValue(":p_id",  $_GET['post']);
             $statement->execute();
@@ -59,6 +59,16 @@ include_once("Db.class.php");
             return $result;
         }
 
+        public function GetCommentsOnIndex( )
+        {
+            $PDO = Db::getInstance();
+            //$p_post = $_POST['postid'];
+            $statement = $PDO->prepare("SELECT * FROM COMMENTS LEFT OUTER JOIN Posts ON comments.idPost=posts.p_id LEFT OUTER JOIN Users ON comments.idUser=users.u_id WHERE posts.p_id = :p_id ");
+            $statement->bindValue(":p_id",  $_GET['post']);
+            $statement->execute();
+            $result = $statement->fetchAll();
+            return $result;
+        }
 
 
 }

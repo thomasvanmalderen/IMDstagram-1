@@ -1,10 +1,17 @@
 <?php
-include_once("classes/db.class.php");
-if(isSet($_POST['getLastContentId'])) {
-    $getLastContentId=$_POST['getLastContentId'];
-    $result=mysql_query("select id, content, url from table_name where id <".$getLastContentId." order by id desc limit 10");
-    $count=mysql_num_rows($result); if($count>0){
-        while($row=mysql_fetch_array($result)) { $id=$row['id']; $message=$row['content']; ?>
-            <li> <a href="<?=$row['url']?>.htm"><?php echo $message; ?></a> </li>
-        <?php } ?> <a href="#"><div id="load_more_<?php echo $id; ?>" class="more_tab"><div id="<?php echo $id; ?>" class="more_button">Load More Content</div></a>
-        </div> <?php } else{ echo "<div class='all_loaded'>No More Content to Load</div>"; } } ?>
+include_once("../classes/db.class.php");
+include_once("../classes/user.class.php");
+include_once("../classes/post.class.php");
+include_once("../classes/Comment.class.php");
+include_once("../classes/Follow.class.php");
+include_once ("../classes/Like.class.php");
+
+$PDO = Db::getInstance();
+$statement = $PDO->prepare("SELECT DISTINCT p_id, picture, description, posttime, username, avatar FROM posts LEFT JOIN users ON users.u_id = posts.idUser LEFT JOIN follows ON follows.idFollowed = posts.idUser WHERE follows.idFollowing = " . $_SESSION['u_id'] . " OR Posts.idUser = " . $_SESSION['u_id'] . " ORDER BY posts.posttime desc LIMIT 5, 10");
+$statement->execute();
+
+
+
+
+
+?>

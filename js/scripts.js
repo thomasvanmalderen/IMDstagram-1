@@ -30,7 +30,29 @@ $(document).ready(function(){
                 $('.usernameFeedback').css('color', '#000');
              }
              });
-     })
+         });
+        
+        //ajax comments
+        
+        
+       /* $(".loadmore").on("click", function(e){(
+            var off = $(".loadmore").offset
+            $(".loadmore").offset = off;
+            $.ajax({
+                type: "POST",
+                url: "ajax/loadmore.php",
+                data: 'offset='+offset,
+                cache: false,
+                success: function(data){
+                $(".postinfo").append(data);
+                $(".loadmore").offset + 5;
+            
+            });
+            
+        });
+                                               e.preventDefault();
+        });*/
+     });
     
     //ajax like post
    /* 
@@ -54,7 +76,4 @@ $(document).ready(function(){
         e.preventDefault();
     });
            
-*/
-    
-
- }); 
+*/ 
