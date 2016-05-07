@@ -73,7 +73,7 @@
         public function acceptFollowRequest(){
 
             $PDO = Db::getInstance();
-            $statement = $PDO->prepare("UPDATE Followrequests WHERE FollowedId = :idFollowed AND FollowingId = :idFollowing");
+            $statement = $PDO->prepare("UPDATE Followrequests SET accepted = 'yes' WHERE FollowedId = :idFollowed AND FollowingId = :idFollowing");
             $statement->bindValue(":idFollowed", $this->m_iFollowedId);
             $statement->bindValue(":idFollowing", $this->m_iFollowingId);
             $statement->execute();

@@ -38,11 +38,17 @@ if($user->Authenticate()){
     if(!empty($_POST["follow"])) {
         if ($_POST['follow'] === "follow") {
             $dofollow = new Follow();
+            $accept = new Follow();
 
-            $dofollow->Following = $_SESSION['u_id'];
-            $dofollow->Followed = $user[0]['u_id'];
+            $dofollow->Following = $_POST['followerid'];
+            $dofollow->Followed = $_SESSION['u_id'];
+
+            $accept->Following = $_POST['followerid'];
+            $accept->Followed = $_SESSION['u_id'];
 
             $dofollow->doFollow();
+            $accept->acceptFollowRequest();
+            header("Location: followrequests.php");
             //header("Location: index.php");
             //var_dump($_GET['post']);
         }
@@ -69,11 +75,11 @@ if($user->Authenticate()){
         <article class="profilepost">
 
             <h3><img src="<?php echo $f['avatar']; ?>" alt="<?php echo $f['avatar']; ?>" class="avatar-small"><?php echo $f['username']; ?></h3>
-            <form action="" method="post">
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <input type="hidden" name="follow" value="follow">
-                <input type="hidden" name="followerid" value="<?php echo $f['FollowerId']; ?>">
+                <input type="hidden" name="followerid" value="<?php echo $f['FollowingId']; ?>">
                 <p><?php echo $f['FollowingId']; ?></p>
-                <input type="submit" name="btnFollow" class="followinput" value="Follow"/>
+                <input type="submit" name="btnFollow" class="followinput" value="Accept"/>
             </form>
 
         </article>

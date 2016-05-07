@@ -114,7 +114,7 @@
         
     </section>
     <div class="ownposts">
-        <?php if($user[0]['username'] == "public") {?>
+        <?php if($user[0]['account'] == "public") {?>
         <?php foreach($post as $p): ?>
             <article class="profilepost">
 
