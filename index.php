@@ -66,8 +66,7 @@ if(!empty($_POST['comment']))
 }
 
 //altijd alle laatste comments ophalen
-$comments = $comment->GetComments();
-
+//$comments = $comment->GetCommentsOnIndex();
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -78,7 +77,7 @@ $comments = $comment->GetComments();
     <link rel="stylesheet" href="css/media.css">
     <link rel="favicon" href="favicon.ico">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript" src="js/comments.js"></script>
 
 </head>
 
@@ -108,6 +107,7 @@ $comments = $comment->GetComments();
 </div>
     </section>
 <section class="postcenter">
+    <div class="loadpost">
 <?php foreach($post as $p): ?>
 <article class="post">
     <div class="postinfo">
@@ -139,22 +139,27 @@ $comments = $comment->GetComments();
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
         <div class="comments">
             <input type="text" id="comment" name="comment" placeholder="Write your comment here" />
-            <input type="hidden" name="user" value="<?php $_SESSION['u_id'] ?>"/>
+            <input type="hidden" name="userid" value="<?php $_SESSION['u_id'] ?>"/>
             <input type="hidden" name="postid" value="<?php echo $p['p_id'] ?>"/>
-            <input class="btnComment" type="submit" value="Place your comment" />
+            <input class="btnComment" type="submit" name="btnComment" value="Place your comment" data-postid="<?php echo $p['p_id'] ?>" data-userid ="<?php $_SESSION['u_id'] ?>" />
 
         </div>
     </form>
     <ul class="displaycomments">
-        <?php foreach($comments as $c): ?>
+        <?php $thiscomment = new Comment(); ?>
+        <?php $thiscomment = $thiscomment->GetCommentsOnIndex($p['p_id']); ?>
+        <?php foreach($thiscomment as $c): ?>
+
             <div id="displaycomment">
                 <li><a href="profile.php?user=<?php echo $c['username']; ?>" class="postprofile"><?php echo $c['username'] ?></a> <?php echo "&nbsp;" . $c["comment"] ?></li>
             </div>
         <?php endforeach; ?>
     </ul>
 </article>
+
 <?php endforeach; ?>
-    <a href="#" class="loadmore" data-offset="5">Loadmore</a>
+    </div>
+    <p class="loadmore" data-offset="5">Loadmore</p>
 
 </section>
 

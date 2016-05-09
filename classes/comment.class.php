@@ -41,10 +41,11 @@
 
         {
             $PDO = Db::getInstance();
-            $statement = $PDO->prepare("INSERT into COMMENTS (comment, idPost,idUser) VALUES (:comment, :idPost, :idUser)");
+            $statement = $PDO->prepare("INSERT into COMMENTS (comment, idPost,idUser,posttime) VALUES (:comment, :idPost, :idUser, :posttime)");
             $statement->bindValue(":comment", $this->m_sComment);
             $statement->bindValue(":idPost", $this->m_iPostID);
             $statement->bindValue(":idUser", $_SESSION['u_id']);
+            $statement->bindValue(":posttime", date("Y-m-d H:i:sa"));
             $statement->execute();
         }
 
@@ -59,12 +60,12 @@
             return $result;
         }
 
-        public function GetCommentsOnIndex( )
+        public function GetCommentsOnIndex( $thispost )
         {
             $PDO = Db::getInstance();
             //$p_post = $_POST['postid'];
             $statement = $PDO->prepare("SELECT * FROM COMMENTS LEFT OUTER JOIN Posts ON comments.idPost=posts.p_id LEFT OUTER JOIN Users ON comments.idUser=users.u_id WHERE posts.p_id = :p_id ");
-            $statement->bindValue(":p_id",  $_GET['post']);
+            $statement->bindValue(":p_id",  $thispost);
             $statement->execute();
             $result = $statement->fetchAll();
             return $result;

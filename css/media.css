@@ -49,8 +49,6 @@
         margin-left: 5%;
     }
     
-   
-    
     input[type="email"]{
         background-color: #FAFAFA;
         width: 90%;
@@ -69,6 +67,12 @@
         margin-right: 5%;
         margin-left: 5%;
     }
+    
+    input[type="submit"].btnComment{
+    width: 40%;
+    margin-right: 5%;
+    margin-left: 5%;
+}
     
     input[type="file"].profileinput{
     width: 90%;

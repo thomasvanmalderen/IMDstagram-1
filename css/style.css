@@ -541,14 +541,14 @@ input[type="submit"].deleteinput{
     color: #4B4F54;
 }
 
-input[type="submit"]#btnComment{
+input[type="submit"].btnComment{
     height: 35px;
-    width: 80%;
+    width: 90%;
     margin-bottom: 10px;
     margin-left: 8%;
     padding-left: 2%;
 }
 
 .comments{
-    margin-top: 125px;
+    margin-top: 55px;
 }
