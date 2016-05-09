@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 09 mei 2016 om 11:44
+-- Gegenereerd op: 09 mei 2016 om 13:31
 -- Serverversie: 10.1.9-MariaDB
 -- PHP-versie: 5.6.15
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Tabelstructuur voor tabel `comments`
 --
 
+DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
   `c_id` int(11) NOT NULL,
   `comment` varchar(300) NOT NULL,
@@ -40,6 +41,7 @@ CREATE TABLE `comments` (
 -- Tabelstructuur voor tabel `followrequests`
 --
 
+DROP TABLE IF EXISTS `followrequests`;
 CREATE TABLE `followrequests` (
   `fr_id` int(11) NOT NULL,
   `FollowingId` int(11) NOT NULL,
@@ -66,6 +68,7 @@ INSERT INTO `followrequests` (`fr_id`, `FollowingId`, `FollowedId`, `accepted`) 
 -- Tabelstructuur voor tabel `follows`
 --
 
+DROP TABLE IF EXISTS `follows`;
 CREATE TABLE `follows` (
   `f_id` int(11) UNSIGNED NOT NULL,
   `idFollowing` int(11) NOT NULL,
@@ -118,6 +121,7 @@ INSERT INTO `follows` (`f_id`, `idFollowing`, `idFollowed`) VALUES
 -- Tabelstructuur voor tabel `likes`
 --
 
+DROP TABLE IF EXISTS `likes`;
 CREATE TABLE `likes` (
   `l_id` int(11) UNSIGNED NOT NULL,
   `likerID` int(11) NOT NULL,
@@ -179,6 +183,7 @@ INSERT INTO `likes` (`l_id`, `likerID`, `postLikedId`) VALUES
 -- Tabelstructuur voor tabel `posts`
 --
 
+DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
   `p_id` int(11) NOT NULL,
   `picture` varchar(255) COLLATE utf8_bin NOT NULL,
@@ -220,6 +225,7 @@ INSERT INTO `posts` (`p_id`, `picture`, `description`, `posttime`, `Report`, `id
 -- Tabelstructuur voor tabel `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `u_id` int(11) UNSIGNED NOT NULL,
   `username` varchar(255) COLLATE utf8_bin NOT NULL,
@@ -297,7 +303,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT voor een tabel `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT voor een tabel `followrequests`
 --
