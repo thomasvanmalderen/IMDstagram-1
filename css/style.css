@@ -343,9 +343,10 @@ h2#username{
     margin-right: auto;
 }
 
-#displaycomment{
+.post li{
     margin-top: 5px;
     margin-bottom: 5px;
+    padding-left: 5%;
 }
 
 #addpicture{

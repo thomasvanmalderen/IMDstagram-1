@@ -138,19 +138,19 @@ if(!empty($_POST['comment']))
     </div>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
         <div class="comments">
-            <input type="text" id="comment" name="comment" placeholder="Write your comment here" />
+            <input type="text" name="comment" placeholder="Write your comment here" class="com<?php echo $p['p_id'] ?>" />
             <input type="hidden" name="userid" value="<?php $_SESSION['u_id'] ?>"/>
             <input type="hidden" name="postid" value="<?php echo $p['p_id'] ?>"/>
             <input class="btnComment" type="submit" name="btnComment" value="Place your comment" data-postid="<?php echo $p['p_id'] ?>" data-userid ="<?php $_SESSION['u_id'] ?>" />
 
         </div>
     </form>
-    <ul class="displaycomments">
+    <ul class="displaycomments<?php echo $p['p_id'] ?>">
         <?php $thiscomment = new Comment(); ?>
         <?php $thiscomment = $thiscomment->GetCommentsOnIndex($p['p_id']); ?>
         <?php foreach($thiscomment as $c): ?>
 
-            <div id="displaycomment">
+            <div class="listcomment">
                 <li><a href="profile.php?user=<?php echo $c['username']; ?>" class="postprofile"><?php echo $c['username'] ?></a> <?php echo "&nbsp;" . $c["comment"] ?></li>
             </div>
         <?php endforeach; ?>
