@@ -77,7 +77,7 @@ class Report{
         $statement->execute();
     }
 
-    public function InappropiatePost($reportedPost) {
+    /*public function InappropiatePost($reportedPost) {
         $PDO = Db::getInstance();
         $statement = $PDO->prepare("SELECT * FROM Reports WHERE reportedPost = $reportedPost");
         //$statement->bindValue(":idLiker", $this->m_iLikerId);
@@ -88,14 +88,14 @@ class Report{
 
             $followresult = $statement->fetchAll();
             //var_dump($followresult);
-            return true;
+            echo "This should be hidden";
             //return $followresult;
             //echo "tis just";
 
         } else {
             //echo "tis ni just";
         }
-    }
+    }*/
 
 }
 ?>

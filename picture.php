@@ -14,6 +14,7 @@ include_once("classes/post.class.php");
 include_once("classes/Helper.class.php");
 include_once("classes/Like.class.php");
 include_once("classes/Comment.class.php");
+include_once("classes/Report.class.php");
 
 // AUTHENTICATE USER
 $user = new User();
@@ -22,15 +23,14 @@ if($user->Authenticate()){
     $d_post  =new Post();
     $like = New Like();
     $comment = new Comment();
+    $report = new Report();
 } else {
     header('Location: login.php');
 }
 
 $user->getAllInfo();
 
-
-    
-    $post = $post->displayPicture();
+$post = $post->displayPicture();
 
 
 if(!empty($_POST["delete"])) {
@@ -57,6 +57,21 @@ if(!empty($_POST["unlike"])) {
     }
 }
 
+if(!empty($_POST["report"])) {
+    if ($_POST['report'] === "report") {
+        $report->doReport($_POST['postval']);
+        //header("Location: index.php");
+        //var_dump($_GET['post']);
+    }
+}
+
+if(!empty($_POST["unreport"])) {
+    if ($_POST['unreport'] === "unreport") {
+        $report->doUnReport($_POST['postval']);
+
+    }
+}
+
 
 //controleer of er een update wordt verzonden
 if(!empty($_POST['comment']))
@@ -69,6 +84,8 @@ if(!empty($_POST['comment']))
 //altijd alle laatste comments ophalen
 $comments = $comment->GetComments();
 
+    //$report->InappropiatePost();
+
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -80,6 +97,7 @@ $comments = $comment->GetComments();
     <link rel="favicon" href="favicon.ico">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/comments.js"></script>
+    <script type="text/javascript" src="js/location-api.js"></script>
 </head>
 <body>
 
@@ -97,6 +115,7 @@ $comments = $comment->GetComments();
                 <a href="profile.php?user=<?php echo $p['username']; ?>"><img src="<?php echo $p['avatar']; ?>" alt="<?php echo $p['avatar']; ?>" class="avatar-small"></a>
                 <p><a href="profile.php?user=<?php echo $p['username']; ?>" class="postusername"><?php echo $p['username']; ?></a></p>
                 <p class="time"><?php Helper::timeAgo($p['posttime']); ?></p>
+                <p class="location"><?php echo $p['location']; ?></p>
 
                 <?php if($p['username'] == $_SESSION['username_']){ ?>
                     <form action="" method="post">
@@ -126,6 +145,21 @@ $comments = $comment->GetComments();
                     </form>
                 <?php } ?>
                 <p id="likes"><?php echo $like->getLikes($p['p_id']) . " Likes"; ?></p>
+
+                <?php if($report->didReport($p['p_id']) == true){?>
+                    <form action="" method="post">
+                        <input type="hidden" name="unreport" value="unreport">
+                        <input type="hidden" name="postval" value="<?php echo $p['p_id'];?>">
+                        <input id="unreport"  type="submit" name="btnunReport" value="Unreport"/>
+                    </form>
+                <?php } elseif($report->didReport($p['p_id']) == false){?>
+                    <form action="" method="post">
+                        <input type="hidden" name="report" value="report">
+                        <input type="hidden" name="postval" value="<?php echo $p['p_id'];?>">
+                        <input id="report"  type="submit" name="btnReport" value="Report"/>
+                    </form>
+                <?php } ?>
+                <p id="reports"><?php echo $report->getReports($p['p_id']) . " Reports"; ?></p>
 
             </div>
 
