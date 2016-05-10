@@ -564,3 +564,25 @@ input[type="submit"].btnComment{
 .comments{
     margin-top: 55px;
 }
+
+.loadmore{
+    height: 100px;
+    width: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid #4090DB;
+    color: #4090DB;
+    
+    border-radius: 100%; 
+    cursor: pointer;
+}
+
+.loadmore:hover{
+    border: 1px solid #1D557A;
+    color: #1D557A;
+}
+
+.loadmore p{
+     text-align: center;
+    margin-top: 42%;
+}

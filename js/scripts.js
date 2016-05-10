@@ -35,15 +35,19 @@ $(document).ready(function(){
         
         
         $(".loadmore").on("click", function(e){
-            var offset = $(".loadmore").data("offset");
+            var offset = $(this).data("offset");
             console.log(offset);
             $.post("ajax/loadmore.php", {offset: offset }).done(function( response ) {
-                //var load = '<article class="post"><div class="postinfo"><a href="profile.php?user='+response.username+'"><img src="'+response.avatar+'" alt="'+response.avatar+'" class="avatar-small"></a><p><a href="profile.php?user='+response.username+'" class="postusername">'+response.username+'</a></p><p class="time">'+response.posttime+'</p></div><a href="picture.php?post='+response.username+'"><img src="'+response.picture+'" alt="'+response.picture+'" class="postpicture" ></a><div class="postdescription"><p><a href="profile.php?user='+response.username+'"class="postprofile">'+response.username+'</a>'+response.description+'</p></div></article>';
+                var load = '<article class="post"><div class="postinfo"><a href="profile.php?user='+response.username+'"><img src="'+response.avatar+'" alt="'+response.avatar+'" class="avatar-small"></a><p><a href="profile.php?user='+response.username+'" class="postusername">'+response.username+'</a></p><p class="time">'+response.posttime+'</p></div><a href="picture.php?post='+response.username+'"><img src="'+response.picture+'" alt="'+response.picture+'" class="postpicture" ></a><div class="postdescription"><p><a href="profile.php?user='+response.username+'"class="postprofile">'+response.username+'</a>'+response.description+'</p></div></article>';
+        
                 var offset = $(".loadmore").data("offset");
-               $(".loadmore").attr('data-offset', offset+5);
-                //$(".loadpost").append(load);
-				//$(".loadpost li:first-child").slideDown();
+                var newoffset = offset + 3;
+               $(".loadmore").data('offset', newoffset);
                 
+                for (i = offset; i < newoffset; i++) {
+                $(".loadpost").append(load);
+				$(".loadpost li:first-child").slideDown();
+                }
             });
             
         

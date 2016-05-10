@@ -160,8 +160,9 @@ if(!empty($_POST['comment']))
 
 <?php endforeach; ?>
     </div>
-    <p class="loadmore" data-offset="5">Loadmore</p>
-
+    <div class="loadmore" data-offset="5">
+    <p >Loadmore</p>
+    </div>
 </section>
 
 </body>
