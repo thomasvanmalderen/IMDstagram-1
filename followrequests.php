@@ -78,7 +78,7 @@ if($user->Authenticate()){
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <input type="hidden" name="follow" value="follow">
                 <input type="hidden" name="followerid" value="<?php echo $f['FollowingId']; ?>">
-                <p><?php echo $f['FollowingId']; ?></p>
+
                 <input type="submit" name="btnFollow" class="followinput" value="Accept"/>
             </form>
 

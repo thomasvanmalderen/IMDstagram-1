@@ -523,6 +523,12 @@ input[type="submit"].deleteinput{
 
 }
 
+#followbtn{
+    border: 1px solid #828282;
+    text-align: center;
+    padding: 5px 0px;
+}
+
 #editprofile:hover{
     border: 1px solid #4B4F54;
     
@@ -530,6 +536,11 @@ input[type="submit"].deleteinput{
 }
 
 #logout:hover{
+    border: 1px solid #4B4F54;
+     color: #4B4F54;
+}
+
+#followbtn:hover{
     border: 1px solid #4B4F54;
      color: #4B4F54;
 }
