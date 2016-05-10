@@ -3,8 +3,8 @@
 class Post {
     private $m_sPicture;
     private $m_sDescription;
-    private $m_iReport;
     private $m_iUserID;
+    private $m_sLocation;
 
 
 
@@ -23,6 +23,9 @@ class Post {
             case "UserID":
                 $this->m_iUserID = $p_vValue;
                 break;
+            case "Location":
+                $this->m_sLocation = $p_vValue;
+                break;
         }
     }
     public function __get($p_sProperty)
@@ -33,6 +36,9 @@ class Post {
                 break;
             case "UserID":
                 return $this->m_iUserID;
+                break;
+            case "Location":
+                return $this->m_sLocation;
                 break;
         }
     }
@@ -58,11 +64,12 @@ class Post {
 
 
         $PDO = Db::getInstance();
-        $statement = $PDO->prepare("INSERT into posts (picture, description, posttime,idUser) VALUES (:picture, :description, :posttime, :idUser)");
+        $statement = $PDO->prepare("INSERT into posts (picture, description, posttime,idUser, location) VALUES (:picture, :description, :posttime, :idUser, :location)");
         $statement->bindValue(":picture", $todir . $newname);
         $statement->bindValue(":description", $this->m_sDescription);
         $statement->bindValue(":posttime", date("Y-m-d H:i:sa"));
         $statement->bindValue(":idUser", $_SESSION['u_id']);
+        $statement->bindValue(":location", $this->Location);
         $statement->execute();
     }
 
@@ -139,7 +146,7 @@ class Post {
 
         $PDO = Db::getInstance();
 
-        $statement = $PDO->prepare("SELECT DISTINCT p_id, picture, description, posttime, username, avatar FROM posts LEFT JOIN users ON users.u_id = posts.idUser LEFT JOIN follows ON follows.idFollowed = posts.idUser WHERE follows.idFollowing = " . $_SESSION['u_id'] . " OR Posts.idUser = " . $_SESSION['u_id'] . " ORDER BY posts.posttime desc LIMIT 0,3");
+        $statement = $PDO->prepare("SELECT DISTINCT p_id, picture, description, posttime, username, avatar, location FROM posts LEFT JOIN users ON users.u_id = posts.idUser LEFT JOIN follows ON follows.idFollowed = posts.idUser WHERE follows.idFollowing = " . $_SESSION['u_id'] . " OR Posts.idUser = " . $_SESSION['u_id'] . " ORDER BY posts.posttime desc LIMIT 0,3");
         $statement->execute();
 
         $result = $statement->fetchAll();

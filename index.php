@@ -15,6 +15,7 @@
     include_once("classes/Helper.class.php");
     include_once("classes/Like.class.php");
     include_once("classes/Comment.class.php");
+    include_once("classes/Report.class.php");
     
     // AUTHENTICATE USER
     $user = new User();
@@ -22,6 +23,7 @@
         $post = new Post();
         $like = new Like();
         $comment = new Comment();
+        $report = new Report();
     } else {
         header('Location: login.php');
     }
@@ -30,6 +32,7 @@
         if ($post->CanSaveImage()) {
             if ($_POST['action'] === "foto") {
                 $post->Description = $_POST['description'];
+                $post->Location = $_POST['location'];
                 $post->PostSaveImage();
             }
         }
@@ -78,6 +81,7 @@ if(!empty($_POST['comment']))
     <link rel="favicon" href="favicon.ico">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/comments.js"></script>
+    <script type="text/javascript" src="js/location-api.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
 
 </head>
@@ -103,6 +107,7 @@ if(!empty($_POST['comment']))
     <input type="text" class="uploadFile" disabled="disabled"/>
     <input type="text" name="description" id="description" placeholder="What's this photo about?">
     <input type="hidden" name="action" value="foto">
+        <input type="hidden" name="location" class="location-summary"/>
     <input type="submit" name="submit" value="Post">
 </form>
 </div>
@@ -115,6 +120,7 @@ if(!empty($_POST['comment']))
         <a href="profile.php?user=<?php echo $p['username']; ?>"><img src="<?php echo $p['avatar']; ?>" alt="<?php echo $p['avatar']; ?>" class="avatar-small"></a>
     <p><a href="profile.php?user=<?php echo $p['username']; ?>" class="postusername"><?php echo $p['username']; ?></a></p>
         <p class="time"><?php Helper::timeAgo($p['posttime']); ?></p>
+        <p class="location"><?php echo $p['location']; ?></p>
 
     </div>
     <a href="picture.php?post=<?php echo $p['p_id']; ?>"><img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" ></a>
