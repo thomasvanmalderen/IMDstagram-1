@@ -586,3 +586,29 @@ input[type="submit"].btnComment{
      text-align: center;
     margin-top: 42%;
 }
+
+.usernameFeedback{
+    margin-top: 20px;
+}
+
+input[type="submit"]#unreport{
+    float: right;
+    width: 80px;
+    margin-right: 0;
+    background-color: transparent;
+    color: #B44A58;
+}
+
+input[type="submit"]#report{
+    float: right;
+    width: 80px;
+    background-color: transparent;
+    color: #B44A58;
+    margin-right: 0;
+}
+
+.location{
+    margin-top: 15px;
+    margin-left: 15px;
+    float: left;
+}

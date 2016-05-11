@@ -77,7 +77,6 @@
 
       </section>
        <section id="account">
-
         <h4>Already an account <a href="login.php">Click here to log in!</a></h4>
         
          <br>

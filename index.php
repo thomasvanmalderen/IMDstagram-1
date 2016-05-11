@@ -171,7 +171,7 @@ if(!empty($_POST['comment']))
                 <input id="report"  type="submit" name="btnReport" value="Report"/>
             </form>
         <?php } ?>
-        <p id="reports"><?php echo $report->getReports($p['p_id']) . " Reports"; ?></p>
+        <!--<p id="reports"><?php echo $report->getReports($p['p_id']) . " Reports"; ?></p>-->
 
     </div>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
@@ -197,7 +197,7 @@ if(!empty($_POST['comment']))
 
 <?php endforeach; ?>
     </div>
-    <div class="loadmore" data-offset="5">
+    <div class="loadmore" data-offset="3">
     <p >Loadmore</p>
     </div>
 </section>

@@ -20,6 +20,8 @@ $(document).ready(function(){
             if(response.status === 'success'){
                 $('#username').css('color', '#4BAE4F');
                 $('.usernameFeedback').css('color', '#4BAE4F');
+                $("input[type=submit]").removeAttr("disabled");
+
             }
              else if(response.status === 'error'){
                  $('#username').css('color', '#D22E2E');
@@ -27,8 +29,11 @@ $(document).ready(function(){
              }
              else{
                  $('#username').css('color', '#000');
-                $('.usernameFeedback').css('color', '#000');
+                 $('.usernameFeedback').hide();
+                 $("input[type=submit]").attr("disabled", "disabled");
              }
+             $("input[type=submit]").removeAttr("disabled");
+
              });
          });
         
@@ -38,15 +43,34 @@ $(document).ready(function(){
             var offset = $(this).data("offset");
             console.log(offset);
             $.post("ajax/loadmore.php", {offset: offset }).done(function( response ) {
-                var load = '<article class="post"><div class="postinfo"><a href="profile.php?user='+response.username+'"><img src="'+response.avatar+'" alt="'+response.avatar+'" class="avatar-small"></a><p><a href="profile.php?user='+response.username+'" class="postusername">'+response.username+'</a></p><p class="time">'+response.posttime+'</p></div><a href="picture.php?post='+response.username+'"><img src="'+response.picture+'" alt="'+response.picture+'" class="postpicture" ></a><div class="postdescription"><p><a href="profile.php?user='+response.username+'"class="postprofile">'+response.username+'</a>'+response.description+'</p></div></article>';
-        
+               
                 var offset = $(".loadmore").data("offset");
-                var newoffset = offset + 3;
+                
+                var row = response.row;
+                
+               var newoffset = offset + 3
+                
+                //var newoffset = offset + (row);
+                
+                console.log(row);
+                var rowc = 3;
+                if (row == 0){
+                    rowc = 3}
+                else{
+                    rowc = row;
+                }
+                for(x = 0; x < rowc; x++){
+                var load = '<article class="post"><div class="postinfo"><a href="profile.php?user='+response[x].username+'"><img src="'+response[x].avatar+'" alt="'+response[x].avatar+'" class="avatar-small"></a><p><a href="profile.php?user='+response[x].username+'" class="postusername">'+response[x].username+'</a></p><p class="time">'+response[x].posttime+'</p><p class="location">'+response[x].location+'</p></div><a href="picture.php?post='+response[x].post+'"><img src="'+response[x].picture+'" alt="'+response[x].picture+'" class="postpicture" ></a><div class="postdescription"><p><a href="profile.php?user='+response[x].username+'"class="postprofile">'+response[x].username+'</a>'+response[x].description+'</p></div></article>';
+                    
+                
+                
+                
                $(".loadmore").data('offset', newoffset);
                 
-                for (i = offset; i < newoffset; i++) {
+                
                 $(".loadpost").append(load);
 				$(".loadpost li:first-child").slideDown();
+                
                 }
             });
             
