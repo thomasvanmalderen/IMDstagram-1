@@ -31,8 +31,8 @@
     if(!empty(!empty($_FILES["pictures"]) || !empty($_POST["description"]) )) {
         if ($post->CanSaveImage()) {
             if ($_POST['action'] === "foto") {
-                $post->Description = $_POST['description'];
-                $post->Location = $_POST['location'];
+                $post->Description = htmlspecialchars($_POST['description']);
+                $post->Location = htmlspecialchars($_POST['location']);
                 $post->PostSaveImage();
             }
         }
@@ -79,8 +79,8 @@ if(!empty($_POST["unreport"])) {
 
 if(!empty($_POST['comment']))
 {
-    $comment->Comment = $_POST['comment'];
-    $comment->PostID = $_POST['postid'];
+    $comment->Comment = htmlspecialchars($_POST['comment']);
+    $comment->PostID = htmlspecialchars($_POST['postid']);
     $comment->SaveComment();
 }
 
@@ -197,7 +197,7 @@ if(!empty($_POST['comment']))
 
 <?php endforeach; ?>
     </div>
-    <div class="loadmore" data-offset="3">
+    <div id="loadmore" class="loadmore" data-offset="3">
     <p >Loadmore</p>
     </div>
 </section>

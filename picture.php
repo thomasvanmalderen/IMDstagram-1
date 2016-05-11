@@ -76,8 +76,8 @@ if(!empty($_POST["unreport"])) {
 //controleer of er een update wordt verzonden
 if(!empty($_POST['comment']))
 {
-    $comment->Comment = $_POST['comment'];
-    $comment->PostID = $_POST['postid'];
+    $comment->Comment = htmlspecialchars($_POST['comment']);
+    $comment->PostID = htmlspecialchars($_POST['postid']);
     $comment->SaveComment();
 }
 

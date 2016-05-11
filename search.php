@@ -27,7 +27,7 @@ if($user->Authenticate()){
 $user->getAllInfo();
 
 if(!empty($_POST["search"])) {
-    $_SESSION['search'] = $_POST['search'];
+    $_SESSION['search'] = htmlspecialchars($_POST['search']);
     header('Location: search.php');
 }
     

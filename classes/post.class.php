@@ -43,6 +43,8 @@ class Post {
         }
     }
 
+
+
     public function PostSaveImage() {
 
         $todir = 'images/posts/';
@@ -144,18 +146,23 @@ class Post {
 
     public function displayPostsFollowing() {
 
-        $PDO = Db::getInstance();
+    $PDO = Db::getInstance();
+    //$hidden = $PDO->prepare("SELECT p_id FROM posts LEFT JOIN users ON users.u_id = posts.idUser LEFT JOIN reports ON reports.reportedPost = posts.p_id GROUP BY p_id HAVING count(p_id) > 2 ");
+    //$hidden->execute();
+    //$reported = $hidden->fetchAll();
+    //var_dump($reported[0]["p_id"]);
+    //AND p_id NOT IN " . $reported[0]["p_id"] . "
+    $statement = $PDO->prepare("SELECT DISTINCT p_id, picture, description, posttime, username, avatar, location FROM posts LEFT JOIN users ON users.u_id = posts.idUser LEFT JOIN follows ON follows.idFollowed = posts.idUser LEFT JOIN reports ON reports.reportedPost = posts.p_id WHERE follows.idFollowing = " . $_SESSION['u_id'] . " OR Posts.idUser = " . $_SESSION['u_id'] . " ORDER BY posts.posttime desc LIMIT 0,3");
+    $statement->execute();
 
-        $statement = $PDO->prepare("SELECT DISTINCT p_id, picture, description, posttime, username, avatar, location FROM posts LEFT JOIN users ON users.u_id = posts.idUser LEFT JOIN follows ON follows.idFollowed = posts.idUser WHERE follows.idFollowing = " . $_SESSION['u_id'] . " OR Posts.idUser = " . $_SESSION['u_id'] . " ORDER BY posts.posttime desc LIMIT 0,3");
-        $statement->execute();
-
-        $result = $statement->fetchAll();
+    $result = $statement->fetchAll();
 
 
-        return $result;
+    return $result;
 
 
     }
+
 
 
 }

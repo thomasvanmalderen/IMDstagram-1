@@ -5,11 +5,16 @@ include_once("../classes/post.class.php");
 include_once("../classes/Comment.class.php");
 include_once("../classes/Follow.class.php");
 include_once ("../classes/Like.class.php");
+include_once ("../classes/Helper.class.php");
 session_start();
 $PDO = Db::getInstance();
 
 $offset = $_POST['offset'];
 //$newoffset = $offset + 3;
+$statement2 = $PDO->prepare("SELECT DISTINCT p_id, picture, description, posttime, username, avatar, users.u_id, location FROM posts LEFT JOIN users ON users.u_id = posts.idUser LEFT JOIN follows ON follows.idFollowed = posts.idUser WHERE follows.idFollowing = " . $_SESSION['u_id'] . " OR Posts.idUser = " . $_SESSION['u_id']);
+$statement2->execute();
+
+$resultnum = $statement2->rowCount();
 
 $statement = $PDO->prepare("SELECT DISTINCT p_id, picture, description, posttime, username, avatar, users.u_id, location FROM posts LEFT JOIN users ON users.u_id = posts.idUser LEFT JOIN follows ON follows.idFollowed = posts.idUser WHERE follows.idFollowing = " . $_SESSION['u_id'] . " OR Posts.idUser = " . $_SESSION['u_id'] . " ORDER BY posts.posttime desc LIMIT $offset, 3");
 $statement->execute();
@@ -44,6 +49,7 @@ else {
 }
 
 $response['row'] = $row;
+$response['numposts'] = $resultnum;
 
 header('Content-Type: application/json');
 echo json_encode($response);

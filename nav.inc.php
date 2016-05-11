@@ -2,7 +2,7 @@
 
     if(!empty($_POST)) {
         if (!empty($_POST["zoeken"]) == "search") {
-            $_SESSION['search'] = $_POST['search'];
+            $_SESSION['search'] = htmlspecialchars($_POST['search']);
             header('Location: search.php');
         }
     }

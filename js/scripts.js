@@ -41,13 +41,17 @@ $(document).ready(function(){
         
         $(".loadmore").on("click", function(e){
             var offset = $(this).data("offset");
+
             console.log(offset);
+
             $.post("ajax/loadmore.php", {offset: offset }).done(function( response ) {
                
                 var offset = $(".loadmore").data("offset");
                 
                 var row = response.row;
-                
+                var numposts = response.numposts;
+                //console.log("row: " + row);
+                console.log(numposts);
                var newoffset = offset + 3
                 
                 //var newoffset = offset + (row);
@@ -70,13 +74,25 @@ $(document).ready(function(){
                 
                 $(".loadpost").append(load);
 				$(".loadpost li:first-child").slideDown();
-                
+
                 }
+                /*if(response.numposts = offset-1){
+                    alert("done!");
+
+                    $("#loadmore").style.visibility="hidden";
+                } else {
+                    alert("ay");
+                }*/
+
             });
+
+
             
         
         
         });
+
+
      });
     
     //ajax like post

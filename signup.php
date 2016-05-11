@@ -14,11 +14,11 @@
         if( !empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["username"]) && !empty($_POST["email"]) && !empty($_POST['password']) ) {
             
             $user = new User();
-            $user->Firstname = $_POST["firstname"];
-            $user->Lastname = $_POST["lastname"];
-            $user->Username = $_POST["username"];
-            $user->Email = $_POST["email"];
-            $user->Password = $_POST["password"];
+            $user->Firstname = htmlspecialchars($_POST["firstname"]);
+            $user->Lastname = htmlspecialchars($_POST["lastname"]);
+            $user->Username = htmlspecialchars($_POST["username"]);
+            $user->Email = htmlspecialchars($_POST["email"]);
+            $user->Password = htmlspecialchars($_POST["password"]);
             if($user->UsernameAvailable()) {
                 $_SESSION['loginfeedback'] = "Username already taken";
             } else {
