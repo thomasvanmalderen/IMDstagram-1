@@ -23,7 +23,6 @@
         $post = new Post();
         $like = new Like();
         $comment = new Comment();
-        $report = new Report();
     } else {
         header('Location: login.php');
     }
@@ -62,20 +61,6 @@ if(!empty($_POST["unlike"])) {
     }
 }
 
-if(!empty($_POST["report"])) {
-    if ($_POST['report'] === "report") {
-        $report->doReport($_POST['postval']);
-        //header("Location: index.php");
-        //var_dump($_GET['post']);
-    }
-}
-
-if(!empty($_POST["unreport"])) {
-    if ($_POST['unreport'] === "unreport") {
-        $report->doUnReport($_POST['postval']);
-
-    }
-}
 
 if(!empty($_POST['comment']))
 {
@@ -157,21 +142,6 @@ if(!empty($_POST['comment']))
             </form>
         <?php } ?>
         <p id="likes"><?php echo $like->getLikes($p['p_id']) . " Likes"; ?></p>
-
-        <?php if($report->didReport($p['p_id']) == true){?>
-            <form action="" method="post">
-                <input type="hidden" name="unreport" value="unreport">
-                <input type="hidden" name="postval" value="<?php echo $p['p_id'];?>">
-                <input id="unreport"  type="submit" name="btnunReport" value="Unreport"/>
-            </form>
-        <?php } elseif($report->didReport($p['p_id']) == false){?>
-            <form action="" method="post">
-                <input type="hidden" name="report" value="report">
-                <input type="hidden" name="postval" value="<?php echo $p['p_id'];?>">
-                <input id="report"  type="submit" name="btnReport" value="Report"/>
-            </form>
-        <?php } ?>
-        <!--<p id="reports"><?php echo $report->getReports($p['p_id']) . " Reports"; ?></p>-->
 
     </div>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">

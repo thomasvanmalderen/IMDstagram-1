@@ -159,7 +159,7 @@ $comments = $comment->GetComments();
                         <input id="report"  type="submit" name="btnReport" value="Report"/>
                     </form>
                 <?php } ?>
-                <p id="reports"><?php echo $report->getReports($p['p_id']) . " Reports"; ?></p>
+                <!--<p id="reports"><?php echo $report->getReports($p['p_id']) . " Reports"; ?></p>-->
 
             </div>
 
