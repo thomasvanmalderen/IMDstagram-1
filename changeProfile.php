@@ -172,12 +172,12 @@
             <h1><?php echo $feedback; ?></h1>
         <?php }; ?>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
-            <img src="<?php echo $_SESSION['avatar']; ?>" alt="<?php echo $_SESSION['username'] . " avatar"; ?>" class="avatar">
+            <img src="<?php echo $_SESSION['avatar']; ?>" class="avatar" id="imageUpload">
             <br>
             <div class="changeavatar">
                 <div id="btnUp">
                     <label class="myLabel">
-                        <input type="file" name="avatar" class="pictures"/>
+                        <input type="file" name="avatar" class="pictures" id="fileUpload"/>
                         <span>Upload avatar</span>
                     </label>
                 </div>
@@ -231,4 +231,7 @@
     </section>
         
 </body>
+
+    <script type="text/javascript" src="js/preview-image.js"></script>
+
 </html>

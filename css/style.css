@@ -612,3 +612,9 @@ input[type="submit"]#report{
     margin-left: 15px;
     float: left;
 }
+
+.imageUpload {
+    width: 100%;
+    max-height: 600px;
+    margin-bottom: 10px;
+}

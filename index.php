@@ -99,9 +99,10 @@ if(!empty($_POST['comment']))
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
     <div id="file">
         <h3>Add picture</h3>
+        <img src="" id="imageUpload" class="imageUpload">
     <div id="btnUp">
     <label class="myLabel">
-    <input type="file" name="pictures" class="pictures"/>
+    <input type="file" name="pictures" class="pictures" id="fileUpload"/>
     <span>Upload picture</span>
     </label>
     </div>
@@ -173,4 +174,7 @@ if(!empty($_POST['comment']))
 </section>
 
 </body>
+
+    <script type="text/javascript" src="js/preview-image.js"></script>
+
 </html>
