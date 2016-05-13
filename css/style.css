@@ -617,4 +617,5 @@ input[type="submit"]#report{
     width: 100%;
     max-height: 600px;
     margin-bottom: 10px;
+    visibility: hidden
 }

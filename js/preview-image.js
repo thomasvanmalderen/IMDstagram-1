@@ -13,4 +13,5 @@ function readURL(input) {
 
 $("#fileUpload").change(function(){
     readURL(this);
+    $('.imageUpload').css('visibility', 'visible');
 });
