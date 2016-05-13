@@ -15,7 +15,7 @@
     $user = new User();
     
     if($user->Authenticate()){
-
+        //proceed
     } else {
         header('Location: login.php');
     }
@@ -29,9 +29,9 @@
             
             if ( $_POST['old_password'] === $_SESSION['password'] ) {
                 
-                if ( !empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["username"]) && !empty($_POST["email"]) && !empty($_FILES["avatar"]) ) {
-                    
-                    // ALL FILLED IN (EXCEPT PASSWORD)
+                if ( !empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["username"]) && !empty($_POST["email"]) /*&& !empty($_FILES["avatar"])*/ ) {
+
+                    // ALL FILLED IN (EXCEPT PASSWORD AND AVATAR)
                     $changer = new User();
                     $changer->Firstname = $_POST["firstname"];
                     $changer->Lastname = $_POST["lastname"];
@@ -39,8 +39,9 @@
                     $changer->Email = $_POST["email"];
                     $changer->Bio = $_POST["bio"];
                     $changer->Account = $_POST["account"];
+
                     
-                    
+                    //CHANGES PASSWORD
                     if(empty($_POST['new_password'])){
                         $changer->Password = $_SESSION['password'];
                     } else {
@@ -48,27 +49,35 @@
                         $_SESSION['password'] = $_POST['new_password'];
                     }
 
-                        $changer->Avatar = $_FILES["avatar"];
 
+                    //CHANGES AVATAR
+                    if ($_FILES["avatar"]['name'] == "") {
+                        $changer->Avatar = $_SESSION["avatar"];
+                    } else {
+                        $changer->Avatar = $_FILES["avatar"];
+                    }
+
+
+                    //CHANGES USERNAME AND EMAIL
                     if($_POST['username'] == $_SESSION['username_'] && $_POST['email'] == $_SESSION['email']){
 
                         $changer->Update();
                         header('Location: profile.php?user=' . $_SESSION['username_']);
 
                     } elseif($_POST['username'] == $_SESSION['username_']) {
+
                         if($changer->EmailAvailable()){
                             $feedback="This email address is already taken.";
                         } else {
-
                             $changer->Update();
                             header('Location: profile.php?user=' . $_SESSION['username_']);
                         }
 
                     } elseif($_POST['email'] == $_SESSION['email']) {
+
                         if($changer->UsernameAvailable()){
                             $feedback="This username is already taken.";
                         } else {
-
                             $changer->Update();
                             header('Location: profile.php?user=' . $_SESSION['username_']);
                         }
@@ -78,17 +87,13 @@
                         if($changer->UsernameAvailable() || $changer->EmailAvailable()){
                             $feedback="This username and/or email address is already taken.";
                         } else {
-
                             $changer->Update();
                             header('Location: profile.php?user=' . $_SESSION['username_']);
                         }
+
                     }
-
-
-
-
                     
-                } elseif( !empty($_POST["firstname"]) || !empty($_POST["lastname"]) || !empty($_POST["username"]) || !empty($_POST["email"]) || !empty($_FILES["avatar"]) ) {
+                /*} elseif( !empty($_POST["firstname"]) || !empty($_POST["lastname"]) || !empty($_POST["username"]) || !empty($_POST["email"]) || !empty($_FILES["avatar"]) ) {
                     
                     
                     // SOME FIELDS LEFT EMPTY
@@ -130,14 +135,14 @@
                             $changer->Update();
                             //header('Location: profile.php?user=' . $_SESSION['username_']);
                         }
-                    }
+                    }*/
                     
                     
-                } elseif ( empty($_POST["firstname"]) && empty($_POST["lastname"]) && empty($_POST["username"]) && empty($_POST["email"]) && empty($_POST["bio"]) && !empty($_POST["password"]) ) {
+                } /*elseif ( empty($_POST["firstname"]) && empty($_POST["lastname"]) && empty($_POST["username"]) && empty($_POST["email"]) && empty($_POST["bio"]) && !empty($_POST["password"]) ) {
+                    //NO CHANGES
                     $feedback = "You asked for no changes";
-                } else {
-                    
-                }
+                }*/
+
             } else {
                 //WRONG PASSWORD
                 $feedback = "Wrong password";

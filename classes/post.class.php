@@ -76,6 +76,7 @@ class Post {
     }
 
     public function CanSaveImage() {
+
         if ($_FILES["pictures"]["size"] < 2097152) {
             $ext = strtolower(end(explode('.', $_FILES['pictures']['name'])));
             if (($ext == "jpg" || $ext == "jpeg" || $ext == "png" || $ext == "gif")) {
@@ -137,7 +138,7 @@ class Post {
 
     public function search() {
         $PDO = Db::getInstance();
-        $statement = $PDO-> prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.u_id WHERE description LIKE '%" . $_SESSION['search']  . "%'");
+        $statement = $PDO-> prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.u_id WHERE description LIKE '%" . $_SESSION['search']  . "%' OR location LIKE '%". $_SESSION['search'] . "%'");
         $statement->execute();
         $result = $statement->fetchAll();
         return $result;

@@ -262,7 +262,7 @@
             $ext = strtolower(end(explode('.',$_FILES['avatar']['name'])));
 
             if ($_FILES["avatar"]["size"] < 2097152) {
-                if (($ext == "jpg" || $ext == "jpeg" || $ext == "png" || $ext == "gif")) {
+                if (($ext == "jpg" || $ext == "jpeg" || $ext == "png")) {
                     $newname = $_SESSION['username'] . "-" . time() . "-" . $_FILES['avatar']['name'];
                     if (!file_exists($todir . $newname)) {
                         if ((move_uploaded_file($_FILES['avatar']['tmp_name'], $todir . $newname))) {
@@ -282,12 +282,25 @@
                 $this->m_sAvatar = $_SESSION['avatar'];
 
             } else {
-                if ($_FILES["avatar"]["size"] > 2097152 ) {
+                /*if ($_FILES["avatar"]["size"] > 2097152 ) {
                     echo "Sorry, your file is too large.";
                     $this->m_sAvatar = $_SESSION['avatar'];
                 } else {
                     echo "New file";
                     $this->m_sAvatar = $todir . $newname;
+                }*/
+
+                if ($_FILES["pictures"]["size"] < 2097152) {
+                    $ext = strtolower(end(explode('.', $_FILES['pictures']['name'])));
+                    if (($ext == "jpg" || $ext == "jpeg" || $ext == "png")) {
+                        $this->m_sAvatar = $todir . $newname;
+                    } else {
+                        echo "Only jpg/jpeg/png/gif images are accepted for upload";
+                        $this->m_sAvatar = $_SESSION['avatar'];
+                    }
+                } else {
+                    echo "Your file is too big";
+                    $this->m_sAvatar = $_SESSION['avatar'];
                 }
             }
 
@@ -313,6 +326,21 @@
             $_SESSION['username'] = $_POST["username"];
             
         }
+
+        /*public function CanSaveAvatar() {
+            if ($_FILES["avatar"]["size"] < 2097152) {
+                $ext = strtolower(end(explode('.', $_FILES['avatar']['name'])));
+                if (($ext == "jpg" || $ext == "jpeg" || $ext == "png")) {
+                    return true;
+                } else {
+                    echo "Only jpg/jpeg/png images are accepted for upload";
+                    return false;
+                }
+            } else {
+                echo "Your file is too big";
+                return false;
+            }
+        }*/
 
         public function getProfileInfo(){
             $PDO = Db::getInstance();
