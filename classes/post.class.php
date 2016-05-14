@@ -5,7 +5,7 @@ class Post {
     private $m_sDescription;
     private $m_iUserID;
     private $m_sLocation;
-
+    private $m_sFilter;
 
 
     public function __set($p_sProperty, $p_vValue)
@@ -26,6 +26,9 @@ class Post {
             case "Location":
                 $this->m_sLocation = $p_vValue;
                 break;
+            case "Filter":
+                $this->m_sFilter = $p_vValue;
+                break;
         }
     }
     public function __get($p_sProperty)
@@ -39,6 +42,9 @@ class Post {
                 break;
             case "Location":
                 return $this->m_sLocation;
+                break;
+            case "Filter":
+                return $this->m_sFilter;
                 break;
         }
     }
@@ -66,12 +72,13 @@ class Post {
 
 
         $PDO = Db::getInstance();
-        $statement = $PDO->prepare("INSERT into posts (picture, description, posttime,idUser, location) VALUES (:picture, :description, :posttime, :idUser, :location)");
+        $statement = $PDO->prepare("INSERT into posts (picture, description, posttime,idUser, location, filter) VALUES (:picture, :description, :posttime, :idUser, :location, :filter)");
         $statement->bindValue(":picture", $todir . $newname);
         $statement->bindValue(":description", $this->m_sDescription);
         $statement->bindValue(":posttime", date("Y-m-d H:i:sa"));
         $statement->bindValue(":idUser", $_SESSION['u_id']);
         $statement->bindValue(":location", $this->Location);
+        $statement->bindValue(":filter", $this->Filter);
         $statement->execute();
     }
 
@@ -109,7 +116,7 @@ class Post {
 
         $PDO = Db::getInstance();
         $p_user = $_GET['user'];
-        $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.u_id WHERE users.username = :user LIMIT 10");
+        $statement = $PDO->prepare("SELECT * FROM posts LEFT OUTER JOIN Users ON posts.idUser=users.u_id WHERE users.username = :user ORDER BY posttime DESC LIMIT 10");
         $statement->bindValue(":user", $p_user);
         $statement->execute();
         $result = $statement->fetchAll();
@@ -153,7 +160,7 @@ class Post {
     //$reported = $hidden->fetchAll();
     //var_dump($reported[0]["p_id"]);
     //AND p_id NOT IN " . $reported[0]["p_id"] . "
-    $statement = $PDO->prepare("SELECT DISTINCT p_id, picture, description, posttime, username, avatar, location FROM posts LEFT JOIN users ON users.u_id = posts.idUser LEFT JOIN follows ON follows.idFollowed = posts.idUser LEFT JOIN reports ON reports.reportedPost = posts.p_id WHERE follows.idFollowing = " . $_SESSION['u_id'] . " OR Posts.idUser = " . $_SESSION['u_id'] . " ORDER BY posts.posttime desc LIMIT 0,3");
+    $statement = $PDO->prepare("SELECT DISTINCT p_id, picture, description, posttime, username, avatar, location, filter FROM posts LEFT JOIN users ON users.u_id = posts.idUser LEFT JOIN follows ON follows.idFollowed = posts.idUser LEFT JOIN reports ON reports.reportedPost = posts.p_id WHERE follows.idFollowing = " . $_SESSION['u_id'] . " OR Posts.idUser = " . $_SESSION['u_id'] . " ORDER BY posts.posttime desc LIMIT 0,3");
     $statement->execute();
 
     $result = $statement->fetchAll();

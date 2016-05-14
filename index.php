@@ -32,6 +32,7 @@
             if ($_POST['action'] === "foto") {
                 $post->Description = htmlspecialchars($_POST['description']);
                 $post->Location = htmlspecialchars($_POST['location']);
+                $post->Filter = htmlspecialchars($_POST['filterselect']);
                 $post->PostSaveImage();
             }
         }
@@ -40,6 +41,7 @@
     $user->getAllInfo();
 
     $post = $post->displayPostsFollowing();
+    //var_dump($post);
     //var_dump($post);
 /*
 if(!empty($_POST["load"])) {
@@ -79,6 +81,7 @@ if(!empty($_POST['comment']))
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/cssgram.min.css">
     <link rel="favicon" href="favicon.ico">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/comments.js"></script>
@@ -99,7 +102,8 @@ if(!empty($_POST['comment']))
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
     <div id="file">
         <h3>Add picture</h3>
-        <img src="" id="imageUpload" class="imageUpload">
+        <figure class="imageUploadFilter" id="imageUploadFilter1"><img src="" id="imageUpload" class="imageUpload"></figure>
+        
     <div id="btnUp">
     <label class="myLabel">
     <input type="file" name="pictures" class="pictures" id="fileUpload"/>
@@ -110,6 +114,28 @@ if(!empty($_POST['comment']))
     <input type="text" name="description" id="description" placeholder="What's this photo about?">
     <input type="hidden" name="action" value="foto">
         <input type="hidden" name="location" class="location-summary"/>
+        <select name="filterselect" class="filterbox1" id="filterbox">
+            <option value="none">No filter</option>
+            <option value="_1977">1977</option>
+            <option value="aden">Aden</option>
+            <option value="brooklyn">Brooklyn</option>
+            <option value="clarendon">Clarendon</option>
+            <option value="earlybird">Earlybird</option>
+            <option value="gingham">Gingham</option>
+            <option value="hudson">Hudson</option>
+            <option value="inkwell">Inkwell</option>
+            <option value="lo-fi">Lo-Fi</option>
+            <option value="mayfair">Mayfair</option>
+            <option value="moon">Moon</option>
+            <option value="nashville">Nashville</option>
+            <option value="perpetua">Perpetua</option>
+            <option value="rise">Rise</option>
+            <option value="slumber">Slumber</option>
+            <option value="toaster">Toaster</option>
+            <option value="walden">Walden</option>
+            <option value="willow">Willow</option>
+            <option value="xpro2">X-Pro II</option>
+        </select>
     <input type="submit" name="submit" value="Post">
 </form>
 </div>
@@ -125,7 +151,7 @@ if(!empty($_POST['comment']))
         <p class="location"><?php echo $p['location']; ?></p>
 
     </div>
-    <a href="picture.php?post=<?php echo $p['p_id']; ?>"><img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" ></a>
+    <a href="picture.php?post=<?php echo $p['p_id']; ?>"><figure class="<?php echo $p['filter']; ?>"><img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" ></figure></a>
     <div class="postdescription">
     <p><a href="profile.php?user=<?php echo $p['username']; ?>" class="postprofile"><?php echo $p['username'];?> </a><?php echo $p['description'];?></p>
 

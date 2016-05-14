@@ -13,5 +13,13 @@ function readURL(input) {
 
 $("#fileUpload").change(function(){
     readURL(this);
+    $filter = $('#filterbox').value();
     $('.imageUpload').css('visibility', 'visible');
+    $('.imageUploadFilter').className($filter);
+});
+
+$(".filterbox1").change(function(){
+    alert("ok!");
+    $filter = $('#filterbox').val();
+    $('.imageUploadFilter').className = $filter;
 });
