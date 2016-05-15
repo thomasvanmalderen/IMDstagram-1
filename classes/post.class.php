@@ -160,7 +160,7 @@ class Post {
     //$reported = $hidden->fetchAll();
     //var_dump($reported[0]["p_id"]);
     //AND p_id NOT IN " . $reported[0]["p_id"] . "
-    $statement = $PDO->prepare("SELECT DISTINCT p_id, picture, description, posttime, username, avatar, location, filter FROM posts LEFT JOIN users ON users.u_id = posts.idUser LEFT JOIN follows ON follows.idFollowed = posts.idUser LEFT JOIN reports ON reports.reportedPost = posts.p_id WHERE follows.idFollowing = " . $_SESSION['u_id'] . " OR Posts.idUser = " . $_SESSION['u_id'] . " ORDER BY posts.posttime desc LIMIT 0,3");
+    $statement = $PDO->prepare("SELECT DISTINCT p_id, picture, description, posttime, username, avatar, location, filter FROM posts LEFT JOIN users ON users.u_id = posts.idUser LEFT JOIN follows ON follows.idFollowed = posts.idUser LEFT JOIN reports ON reports.reportedPost = posts.p_id WHERE follows.idFollowing = " . $_SESSION['u_id'] . " OR Posts.idUser = " . $_SESSION['u_id'] . " ORDER BY posts.posttime desc LIMIT 0,5");
     $statement->execute();
 
     $result = $statement->fetchAll();

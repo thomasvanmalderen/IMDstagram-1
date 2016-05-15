@@ -115,7 +115,7 @@ if(!empty($_POST['comment']))
     <input type="hidden" name="action" value="foto">
         <input type="hidden" name="location" class="location-summary"/>
         <select name="filterselect" id="filterselect">
-            <option value="inkwell">No filter</option>
+            <option value="nofilter">No filter</option>
             <option value="_1977">1977</option>
             <option value="aden">Aden</option>
             <option value="brooklyn">Brooklyn</option>
@@ -194,7 +194,7 @@ if(!empty($_POST['comment']))
 
 <?php endforeach; ?>
     </div>
-    <div id="loadmore" class="loadmore" data-offset="3">
+    <div id="loadmore" class="loadmore" data-offset="5">
     <p >Loadmore</p>
     </div>
 </section>

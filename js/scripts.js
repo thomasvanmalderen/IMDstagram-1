@@ -51,30 +51,40 @@ $(document).ready(function(){
                 var row = response.row;
                 var numposts = response.numposts;
                 //console.log("row: " + row);
-                console.log(numposts);
-                var newoffset = offset + 3
+                
+                var newoffset = offset + 5;
                 
                 //var newoffset = offset + (row);
-                
-                console.log(row);
-                var rowc = 3;
+                var com = response.com;
+                console.log(com);
+                var rowc = 5;
                 if (row == 0){
-                    rowc = 3}
+                    rowc = 5}
                 else{
                     rowc = row;
+                    $(".loadmore").hide();
                 }
                 for(x = 0; x < rowc; x++){
+                    
+                        var load = '<article class="post"><div class="postinfo"><a href="profile.php?user='+response[x].username+'"><img src="'+response[x].avatar+'" alt="'+response[x].avatar+'" class="avatar-small"></a><p><a href="profile.php?user='+response[x].username+'" class="postusername">'+response[x].username+'</a></p><p class="time">'+response[x].posttime+'</p><p class="location">'+response[x].location+'</p></div><a href="picture.php?post='+response[x].post+'"><figure class="'+response[x].filter+'"><img src="'+response[x].picture+'" alt="'+response[x].picture+'" class="postpicture" ></figure></a><div class="postdescription"><p><a href="profile.php?user='+response[x].username+'"class="postprofile">'+response[x].username+'</a> '+response[x].description+'</p>';
+                    
                     if(response[x].like == "yes"){
-                        var load = '<article class="post"><div class="postinfo"><a href="profile.php?user='+response[x].username+'"><img src="'+response[x].avatar+'" alt="'+response[x].avatar+'" class="avatar-small"></a><p><a href="profile.php?user='+response[x].username+'" class="postusername">'+response[x].username+'</a></p><p class="time">'+response[x].posttime+'</p><p class="location">'+response[x].location+'</p></div><a href="picture.php?post='+response[x].post+'"><figure class="'+response[x].filter+'"><img src="'+response[x].picture+'" alt="'+response[x].picture+'" class="postpicture" ></figure></a><div class="postdescription"><p><a href="profile.php?user='+response[x].username+'"class="postprofile">'+response[x].username+'</a> '+response[x].description+'</p><form action="" method="post"><input type="hidden" name="unlike" value="unlike"><input type="hidden" name="postval" value="'+response[x].post+'"><input id="unlike"  type="submit" name="btnunLike" value=""/></form><p id="likes">'+response[x].numlikes+'</p></div><form action="" method="post" enctype="multipart/form-data"><div class="comments"><input type="text" name="comment" placeholder="Write your comment here" class="com'+response[x].post+'" /><input type="hidden" name="userid" value="'+response[x].userid+'"/><input type="hidden" name="postid" value="'+response[x].post+'"/><input class="btnComment" type="submit" name="btnComment" value="Place your comment" data-postid="'+response[x].post+'" data-userid ="'+response[x].userid+'" /></div></form></article>';}
+                        load += '<form action="" method="post"><input type="hidden" name="unlike" value="unlike"><input type="hidden" name="postval" value="'+response[x].post+'"><input id="unlike"  type="submit" name="btnunLike" value=""/></form><p id="likes">'+response[x].numlikes+'</p></div><form action="" method="post" enctype="multipart/form-data">';
+                    }
                     else{
-                        var load = '<article class="post"><div class="postinfo"><a href="profile.php?user='+response[x].username+'"><img src="'+response[x].avatar+'" alt="'+response[x].avatar+'" class="avatar-small"></a><p><a href="profile.php?user='+response[x].username+'" class="postusername">'+response[x].username+'</a></p><p class="time">'+response[x].posttime+'</p><p class="location">'+response[x].location+'</p></div><a href="picture.php?post='+response[x].post+'"><figure class="'+response[x].filter+'"><img src="'+response[x].picture+'" alt="'+response[x].picture+'" class="postpicture" ></figure></a><div class="postdescription"><p><a href="profile.php?user='+response[x].username+'"class="postprofile">'+response[x].username+'</a> '+response[x].description+'</p><form action="" method="post"><input type="hidden" name="like" value="like"><input type="hidden" name="postval" value="'+response[x].post+'"><input id="like"  type="submit" name="btnLike" value=""/></form><p id="likes">'+response[x].numlikes+'</p></div><form action="" method="post" enctype="multipart/form-data"><div class="comments"><input type="text" name="comment" placeholder="Write your comment here" class="com'+response[x].post+'" /><input type="hidden" name="userid" value="'+response[x].userid+'"/><input type="hidden" name="postid" value="'+response[x].post+'"/><input class="btnComment" type="submit" name="btnComment" value="Place your comment" data-postid="'+response[x].post+'" data-userid ="'+response[x].userid+'" /></div></form></article>';
+                        load += '<form action="" method="post"><input type="hidden" name="like" value="like"><input type="hidden" name="postval" value="'+response[x].post+'"><input id="like"  type="submit" name="btnLike" value=""/></form><p id="likes">'+response[x].numlikes+'</p></div><form action="" method="post" enctype="multipart/form-data">';
                     }
                     
-                
+                    load += '<div class="comments"><input type="text" name="comment" placeholder="Write your comment here" class="com'+response[x].post+'" /><input type="hidden" name="userid" value="'+response[x].userid+'"/><input type="hidden" name="postid" value="'+response[x].post+'"/><input class="btnComment" type="submit" name="btnComment" value="Place your comment" data-postid="'+response[x].post+'" data-userid ="'+response[x].userid+'" /></div></form><ul class="displaycomments'+response[x].post+response[x].comment+response[x].commentid+'">';
+                    
+                    //display comments
+                load += '<div class="listcomment"><li><a href="profile.php?user='+response[x].username+'" class="postprofile">'+response[x].username+'</a> '+response[x].comment+'</li>';
+                    
+                    load += '</div></ul></article>'
                 
                 
                $(".loadmore").data('offset', newoffset);
-                console.log(response.filter);
+                
                 
                 $(".loadpost").append(load);
 				$(".loadpost li:first-child").slideDown();

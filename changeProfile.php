@@ -200,8 +200,8 @@
             <br>
             <div class="formulier">
                 <label for="account" class="profilelabel">Account visibility</label><br>
-                <input type="radio" name="account" value="public" <?php if($_SESSION['account']=="public"){ echo "checked"; } ?>>Public(Everyone can see your account)<br>
-                <input type="radio" name="account" value="private" <?php if($_SESSION['account']=="private"){ echo "checked"; } ?>>Private(Only followers can see your account)<br>
+                <input type="radio" class="radio" name="account" value="public" <?php if($_SESSION['account']=="public"){ echo "checked"; } ?>>Public(Everyone can see your account)<br>
+                <input type="radio" class="radio" name="account" value="private" <?php if($_SESSION['account']=="private"){ echo "checked"; } ?>>Private(Only followers can see your account)<br>
             </div>
             <br>
             <div class="formulier">

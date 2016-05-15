@@ -219,7 +219,14 @@
         height: 200px;
         width: auto;
     }
+    #filterselect{
+    margin-left: 5%;
+    }
  
+    .radio{
+
+    margin-left: 5%;
+    }
 }
 @media only screen and (min-width: 870px){
     input[type="text"]#search{
