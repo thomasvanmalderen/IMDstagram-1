@@ -13,13 +13,15 @@ function readURL(input) {
 
 $("#fileUpload").change(function(){
     readURL(this);
-    $filter = $('#filterbox').value();
+
     $('.imageUpload').css('visibility', 'visible');
-    $('.imageUploadFilter').className($filter);
+    //$('.imageUploadFilter').className($filter);
 });
 
-$(".filterbox1").change(function(){
-    alert("ok!");
-    $filter = $('#filterbox').val();
-    $('.imageUploadFilter').className = $filter;
+$("#filterselect").change(function(){
+    //alert($('#filterselect').val());
+    //$filter = $('#filterselect').val();
+    //$('#imageUploadFilter1').className="";
+    $('#imageUploadFilter1').attr('class', '');
+    $('#imageUploadFilter1').addClass($('#filterselect').val());
 });

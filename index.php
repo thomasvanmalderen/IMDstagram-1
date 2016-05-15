@@ -102,7 +102,7 @@ if(!empty($_POST['comment']))
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
     <div id="file">
         <h3>Add picture</h3>
-        <figure class="imageUploadFilter" id="imageUploadFilter1"><img src="" id="imageUpload" class="imageUpload"></figure>
+        <figure class="" id="imageUploadFilter1"><img src="" id="imageUpload" class="imageUpload"></figure>
         
     <div id="btnUp">
     <label class="myLabel">
@@ -114,8 +114,8 @@ if(!empty($_POST['comment']))
     <input type="text" name="description" id="description" placeholder="What's this photo about?">
     <input type="hidden" name="action" value="foto">
         <input type="hidden" name="location" class="location-summary"/>
-        <select name="filterselect" class="filterbox1" id="filterbox">
-            <option value="none">No filter</option>
+        <select name="filterselect" id="filterselect">
+            <option value="inkwell">No filter</option>
             <option value="_1977">1977</option>
             <option value="aden">Aden</option>
             <option value="brooklyn">Brooklyn</option>
