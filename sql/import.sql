@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Gegenereerd op: 15 mei 2016 om 11:39
+-- Gegenereerd op: 16 mei 2016 om 20:51
 -- Serverversie: 5.5.42
 -- PHP-versie: 7.0.0
 
@@ -221,7 +221,7 @@ CREATE TABLE `posts` (
   `idUser` int(11) NOT NULL,
   `location` varchar(300) COLLATE utf8_bin DEFAULT NULL,
   `filter` varchar(255) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `posts`
@@ -315,7 +315,7 @@ INSERT INTO `users` (`u_id`, `username`, `firstname`, `lastname`, `email`, `pass
   (7, 'chrom', 'Chrom', 'FE', 'chrom@fireemblem.com', '$2y$12$qOdzwvyOtMtvxEUJxB5/JOWp4BAyEbffWkO9tF0qK65uW7nZaEPIG', 'public', 'images/avatars/chrom-1461440497-chrom.png', 'Yllisean prince Chrom. Go Shepherds!'),
   (8, 'bedje', 'Bedje', 'Slapen', 'bedje@slapen.be', '$2y$12$4urHq36IYfo/MO9z/R8gMOptdramH2bIG.8wuu0AngxE9c5OxR5hq', 'public', 'images/avatars/bedje-1461440558-bedje.jpg', 'Because Slapen is life.'),
   (9, 'dickladder', 'Dick', 'Ladder', 'dickladder@email.nl', '$2y$12$luNw7BZl3SskmV.nuAHEyeo4eO3jFzSSTNdrU.m2KXhIwN4jfcYKq', 'public', 'images/avatars/dickladder-1461440624-dickladder.jpg', 'CEO of Dutchie Enterprises.'),
-  (10, 'thomasvanmalderen', 'Thomas', 'Van Malderen', 'thomas@email.com', '$2y$12$FWnp3aylyAtGJHpPxEm7COYVKoM8sg7HqJKfuH4fPEkESttsK5plC', 'public', 'images/avatars/thomasvanmalderen-1461440731-thomas.jpg', 'Tokke, de coolste jongen ooit'),
+  (10, 'thomasvanmalderen', 'Thomas', 'Van Malderen', 'thomas@email.com', '$2y$12$jWayDe7Wz346RUhs/G8Dx.Q7PifI3cP5w6CpA0u3rPoZXVxmMlWxa', 'public', 'images/avatars/thomasvanmalderen-1461440731-thomas.jpg', 'Tokke, de coolste jongen ooit'),
   (11, 'grandillusions', 'Tim', 'Rowett', 'tim@toys.uk', '$2y$12$0P6G3p5nncR3eE4J9VdHveV6UNu7VJVQhMBb6A6FFm0ssz7qIS5FK', 'private', 'images/avatars/grandillusions-1462650171-Rowett-Tim.jpg', 'Boss at Grand Illusions. I love toys! Wow! astonishing! extraordinary! *heh*'),
   (12, 'PaulienVM', 'Paulien', 'Van Malderen', 'paulien_van_malderen@hotmail.be', '$2y$12$qUg33bC9QvJEVfrDhsmlpeq2ZFp/TFa7KKkb1gh2e58FoAEJOFvwq', 'private', 'images/avatars/PaulienVM-1463160302-12347968_908296865917595_3543647204838440732_n.jpg', 'Eender wat.'),
   (13, 'maartenv', 'Maarten', 'Verhoeven', 'maarten@email.com', '$2y$12$r7aue2Cz.VfDgBsQsRLEvuOin1Vu2DxAT0WauhawNDgx1AnnDo6oa', 'public', 'images/avatars/basic_avatar.jpg', '');
@@ -394,7 +394,7 @@ MODIFY `l_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=124;
 -- AUTO_INCREMENT voor een tabel `posts`
 --
 ALTER TABLE `posts`
-MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
+MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT voor een tabel `reports`
 --
