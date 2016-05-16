@@ -290,8 +290,8 @@
                     $this->m_sAvatar = $todir . $newname;
                 }*/
 
-                if ($_FILES["pictures"]["size"] < 2097152) {
-                    $ext = strtolower(end(explode('.', $_FILES['pictures']['name'])));
+                if ($_FILES["avatar"]["size"] < 2097152) {
+                    $ext = strtolower(end(explode('.', $_FILES['avatar']['name'])));
                     if (($ext == "jpg" || $ext == "jpeg" || $ext == "png")) {
                         $this->m_sAvatar = $todir . $newname;
                     } else {
