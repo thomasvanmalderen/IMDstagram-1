@@ -78,9 +78,9 @@ $(document).ready(function(){
                     load += '<div class="comments"><input type="text" name="comment" placeholder="Write your comment here" class="com'+response[x].post+'" /><input type="hidden" name="userid" value="'+response[x].userid+'"/><input type="hidden" name="postid" value="'+response[x].post+'"/><input class="btnComment" type="submit" name="btnComment" value="Place your comment" data-postid="'+response[x].post+'" data-userid ="'+response[x].userid+'" /></div></form><ul class="displaycomments'+response[x].post+response[x].comment+response[x].commentid+'">';
                     
                     //display comments
-                load += '<div class="listcomment"><li><a href="profile.php?user='+response[x].username+'" class="postprofile">'+response[x].username+'</a> '+response[x].comment+'</li>';
+                //load += '<div class="listcomment"><li><a href="profile.php?user='+response[x].username+'" class="postprofile">'+response[x].username+'</a> '+response[x].comment+'</li>';
                     
-                    load += '</div></ul></article>'
+                    load += '</article>'
                 
                 
                $(".loadmore").data('offset', newoffset);
