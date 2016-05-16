@@ -41,7 +41,7 @@
 
         {
             $PDO = Db::getInstance();
-            $statement = $PDO->prepare("INSERT into COMMENTS (comment, idPost,idUser,posttime) VALUES (:comment, :idPost, :idUser, :posttime,)");
+            $statement = $PDO->prepare("INSERT into COMMENTS (comment, idPost,idUser,posttime) VALUES (:comment, :idPost, :idUser, :posttime)");
             $statement->bindValue(":comment", $this->m_sComment);
             $statement->bindValue(":idPost", $this->m_iPostID);
             $statement->bindValue(":idUser", $_SESSION['u_id']);
