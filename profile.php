@@ -42,7 +42,12 @@
 
     if(!empty($_POST["follow"])) {
         if ($_POST['follow'] === "follow") {
-            $follow->requestFollow();
+            if($user[0]['account'] == "private"){
+                $follow->requestFollow();
+            } else {
+                $follow->doFollow();
+            }
+
             //header("Location: index.php");
             //var_dump($_GET['post']);
         }
