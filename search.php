@@ -57,6 +57,7 @@ if(!empty($_POST["unlike"])) {
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/cssgram.min.css">
     <link rel="favicon" href="favicon.ico">
 </head>
 <body>
@@ -75,7 +76,7 @@ if(!empty($_POST["unlike"])) {
                 <p><a href="profile.php?user=<?php echo $p['username']; ?>" class="postusername"><?php echo $p['username']; ?></a></p>
                 <p class="time"><?php Helper::timeAgo($p['posttime']); ?></p>
             </div>
-            <a href="picture.php?post=<?php echo $p['p_id']; ?>"><img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" ></a>
+            <a href="picture.php?post=<?php echo $p['p_id']; ?>"><figure class="<?php echo $p['filter']; ?>"><img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" ></figure></a>
             <div class="postdescription">
                 <p><a href="profile.php?user=<?php echo $p['username']; ?>" class="postprofile"><?php echo $p['username'];?> </a><?php echo $p['description'];?></p>
 

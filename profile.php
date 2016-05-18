@@ -63,7 +63,7 @@
     
 
 ?><!doctype html>
-    <html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="UTF-8">
         <title>IMDstagram</title>
@@ -71,6 +71,7 @@
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/media.css">
+        <link rel="stylesheet" href="css/cssgram.min.css">
     </head>
     <body>
 
@@ -127,7 +128,7 @@
             <article class="profilepost">
 
                 <a href="picture.php?post=<?php echo $p['p_id']; ?>">
-                    <img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" >
+                    <figure class="<?php echo $p['filter']; ?>"><img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" ></figure>
                 </a>
 
             </article>
@@ -138,7 +139,7 @@
             <article class="profilepost">
 
                 <a href="picture.php?post=<?php echo $p['p_id']; ?>">
-                    <img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" >
+                    <figure class="<?php echo $p['filter']; ?>"><img src="<?php echo $p['picture']; ?>" alt="<?php echo $p['picture'] ?>" class="postpicture" ></figure>
                 </a>
 
             </article>
