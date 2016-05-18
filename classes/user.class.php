@@ -278,7 +278,6 @@
             $this->getAllInfo();
 
             if( $_FILES['avatar']['name'] == ""){
-                echo "Using session";
                 $this->m_sAvatar = $_SESSION['avatar'];
 
             } else {
@@ -295,11 +294,9 @@
                     if (($ext == "jpg" || $ext == "jpeg" || $ext == "png")) {
                         $this->m_sAvatar = $todir . $newname;
                     } else {
-                        echo "Only jpg/jpeg/png/gif images are accepted for upload";
                         $this->m_sAvatar = $_SESSION['avatar'];
                     }
                 } else {
-                    echo "Your file is too big";
                     $this->m_sAvatar = $_SESSION['avatar'];
                 }
             }

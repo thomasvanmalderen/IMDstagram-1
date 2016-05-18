@@ -51,26 +51,76 @@
 
 
                     //CHANGES AVATAR
-                    if ($_FILES["avatar"]['name'] == "") {
+                    /*if ($_FILES["avatar"]['name'] == "") {
                         $changer->Avatar = $_SESSION["avatar"];
                     } else {
-                        $changer->Avatar = $_FILES["avatar"];
-                    }
+                        //$changer->Avatar = $_FILES["avatar"];
+                        if ($_FILES["avatar"]["size"] < 2097152) {
+                            $ext = strtolower(end(explode('.', $_FILES['avatar']['name'])));
+                            if (($ext == "jpg" || $ext == "jpeg" || $ext == "png")) {
+                                $changer->Avatar = $_FILES["avatar"];
+                            } else {
+                                echo "Only jpg/jpeg/png/gif images are accepted for upload";
+                                $changer->Avatar = $_SESSION["avatar"];;
+                            }
+                        } else {
+                            echo "Your file is too big";
+                            $changer->Avatar = $_SESSION["avatar"];
+                        }
+                    }*/
 
 
                     //CHANGES USERNAME AND EMAIL
                     if($_POST['username'] == $_SESSION['username_'] && $_POST['email'] == $_SESSION['email']){
 
-                        $changer->Update();
-                        header('Location: profile.php?user=' . $_SESSION['username_']);
+
+                        //CHANGES AVATAR
+                        if ($_FILES["avatar"]['name'] == "") {
+                            $changer->Avatar = $_SESSION["avatar"];
+                            $changer->Update();
+                            header('Location: profile.php?user=' . $_SESSION['username_']);
+                        } else {
+                            if ($_FILES["avatar"]["size"] < 2097152) {
+                                $ext = strtolower(end(explode('.', $_FILES['avatar']['name'])));
+                                if (($ext == "jpg" || $ext == "jpeg" || $ext == "png")) {
+                                    $changer->Avatar = $_FILES["avatar"];
+                                    $changer->Update();
+                                    header('Location: profile.php?user=' . $_SESSION['username_']);
+                                } else {
+                                    $avatarFeedback = "Only jpg/jpeg/png images are accepted for upload";
+                                    $changer->Avatar = $_SESSION["avatar"];;
+                                }
+                            } else {
+                                $avatarFeedback = "Your file is too big";
+                                $changer->Avatar = $_SESSION["avatar"];
+                            }
+                        }
 
                     } elseif($_POST['username'] == $_SESSION['username_']) {
 
                         if($changer->EmailAvailable()){
                             $feedback="This email address is already taken.";
                         } else {
-                            $changer->Update();
-                            header('Location: profile.php?user=' . $_SESSION['username_']);
+                            if ($_FILES["avatar"]['name'] == "") {
+                                $changer->Avatar = $_SESSION["avatar"];
+                                $changer->Update();
+                                header('Location: profile.php?user=' . $_SESSION['username_']);
+                            } else {
+                                if ($_FILES["avatar"]["size"] < 2097152) {
+                                    $ext = strtolower(end(explode('.', $_FILES['avatar']['name'])));
+                                    if (($ext == "jpg" || $ext == "jpeg" || $ext == "png")) {
+                                        $changer->Avatar = $_FILES["avatar"];
+                                        $changer->Update();
+                                        header('Location: profile.php?user=' . $_SESSION['username_']);
+                                    } else {
+                                        $avatarFeedback = "Only jpg/jpeg/png images are accepted for upload";
+                                        $changer->Avatar = $_SESSION["avatar"];;
+                                    }
+                                } else {
+                                    $avatarFeedback = "Your file is too big";
+                                    $changer->Avatar = $_SESSION["avatar"];
+                                }
+                            }
                         }
 
                     } elseif($_POST['email'] == $_SESSION['email']) {
@@ -78,8 +128,26 @@
                         if($changer->UsernameAvailable()){
                             $feedback="This username is already taken.";
                         } else {
-                            $changer->Update();
-                            header('Location: profile.php?user=' . $_SESSION['username_']);
+                            if ($_FILES["avatar"]['name'] == "") {
+                                $changer->Avatar = $_SESSION["avatar"];
+                                $changer->Update();
+                                header('Location: profile.php?user=' . $_SESSION['username_']);
+                            } else {
+                                if ($_FILES["avatar"]["size"] < 2097152) {
+                                    $ext = strtolower(end(explode('.', $_FILES['avatar']['name'])));
+                                    if (($ext == "jpg" || $ext == "jpeg" || $ext == "png")) {
+                                        $changer->Avatar = $_FILES["avatar"];
+                                        $changer->Update();
+                                        header('Location: profile.php?user=' . $_SESSION['username_']);
+                                    } else {
+                                        $avatarFeedback =  "Only jpg/jpeg/png images are accepted for upload";
+                                        $changer->Avatar = $_SESSION["avatar"];;
+                                    }
+                                } else {
+                                    $avatarFeedback =  "Your file is too big";
+                                    $changer->Avatar = $_SESSION["avatar"];
+                                }
+                            }
                         }
 
                     } else {
@@ -87,8 +155,26 @@
                         if($changer->UsernameAvailable() || $changer->EmailAvailable()){
                             $feedback="This username and/or email address is already taken.";
                         } else {
-                            $changer->Update();
-                            header('Location: profile.php?user=' . $_SESSION['username_']);
+                            if ($_FILES["avatar"]['name'] == "") {
+                                $changer->Avatar = $_SESSION["avatar"];
+                                $changer->Update();
+                                header('Location: profile.php?user=' . $_SESSION['username_']);
+                            } else {
+                                if ($_FILES["avatar"]["size"] < 2097152) {
+                                    $ext = strtolower(end(explode('.', $_FILES['avatar']['name'])));
+                                    if (($ext == "jpg" || $ext == "jpeg" || $ext == "png")) {
+                                        $changer->Avatar = $_FILES["avatar"];
+                                        $changer->Update();
+                                        header('Location: profile.php?user=' . $_SESSION['username_']);
+                                    } else {
+                                        $avatarFeedback = "Only jpg/jpeg/png images are accepted for upload";
+                                        $changer->Avatar = $_SESSION["avatar"];;
+                                    }
+                                } else {
+                                    $avatarFeedback = "Your file is too big";
+                                    $changer->Avatar = $_SESSION["avatar"];
+                                }
+                            }
                         }
 
                     }
@@ -188,6 +274,9 @@
                 </div>
                 <input type="text" class="uploadFile" disabled="disabled"/>
             </div>
+            <?php if(isset($avatarFeedback)){; ?>
+                <h1 class="feedback"><?php echo $avatarFeedback; ?></h1>
+            <?php }; ?>
             <div class="formulier">
             <label for="firstname" class="profilelabel">First name</label>
             <input type="text" name="firstname" id="firstname" class="profileinput" value="<?php echo $_SESSION['firstname']; ?>"/>
@@ -208,6 +297,7 @@
             <label for="username" class="profilelabel">Username</label>
                 <input type="text" name="username" id="username" class="profileinput" value="<?php echo $_SESSION['username_']; ?>"/>
                 </div>
+            <div class="usernameFeedback"><span></span></div>
             <br>
             <div class="formulier">
             <label for="email" class="profilelabel">Email</label>
@@ -232,7 +322,7 @@
             <input type="submit" name="btnSignup" class="profileinput" value="Save changes"/>
 
         </form>
-        <div class="usernameFeedback"><span></span></div>
+
     </section>
         
 </body>
