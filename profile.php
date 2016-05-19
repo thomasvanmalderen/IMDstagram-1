@@ -6,9 +6,9 @@
     ob_start();
     session_start();
 
-    include_once("classes/db.class.php");
-    include_once("classes/user.class.php");
-    include_once("classes/post.class.php");
+    include_once("classes/Db.class.php");
+    include_once("classes/User.class.php");
+    include_once("classes/Post.class.php");
     include_once("classes/follow.class.php");
     include_once("classes/Like.class.php");
 

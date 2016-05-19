@@ -3,8 +3,8 @@
 	// IMDSTAGRAM AJAX CODE: CHECK USERNAME AVAILIBILITY
 	//######################################################
 
-	include_once("../classes/db.class.php");
-	include_once("../classes/user.class.php");
+	include_once("../classes/Db.class.php");
+	include_once("../classes/User.class.php");
 
     $user = new User();
 	if( !empty( $_POST['username'] ) ) {

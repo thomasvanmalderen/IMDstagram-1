@@ -6,8 +6,8 @@
 
     session_start();
 
-    include_once("classes/user.class.php");
-    include_once("classes/db.class.php");
+    include_once("classes/User.class.php");
+    include_once("classes/Db.class.php");
 
     // LOG IN PROTOCOL
     if(!empty($_POST)){

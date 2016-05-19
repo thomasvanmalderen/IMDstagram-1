@@ -3,7 +3,7 @@
     // IMDSTAGRAM AJAX CODE: COMMENT ON A POST
     //######################################################
 
-    include_once("../classes/db.class.php");
+    include_once("../classes/Db.class.php");
     include_once("../classes/Comment.class.php");
 
     session_start();
