@@ -1,52 +1,47 @@
 <?php
 
-// IMDSTAGRAM CODE: HOME - Last edited: 14/04/2016
-//######################################################
+    // IMDSTAGRAM CODE: SEARCH PAGE
+    //######################################################
 
-ob_start();
-
-// SESSION START
-session_start();
-
-// INCLUDE CLASSES
-include_once("classes/db.class.php");
-include_once("classes/user.class.php");
-include_once("classes/post.class.php");
-include_once("classes/Helper.class.php");
-include_once("classes/Like.class.php");
-
-// AUTHENTICATE USER
-$user = new User();
-if($user->Authenticate()){
-    $post = new Post();
-    $like = New Like();
-} else {
-    header('Location: login.php');
-}
-
-$user->getAllInfo();
-
-if(!empty($_POST["search"])) {
-    $_SESSION['search'] = htmlspecialchars($_POST['search']);
-    header('Location: search.php');
-}
+    ob_start();
+    session_start();
     
-$post = $post->search();
-
-if(!empty($_POST["like"])) {
-    if ($_POST['like'] === "like") {
-        $like->doLike($_POST['postval']);
-        //header("Location: index.php");
-        //var_dump($_GET['post']);
+    include_once("classes/db.class.php");
+    include_once("classes/user.class.php");
+    include_once("classes/post.class.php");
+    include_once("classes/Helper.class.php");
+    include_once("classes/Like.class.php");
+    
+    $user = new User();
+    if($user->Authenticate()){
+        $post = new Post();
+        $like = New Like();
+    } else {
+        header('Location: login.php');
     }
-}
 
-if(!empty($_POST["unlike"])) {
-    if ($_POST['unlike'] === "unlike") {
-        $like->doUnlike($_POST['postval']);
+    $user->getAllInfo();
 
+    if(!empty($_POST["search"])) {
+        $_SESSION['search'] = htmlspecialchars($_POST['search']);
+        header('Location: search.php');
     }
-}
+    
+    $post = $post->search();
+
+    // LIKE POST
+    if(!empty($_POST["like"])) {
+        if ($_POST['like'] === "like") {
+            $like->doLike($_POST['postval']);
+        }
+    }
+
+    // UNLIKE POST
+    if(!empty($_POST["unlike"])) {
+        if ($_POST['unlike'] === "unlike") {
+            $like->doUnlike($_POST['postval']);
+        }
+    }
     
 
 ?><!doctype html>

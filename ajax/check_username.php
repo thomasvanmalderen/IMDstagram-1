@@ -1,21 +1,27 @@
 <?php
-include_once("../classes/db.class.php");
-include_once("../classes/user.class.php");
+
+	// IMDSTAGRAM AJAX CODE: CHECK USERNAME AVAILIBILITY
+	//######################################################
+
+	include_once("../classes/db.class.php");
+	include_once("../classes/user.class.php");
 
     $user = new User();
-    if(!empty($_POST['username'])) {
-	        $user->Username = $_POST['username'];
+	if( !empty( $_POST['username'] ) ) {
 
-	        if($user->UsernameAvailable()) {
-				$response['status'] = "error";
-				$response['message'] = 'Username already taken';
-		       } else {
+		$user->Username = $_POST['username'];
 
-				$response['status'] = 'success';
-				$response['message'] = 'Username available';
-		        }
+		if($user->UsernameAvailable()) {
+			$response['status'] = "error";
+			$response['message'] = 'Username already taken';
 
-         header('Content-type: application/json');
-         echo json_encode($response);
+		} else {
+			$response['status'] = 'success';
+			$response['message'] = 'Username available';
+
+		}
+
+		header('Content-type: application/json');
+		echo json_encode($response);
      }
 

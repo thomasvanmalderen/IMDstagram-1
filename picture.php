@@ -1,90 +1,79 @@
-<?php 
-// IMDSTAGRAM CODE: HOME - Last edited: 14/04/2016
-//######################################################
+<?php
 
-ob_start();
+    // IMDSTAGRAM CODE: INDIVIDUAL PICTURE PAGE
+    //######################################################
 
-// SESSION START
-session_start();
+    ob_start();
+    session_start();
 
-// INCLUDE CLASSES
-include_once("classes/db.class.php");
-include_once("classes/user.class.php");
-include_once("classes/post.class.php");
-include_once("classes/Helper.class.php");
-include_once("classes/Like.class.php");
-include_once("classes/Comment.class.php");
-include_once("classes/Report.class.php");
-
-// AUTHENTICATE USER
-$user = new User();
-if($user->Authenticate()){
-    $post = new Post();
-    $d_post  =new Post();
-    $like = New Like();
-    $comment = new Comment();
-    $report = new Report();
-} else {
-    header('Location: login.php');
-}
-
-$user->getAllInfo();
-
-$post = $post->displayPicture();
+    include_once("classes/db.class.php");
+    include_once("classes/user.class.php");
+    include_once("classes/post.class.php");
+    include_once("classes/Helper.class.php");
+    include_once("classes/Like.class.php");
+    include_once("classes/Comment.class.php");
+    include_once("classes/Report.class.php");
 
 
-if(!empty($_POST["delete"])) {
-    if ($_POST['delete'] === "delete") {
-        $d_post->removePicture();
-        header("Location: index.php");
-        //var_dump($_GET['post']);
+    $user = new User();
+    if($user->Authenticate()){
+        $post = new Post();
+        $d_post  =new Post();
+        $like = New Like();
+        $comment = new Comment();
+        $report = new Report();
+
+    } else {
+        header('Location: login.php');
     }
 
-}
+    $user->getAllInfo();
+    $post = $post->displayPicture();
 
-if(!empty($_POST["like"])) {
-    if ($_POST['like'] === "like") {
-        $like->doLike($_POST['postval']);
-        //header("Location: index.php");
-        //var_dump($_GET['post']);
+    // DELETE PICTURE
+    if(!empty($_POST["delete"])) {
+        if ($_POST['delete'] === "delete") {
+            $d_post->removePicture();
+            header("Location: index.php");
+        }
     }
-}
 
-if(!empty($_POST["unlike"])) {
-    if ($_POST['unlike'] === "unlike") {
-        $like->doUnlike($_POST['postval']);
-
+    // LIKE POST
+    if(!empty($_POST["like"])) {
+        if ($_POST['like'] === "like") {
+            $like->doLike($_POST['postval']);
+        }
     }
-}
 
-if(!empty($_POST["report"])) {
-    if ($_POST['report'] === "report") {
-        $report->doReport($_POST['postval']);
-        //header("Location: index.php");
-        //var_dump($_GET['post']);
+    // UNLIKE POST
+    if(!empty($_POST["unlike"])) {
+        if ($_POST['unlike'] === "unlike") {
+            $like->doUnlike($_POST['postval']);
+        }
     }
-}
 
-if(!empty($_POST["unreport"])) {
-    if ($_POST['unreport'] === "unreport") {
-        $report->doUnReport($_POST['postval']);
-
+    // REPORT POST
+    if(!empty($_POST["report"])) {
+        if ($_POST['report'] === "report") {
+            $report->doReport($_POST['postval']);
+        }
     }
-}
 
+    // UN-REPORT POST
+    if(!empty($_POST["unreport"])) {
+        if ($_POST['unreport'] === "unreport") {
+            $report->doUnReport($_POST['postval']);
+        }
+    }
 
-//controleer of er een update wordt verzonden
-if(!empty($_POST['comment']))
-{
-    $comment->Comment = htmlspecialchars($_POST['comment']);
-    $comment->PostID = htmlspecialchars($_POST['postid']);
-    $comment->SaveComment();
-}
+    // COMMENT ON POST
+    if(!empty($_POST['comment'])) {
+        $comment->Comment = htmlspecialchars($_POST['comment']);
+        $comment->PostID = htmlspecialchars($_POST['postid']);
+        $comment->SaveComment();
+    }
 
-//altijd alle laatste comments ophalen
-$comments = $comment->GetComments();
-
-    //$report->InappropiatePost();
+    $comments = $comment->GetComments();
 
 ?><!doctype html>
 <html lang="en">

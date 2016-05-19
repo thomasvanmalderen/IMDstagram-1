@@ -1,44 +1,39 @@
 <?php
 
     
-    // IMDSTAGRAM CODE: LOGIN FORM - Last edited: 30/03/2016
+    // IMDSTAGRAM CODE: LOGIN FORM
     //######################################################
 
-    // SESSION START
     session_start();
 
-    // INCLUDE CLASSES
     include_once("classes/user.class.php");
     include_once("classes/db.class.php");
 
-
-    // LOGIN 
+    // LOG IN PROTOCOL
     if(!empty($_POST)){
         
-    if($_POST['action'] === "inloggen") {
+        if($_POST['action'] === "inloggen") {
         
-        if(!empty($_POST["username"]) && !empty($_POST["password"])){
-            $user = new User();
-            $user->Username = htmlspecialchars($_POST["username"]);
-            $user->Password = htmlspecialchars($_POST["password"]);
+            if(!empty($_POST["username"]) && !empty($_POST["password"])){
+                $user = new User();
+                $user->Username = htmlspecialchars($_POST["username"]);
+                $user->Password = htmlspecialchars($_POST["password"]);
             
-            if($user->canLogin()){
-                
-                // USER FOUND
-                $user->DoLogin();
-                header('Location: index.php');
-            }  else {
-                // USER NOT FOUND
-                $feedback = "Your password or username was incorrect";
+                if($user->canLogin()){
+                    // USER FOUND
+                    $user->DoLogin();
+                    header('Location: index.php');
+                }  else {
+                    // USER NOT FOUND
+                    $feedback = "Your password or username was incorrect";
+                }
+            }else{
+                // EMPTY FIELDS
+                $feedback = "Please fill in all the fields";
             }
-            
-        }else{
-            // EMPTY FIELDS
-            $feedback = "Please fill in all the fields";
+        } else {
+            header('Location: login.php');
         }
-    } else {
-        header('Location: login.php');
-    }
     }
 
 

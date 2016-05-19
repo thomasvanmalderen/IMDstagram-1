@@ -1,14 +1,11 @@
 <?php
 
-    // IMDSTAGRAM CODE: HOME - Last edited: 14/04/2016
+    // IMDSTAGRAM CODE: HOME PAGE
     //######################################################
     
     ob_start();
-
-    // SESSION START
     session_start();
 
-    // INCLUDE CLASSES
     include_once("classes/db.class.php");
     include_once("classes/user.class.php");
     include_once("classes/post.class.php");
@@ -16,8 +13,7 @@
     include_once("classes/Like.class.php");
     include_once("classes/Comment.class.php");
     include_once("classes/Report.class.php");
-    
-    // AUTHENTICATE USER
+
     $user = new User();
     if($user->Authenticate()){
         $post = new Post();
@@ -27,6 +23,7 @@
         header('Location: login.php');
     }
 
+    // UPLOAD POST
     if(!empty(!empty($_FILES["pictures"]) || !empty($_POST["description"]) )) {
         if ($post->CanSaveImage()) {
             if ($_POST['action'] === "foto") {
@@ -38,41 +35,31 @@
         }
     }
 
+    // GET INFO AND DISPLAY POSTS
     $user->getAllInfo();
-
     $post = $post->displayPostsFollowing();
-    //var_dump($post);
-    //var_dump($post);
-/*
-if(!empty($_POST["load"])) {
-    $post->loadmore();
-}*/
 
-if(!empty($_POST["like"])) {
-    if ($_POST['like'] === "like") {
-        $like->doLike($_POST['postval']);
-        //header("Location: index.php");
-        //var_dump($_GET['post']);
+    // LIKE POST
+    if( !empty( $_POST["like"]) ) {
+        if ($_POST['like'] === "like") {
+            $like->doLike($_POST['postval']);
+        }
     }
-}
 
-if(!empty($_POST["unlike"])) {
-    if ($_POST['unlike'] === "unlike") {
-        $like->doUnlike($_POST['postval']);
-
+    // UNLIKE POST
+    if( !empty( $_POST["unlike"]) ) {
+        if ( $_POST['unlike'] === "unlike" ) {
+            $like->doUnlike( $_POST['postval'] );
+        }
     }
-}
 
+    // PLACE COMMENT
+    if( !empty( $_POST['comment'] ) ) {
+        $comment->Comment = htmlspecialchars($_POST['comment']);
+        $comment->PostID = htmlspecialchars($_POST['postid']);
+        $comment->SaveComment();
+    }
 
-if(!empty($_POST['comment']))
-{
-    $comment->Comment = htmlspecialchars($_POST['comment']);
-    $comment->PostID = htmlspecialchars($_POST['postid']);
-    $comment->SaveComment();
-}
-
-//altijd alle laatste comments ophalen
-//$comments = $comment->GetCommentsOnIndex();
 ?><!doctype html>
 <html lang="en">
 <head>

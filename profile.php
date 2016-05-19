@@ -1,21 +1,17 @@
 <?php
 
-    // IMDSTAGRAM CODE: HOME - Last edited: 14/04/2016
+    // IMDSTAGRAM CODE: PROFILE PAGE
     //######################################################
 
     ob_start();
-
-    // SESSION START
     session_start();
 
-    // INCLUDE CLASSES
     include_once("classes/db.class.php");
     include_once("classes/user.class.php");
     include_once("classes/post.class.php");
     include_once("classes/follow.class.php");
     include_once("classes/Like.class.php");
 
-    // AUTHENTICATE USER
     $user = new User();
     if($user->Authenticate()){
         $post = new Post();
@@ -25,42 +21,31 @@
         header('Location: login.php');
     }
 
+    // GET USER INFO AND DISPLAY USER POSTS
     $user = $user->getProfileInfo();
-    //$user->getAllInfo();
-    //var_dump($user[0]['u_id']);
-
     $post = $post->displayUserPosts();
 
     $follow->Following = $_SESSION['u_id'];
     $follow->Followed = $user[0]['u_id'];
 
-    /*if( $follow->isFollowing()){
-        $kak = true;
-    } else {
-        $kak = false;
-    }*/
-
-    if(!empty($_POST["follow"])) {
-        if ($_POST['follow'] === "follow") {
+    // FOLLOW USER / SEND FOLLOW REQUEST
+    if( !empty( $_POST["follow"] ) ) {
+        if ( $_POST['follow'] === "follow" ) {
             if($user[0]['account'] == "private"){
                 $follow->requestFollow();
             } else {
                 $follow->doFollow();
             }
-
-            //header("Location: index.php");
-            //var_dump($_GET['post']);
         }
     }
 
-    if(!empty($_POST["unfollow"])) {
-        if ($_POST['unfollow'] === "unfollow") {
+    // UNFOLLOW USER
+    if(!empty( $_POST["unfollow"] ) ) {
+        if ( $_POST['unfollow'] === "unfollow" ) {
             $follow->doUnfollow();
 
         }
     }
-
-    
 
 ?><!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">

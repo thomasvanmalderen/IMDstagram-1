@@ -1,42 +1,33 @@
 <?php
 
-// IMDSTAGRAM CODE: HOME - Last edited: 14/04/2016
-//######################################################
+    // IMDSTAGRAM CODE: FOLLOW REQUESTS PAGE
+    //######################################################
 
-ob_start();
+    ob_start();
+    session_start();
 
-// SESSION START
-session_start();
+    include_once("classes/db.class.php");
+    include_once("classes/user.class.php");
+    include_once("classes/post.class.php");
+    include_once("classes/follow.class.php");
+    include_once("classes/Like.class.php");
 
-// INCLUDE CLASSES
-include_once("classes/db.class.php");
-include_once("classes/user.class.php");
-include_once("classes/post.class.php");
-include_once("classes/follow.class.php");
-include_once("classes/Like.class.php");
-
-// AUTHENTICATE USER
-$user = new User();
-if($user->Authenticate()){
-
-    $follow = new Follow();
-    $followrequests = new Follow();
-
-} else {
-    header('Location: login.php');
-}
-
-
-    //$follow->Following = $_SESSION['u_id'];
-    //$follow->Followed = $user[0]['u_id'];
+    $user = new User();
+    if( $user->Authenticate() ) {
+        $follow = new Follow();
+        $followrequests = new Follow();
+    } else {
+        header('Location: login.php');
+    }
 
     $followrequests->Followed = $_SESSION['u_id'];
-
     $followrequests = $followrequests->getFollowRequests();
-    //var_dump($followrequests);
 
-    if(!empty($_POST["follow"])) {
-        if ($_POST['follow'] === "follow") {
+    // ACCEPT INDICATED FOLLOW REQUEST
+    if( !empty( $_POST["follow"] ) ) {
+
+        if ( $_POST['follow'] === "follow" ) {
+
             $dofollow = new Follow();
             $accept = new Follow();
 
@@ -49,8 +40,6 @@ if($user->Authenticate()){
             $dofollow->doFollow();
             $accept->acceptFollowRequest();
             header("Location: followrequests.php");
-            //header("Location: index.php");
-            //var_dump($_GET['post']);
         }
     }
 
@@ -67,9 +56,9 @@ if($user->Authenticate()){
 </head>
 <body>
 
-<?php include_once("nav.inc.php") ?>
-<br>
-<section class="postcenter">
+    <?php include_once("nav.inc.php") ?>
+    <br>
+    <section class="postcenter">
     <h2>Your follow requests:</h2>
     <?php foreach($followrequests as $f): ?>
         <article class="profilepost">
@@ -84,8 +73,8 @@ if($user->Authenticate()){
 
         </article>
     <?php endforeach; ?>
-</section>
-</div>
+    </section>
+    
 
 </body>
 </html>

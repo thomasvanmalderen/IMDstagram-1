@@ -1,15 +1,13 @@
 <?php
 
-    // IMDSTAGRAM CODE: REGISTER FORM - Last edited: 14/04/2016
+    // IMDSTAGRAM CODE: REGISTER FORM
     //######################################################
-    
-    // INCLUDE CLASSES
+
     include_once("classes/db.class.php");
     include_once("classes/user.class.php");
 
-    // ON POST FORM: REGISTER USER
+    // SEND SIGNUP INFORMATION
     if( !empty($_POST) ) {
-        
         
         if( !empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["username"]) && !empty($_POST["email"]) && !empty($_POST['password']) ) {
             
@@ -19,24 +17,18 @@
             $user->Username = htmlspecialchars($_POST["username"]);
             $user->Email = htmlspecialchars($_POST["email"]);
             $user->Password = htmlspecialchars($_POST["password"]);
-            if($user->UsernameAvailable()) {
+
+            if( $user->UsernameAvailable() ) {
                 $_SESSION['loginfeedback'] = "Username already taken";
+
             } else {
-                $user->Register(); //INSERT USER INTO TABLE
+                $user->Register();
                 header('Location: index.php');
-
             }
-
-            
         } else {
-            
             $_SESSION['loginfeedback'] = "Please fill in all the fields.";
-
         }
-
-
-
-}
+    }
 
 ?><!DOCTYPE html>
 <html lang="en">
